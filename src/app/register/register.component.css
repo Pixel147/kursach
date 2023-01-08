@@ -1,0 +1,14 @@
+body
+{
+  position: relative;
+}
+.register-form
+{
+  width: 300px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
