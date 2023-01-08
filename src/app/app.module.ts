@@ -3,20 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { StartPageComponent } from './start-page/start-page.component';
 import { LoginComponent } from './login/login.component';
 import {RouterOutlet} from "@angular/router";
+import {AppRoutingModule} from "./app-routing.module";
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StartPageComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
     imports: [
         BrowserModule,
         NgbModule,
-        RouterOutlet
+        RouterOutlet,
+        AppRoutingModule
     ],
   providers: [],
   bootstrap: [AppComponent]

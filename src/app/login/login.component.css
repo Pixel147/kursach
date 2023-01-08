@@ -1,0 +1,19 @@
+.login-cover
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.login
+{
+  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  width: 800px;
+  height: 300px;
+}
