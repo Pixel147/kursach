@@ -15,8 +15,7 @@
   color: white;
   transition: 250ms;
 }
-.about
+.white-blue
 {
-  background-color: var(--main-dark);
   color: var(--main-white-blue);
 }
