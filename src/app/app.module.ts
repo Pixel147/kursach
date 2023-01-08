@@ -7,11 +7,13 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from "./home/home.component";
 import {RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    RegisterComponent,
     HomeComponent
   ],
   imports: [

@@ -1,0 +1,25 @@
+
+.login-form
+{
+  width: 300px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.register-text
+{
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: monospace;
+}
+
+.Sign-Up
+{
+  padding-left: 5px;
+}
