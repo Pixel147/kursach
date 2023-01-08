@@ -1,19 +1,38 @@
+body
+{
+  position: relative;
+}
+
 .login-cover
 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
 }
 
 .login
 {
-  background-color: aqua;
+  width: 300px;
+  height: 500px;
   display: flex;
   justify-content: center;
-  align-content: center;
   flex-direction: column;
-  width: 800px;
-  height: 300px;
+}
+
+.register
+{
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: monospace;
+}
+
+.Sign-Up
+{
+  padding-left: 5px;
 }
