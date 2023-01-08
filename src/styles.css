@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+:root
+{
+  --main-white-blue:#56C8D6;
+  --main-dark-blue:#2A98AD;
+  --main-dark:#31383A;
+}
+.links
+{
+  text-decoration: none;
+  color: var(--main-white-blue);
+}
+.links:hover
+{
+  color: white;
+  transition: 250ms;
+}
+.about
+{
+  background-color: var(--main-dark);
+  color: var(--main-white-blue);
+}

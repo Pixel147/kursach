@@ -3,15 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { StartPageComponent } from './start-page/start-page.component';
 import { LoginComponent } from './login/login.component';
 import {RouterOutlet} from "@angular/router";
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StartPageComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
     imports: [
         BrowserModule,
