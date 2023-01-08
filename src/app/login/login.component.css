@@ -1,6 +1,10 @@
-
+.sign-in
+{
+  padding-bottom: 329px;
+}
 .login-form
 {
+  padding-top: 100px;
   width: 300px;
   height: 500px;
   display: flex;
