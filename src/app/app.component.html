@@ -1,26 +1,35 @@
-<nav class="navbar navbar-expand-lg bg-dark text-white">
+<div class="container-fluid bg-light">
   <div class="container">
-    <a class="navbar-brand links" href="/">Kursach</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link links" href="/">Головна</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link links" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link links" href="#">Pricing</a>
-        </li>
-      </ul>
-    </div>
+    <nav class="navbar navbar-light navbar-expand-sm">
+      <a routerLink="/" class="navbar-brand"><i class="fa-regular fa-calendar-days" style="font-size: 50px"></i></a>
+      <a routerLink="/" class="navbar-brand" style="font-size: 30px;">Kursova</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuItems" aria-controls="menuItems" aria-expanded="false" aria-label="Toggle Navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuItems">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a routerLink="/" class="nav-link a-menu-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/" class="nav-link a-menu-link">Pricing</a>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center">
+          <button type="button" class="btn px-3 me-2 btn-menu-link" routerLink="/login">
+            Log In
+          </button>
+          <button type="button" class="btn btn-outline-dark me-3 shadow btn-menu-link" routerLink="/register">
+            Register
+          </button>
+        </div>
+      </div>
+    </nav>
   </div>
-</nav>
+</div>
 
 <router-outlet></router-outlet>
+
 <footer class="bg-dark text-center white-blue">
   <div class="text-center p-3">
     © 2023 Copyright:

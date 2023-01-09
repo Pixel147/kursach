@@ -8,3 +8,11 @@
   background-color: var(--main-dark-blue);
   color: white;
 }
+.btn-search
+{
+  border-radius: 10px 0 0 10px!important;
+}
+.input-group-search
+{
+  width: 35%;
+}

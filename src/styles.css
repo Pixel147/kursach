@@ -1,9 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap'); /* You can add global styles to this file, and also import other style files */
 :root
 {
   --main-white-blue:#56C8D6;
   --main-dark-blue:#2A98AD;
   --main-dark:#31383A;
+}
+
+/*font-family: 'Prompt', sans-serif;*/
+body
+{
+  font-family: 'Prompt', sans-serif!important;
 }
 .links
 {
