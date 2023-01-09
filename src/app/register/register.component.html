@@ -1,23 +1,55 @@
-<div class="sign-up container-fluid d-flex justify-content-center pt-5">
-  <form class="register-form">
-    <h2 class="text-center pt-3 pb-3">Sign Up</h2>
-    <div class="mb-3">
-      <input (input)="onNickname($event)" type="text" placeholder="Nickname" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp">
+<div class="gradient">
+  <div class="sign-in text-center d-flex justify-content-center align-items-center">
+
+    <div class="register-background shadow-lg">
+      <h1 class="header-text">Hello!</h1>
+      <h2 class="main-text">Create your own account and make</h2>
+      <h2 class="main-text">business meetings meetings easier</h2>
+      <h2 class="main-text">with our company</h2>
+    </div>
+    <div class="form-cover shadow-lg">
+
+      <form class="register-form">
+        <h2 class="text-center pt-3 pb-3">Sign Up</h2>
+        <div class="mb-3">
+          <input (input)="onNickname($event)" type="text" placeholder="Nickname" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp">
+        </div>
+
+        <div class="mb-3">
+          <input (input)="onEmail($event)" type="email" placeholder="Email address" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp">
+        </div>
+
+        <div class="mb-3">
+          <input (input)="onPass($event)" placeholder="Password" type="password" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp">
+        </div>
+
+        <div class="mb-3">
+          <input (input)="onRepPass($event)" placeholder=" Repeat Password" type="password"  class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp">
+        </div>
+
+        <div class="d-flex justify-content-around w-100% p-3 pt-0">
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Im Employee
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Im Client
+            </label>
+          </div>
+        </div>
+
+        <button (click)="onClick()" type="submit" class="btn btn-primary">Register</button>
+      </form>
+
     </div>
 
-    <div class="mb-3">
-      <input (input)="onEmail($event)" type="email" placeholder="Email address" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp">
-    </div>
 
-    <div class="mb-3">
-      <input (input)="onPass($event)" placeholder="Password" type="password" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp">
-    </div>
+  </div>
 
-    <div class="mb-3">
-      <input (input)="onRepPass($event)" placeholder=" Repeat Password" type="password"  class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp">
-    </div>
-
-    <button (click)="onClick()" type="text" class="btn btn-primary">Register</button>
-  </form>
-
+  <app-footer class="fixed-bottom"></app-footer>
 </div>
