@@ -10,52 +10,25 @@
   content: url('src/assets/images/home-page/main-banner-right.png') ;
   position: absolute;
   top: -1px;
-  height: 300px;
   right: 0;
   z-index: 0;
 }
 .main
 {
-  height: 1000px;
+  height: 700px;
 }
 .main-text-block
 {
-  padding-top: 250px;
-  padding-left: 250px;
-  position: absolute;
-  z-index: 1;
+  margin-top: 300px;
+  z-index: 3;
+  position: relative;
 }
 @media (max-width: 1400px) {
   .main-text-block
   {
-    background-color: rgba(250, 250, 250, 0.85);
-    margin-top: 300px;
-    margin-left: 100px;
-    width: 60%;
-    padding: 60px;
-    border:2px solid grey;
-    border-radius: 10%;
-  }
-}
-@media (max-width: 992px) {
-  .main-text-block
-  {
-    padding: 10px;
-    margin-left: 50px;
-    margin-top: 200px;
-    border:2px solid white;
-    border-radius: 2%;
-  }
-}
-@media (max-width: 767px) {
-  .main-text-block
-  {
-    text-align: center;
-    padding: 20px;
-    margin-left: 100px;
-    margin-top: 200px;
-    border:2px solid white;
-    border-radius: 2%;
+    border-radius: 23px;
+    background-color: rgba(250, 250, 250, 0.95);
+    padding: 30px;
   }
 }
 .main-logo-text
@@ -76,7 +49,25 @@
   background-color: var(--main-dark-blue);
   color: white;
 }
-
+.login-block
+{
+  height: 500px;
+  content: url("src/assets/images/home-page/login-foto.png");
+}
+.search-block
+{
+  height: 500px;
+  content: url("src/assets/images/home-page/search-foto.png");
+}
+.maps-block
+{
+  height: 500px;
+  content: url("src/assets/images/home-page/maps-foto.png");
+}
+.how-register-text
+{
+  font-size: 25px;
+}
 .btn-search {
   border-radius: 10px 0 0 10px !important;
 }

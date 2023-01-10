@@ -1,6 +1,6 @@
 .menu
 {
-  position: absolute;
+  position: relative;
   z-index: 2;
   background-color: var(--main-dark-blue);
 }
