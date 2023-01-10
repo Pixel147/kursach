@@ -1,9 +1,38 @@
+.menu
+{
+  position: absolute;
+  z-index: 2;
+  background-color: var(--main-dark-blue);
+}
 .a-menu-link
 {
   font-size: 20px;
   padding-top: 10px;
 }
-.btn-menu-link
+.a-menu-link:hover
+{
+  color: white!important;
+}
+.btn-menu-login
 {
   font-size: 20px;
+  color: rgba(255,255,255,.55);
+}
+.btn-menu-login:hover
+{
+  color: white;
+}
+.btn-menu-register
+{
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 20px;
+  border: 2px solid rgba(255,255,255,.75);;
+  color: rgba(255,255,255,.75);
+  background-color: var(--main-dark-blue);
+}
+.btn-menu-register:hover
+{
+  background-color: white;
+  color: var(--main-dark-blue);
 }
