@@ -9,6 +9,7 @@ import {RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
+import {ClientProfileComponent} from "./client-profile/client-profile.component";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    ClientProfileComponent
   ],
   imports: [
     BrowserModule,
