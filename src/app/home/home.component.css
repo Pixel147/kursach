@@ -16,3 +16,8 @@
 {
   width: 35%;
 }
+.explanation-section-1
+{
+  background-color: var(--main-orange);
+  color: white;
+}
