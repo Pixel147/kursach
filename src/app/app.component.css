@@ -27,7 +27,8 @@
   font-size: 20px;
   padding: 10px 20px 10px 20px;
   border-radius: 20px;
-  border: 2px solid rgba(255,255,255,.75);;
+  border: 2px solid rgba(255,255,255,.75);
+  margin: 0;
   color: rgba(255,255,255,.75);
   background-color: var(--main-dark-blue);
 }

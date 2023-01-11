@@ -41,6 +41,8 @@
   font-size: 30px;
 }
 .home {
+  padding-top: 100px;
+  padding-bottom: 100px;
   background-color: var(--main-dark-blue);
   color: white;
 }
@@ -51,17 +53,15 @@
 }
 .login-block
 {
-  height: 500px;
   content: url("src/assets/images/home-page/login-foto.png");
 }
 .search-block
 {
-  height: 500px;
   content: url("src/assets/images/home-page/search-foto.png");
 }
 .maps-block
 {
-  height: 500px;
+  height: 400px;
   content: url("src/assets/images/home-page/maps-foto.png");
 }
 .how-register-text
@@ -76,7 +76,45 @@
   width: 35%;
 }
 
-.explanation-section-1 {
+.card {
+  border:none;
+  padding: 10px 50px;
+  transition: 0.5s;
+}
+.color-white-blue
+{
+  color: var(--main-white-blue);
+}
+.card::after {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.card:hover {
+
+  transition: 0.5s;
+  transform: scale(1.02, 1.02);
+  -webkit-transform: scale(1.02, 1.02);
+  backface-visibility: hidden;
+  will-change: transform;
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.75) !important;
+}
+
+.card:hover::after {
+  opacity: 1;
+  transition: 0.5s;
+}
+.my-btn
+{
+  border: 2px solid var(--main-white-blue);
+  color: var(--main-white-blue);
+  border-radius:30px
+}
+.my-btn:hover
+{
   background-color: var(--main-white-blue);
   color: white;
 }
