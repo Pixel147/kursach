@@ -1,6 +1,8 @@
 .bg
 {
   background-color: var(--main-white-blue);
+  padding-top: 9%;
+  padding-bottom: 7%;
 }
 .pb-100
 {
