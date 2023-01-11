@@ -1,5 +1,5 @@
 .gradient {
-  height: 900px;
+  height: 800px;
   width: 100%;
   background: linear-gradient(149deg, #56C8D6 0%, #2A98AD 42%, #DA865B 72%, #EFA68B 100%);
   animation: gradient 10s infinite linear;
@@ -40,8 +40,8 @@
 
 .header-text
 {
-  font-family: Monospace;
-  font-size: 31px;
+
+  font-size: 35px;
   font-weight: 1000;
   color: white;
   letter-spacing: 2px;
@@ -51,7 +51,7 @@
 
 .main-text
 {
-  font-family: Monospace;
+
   font-size: 25px;
   font-weight: 1000;
   color: white;
@@ -104,4 +104,70 @@ a
 {
   color:black;
   bottom: 10px;
+}
+
+@media (max-width: 555px) {
+  .header-text
+  {
+    font-size: 20px;
+  }
+
+  .main-text
+  {
+    font-size: 15px;
+  }
+
+  .sign-in
+  {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-background
+  {
+    width: 80%;
+    border-radius: 30px;
+  }
+
+  .form-cover
+  {
+    width: 80%;
+    border-radius: 30px;
+  }
+  .gradient {
+    height: 400px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .header-text
+  {
+    font-size: 35px;
+  }
+
+  .main-text
+  {
+    font-size: 25px;
+  }
+
+  .sign-in
+  {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-background
+  {
+    width: 80%;
+    border-radius: 30px;
+  }
+
+  .form-cover
+  {
+    width: 80%;
+    border-radius: 30px;
+  }
+  .gradient {
+    height: 1250px;
+  }
 }
