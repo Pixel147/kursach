@@ -10,6 +10,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
 import {ClientProfileComponent} from "./client-profile/client-profile.component";
+import {EmployeeProfileComponent} from "./employee-profile/employee-profile.component";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {ClientProfileComponent} from "./client-profile/client-profile.component"
     RegisterComponent,
     HomeComponent,
     FooterComponent,
-    ClientProfileComponent
+    ClientProfileComponent,
+    EmployeeProfileComponent
   ],
   imports: [
     BrowserModule,
