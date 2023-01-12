@@ -146,3 +146,18 @@ a
     flex-direction: column;
   }
 }
+
+@media (max-width: 1000px) {
+  .header-text
+  {
+    font-size: 35px;
+  }
+
+  .main-text
+  {
+    font-size: 25px;
+  }
+  .gradient {
+    height: 1000px;
+  }
+}

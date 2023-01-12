@@ -1,5 +1,5 @@
 .gradient {
-  height: 800px;
+  height: 900px;
   width: 100%;
   background: linear-gradient(149deg, #56C8D6 0%, #2A98AD 42%, #DA865B 72%, #EFA68B 100%);
   animation: gradient 10s infinite linear;
@@ -22,7 +22,7 @@
 .sign-in
 {
   width: 100%;
-  padding-top:9.5%;
+  padding-top:9%;
 }
 
 .login-background
@@ -169,5 +169,35 @@ a
   }
   .gradient {
     height: 1250px;
+  }
+}
+
+@media (max-width: 1700px) {
+  .header-text
+  {
+    font-size: 35px;
+  }
+
+  .main-text
+  {
+    font-size: 25px;
+  }
+  .gradient {
+    height: 1000px;
+  }
+}
+
+@media (max-width: 2500px) {
+  .header-text
+  {
+    font-size: 35px;
+  }
+
+  .main-text
+  {
+    font-size: 25px;
+  }
+  .gradient {
+    height: 800px;
   }
 }
