@@ -1,6 +1,8 @@
 .bg
 {
   background-color: var(--main-white-blue);
+  padding-top: 9%;
+  padding-bottom: 4%;
 }
 .pb-100
 {
@@ -45,18 +47,6 @@
   height: 97%;
   width: 100%;
   background-color:white;
-}
-
-.describe
-{
-
-
-
-}
-
-.examples
-{
-
 }
 
 
