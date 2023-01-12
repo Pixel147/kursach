@@ -1,9 +1,8 @@
 .gradient {
-  height: 900px;
   width: 100%;
   background: linear-gradient(149deg, #56C8D6 0%, #2A98AD 42%, #DA865B 72%, #EFA68B 100%);
   animation: gradient 10s infinite linear;
-  background-size: 400%;
+  background-size: 800%;
   z-index: 0;
 }
 
@@ -139,7 +138,7 @@ a
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1000px) {
   .header-text
   {
     font-size: 35px;
@@ -154,6 +153,8 @@ a
   {
     display: flex;
     flex-direction: column;
+    padding-bottom: 18%;
+
   }
 
   .login-background
@@ -168,7 +169,7 @@ a
     border-radius: 30px;
   }
   .gradient {
-    height: 1250px;
+    height: 1300px!important;
   }
 }
 
@@ -183,7 +184,7 @@ a
     font-size: 25px;
   }
   .gradient {
-    height: 1000px;
+    height: 1400px;
   }
 }
 
@@ -198,6 +199,11 @@ a
     font-size: 25px;
   }
   .gradient {
-    height: 800px;
+    height: 930px;
+  }
+
+  .sign-in
+  {
+    padding-top:10%;
   }
 }

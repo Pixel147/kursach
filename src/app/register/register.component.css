@@ -1,5 +1,5 @@
 .gradient {
-  height: 800px;
+  height: 880px;
   width: 100%;
   background: linear-gradient(149deg, #56C8D6 0%, #2A98AD 42%, #DA865B 72%, #EFA68B 100%);
   animation: gradient 10s infinite linear;
@@ -122,6 +122,7 @@ a
   {
     display: flex;
     flex-direction: column;
+    padding-top: 15%;
   }
 
   .register-background
@@ -137,7 +138,7 @@ a
     border-radius: 30px;
   }
   .gradient {
-    height: 1250px;
+    height: 1200px!important;
   }
 
   .choose
