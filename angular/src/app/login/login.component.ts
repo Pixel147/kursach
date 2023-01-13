@@ -20,10 +20,10 @@ export class LoginComponent {
     this.password = event.target.value;
   }
   login() {
-    console.log("login clicked");
+    /*console.log("login clicked");
     const body = {username: this.username, password: this.password};
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json','Cache-Control': 'no-cache' })};
-    return this.http.post('http://localhost:8080/login', body, httpOptions);
+    return this.http.post('http://localhost:8080/login', body, httpOptions);*/
   }
 }
