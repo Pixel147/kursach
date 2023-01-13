@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-register',
@@ -6,27 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  constructor(private http: HttpClient) {}
   checkLog = true
-  checkPass = true
   nickname = '';
   email = '';
   pass = '';
   repPass = '';
+  type = '';
 
 
   onNickname(event:any){
-
     this.nickname = event.target.value
-    if (this.nickname.length < 4)
-    {
-      this.checkLog = false
-    }
+  }
 
-    else
-    {
-      this.checkLog = true
-    }
-
+  onCheckNickname() : boolean
+  {
+    return this.nickname.length > 4;
   }
 
   onEmail(event:any)
@@ -43,13 +39,37 @@ export class RegisterComponent {
     this.repPass = event.target.value
   }
 
-  onClick()
+  checkPass() : boolean
   {
-    console.log(this.nickname)
-    console.log(this.email)
-    console.log(this.pass)
-    console.log(this.repPass)
+    return this.pass == this.repPass;
+  }
+  onClickReg()
+  {
+    if(this.checkPass() && this.onCheckNickname())
+    {
+      const user = {"username":this.nickname,"email":this.email,"password":this.pass, "type":this.type};
+      this.createUser(user);
+    }
+    else
+    {
+      console.log("you invalid");
+    }
   }
 
+  createUser(user:Object)
+  {
+    console.log("created user");
+    this.http.post(`http://localhost:8080/register`, user).subscribe(result =>{
+      console.log(result);
+    }).unsubscribe();
+  }
+  onTypeEmployee()
+  {
+    this.type = "employee";
+  }
 
+  onTypeClient()
+  {
+    this.type = "client";
+  }
 }

@@ -1,5 +1,5 @@
 import {Component, Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -19,11 +19,16 @@ export class LoginComponent {
   {
     this.password = event.target.value;
   }
+  logIntoAccount(user:Object)
+  {
+    console.log("sign in");
+    this.http.post(`http://localhost:8080/login`, user).subscribe(result =>{
+      console.log(result);
+    }).unsubscribe();
+  }
   login() {
     console.log("login clicked");
     const body = {username: this.username, password: this.password};
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json','Cache-Control': 'no-cache' })};
-    return this.http.post('http://localhost:8080/login', body, httpOptions);
+    this.logIntoAccount(body);
   }
 }
