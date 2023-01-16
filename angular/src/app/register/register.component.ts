@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {User} from "../entity/user";
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent {
   email = '';
   pass = '';
   repPass = '';
-  type = '';
+  type = 0;
 
 
   onNickname(event:any){
@@ -47,7 +48,7 @@ export class RegisterComponent {
   {
     if(this.checkPass() && this.onCheckNickname())
     {
-      const user = {"username":this.nickname,"email":this.email,"password":this.pass, "type":this.type};
+      const user:User = {"username":this.nickname,"email":this.email,"password":this.pass, "type":this.type};
       this.createUser(user);
     }
     else
@@ -65,11 +66,11 @@ export class RegisterComponent {
   }
   onTypeEmployee()
   {
-    this.type = "employee";
+    this.type = 2;
   }
 
   onTypeClient()
   {
-    this.type = "client";
+    this.type = 1;
   }
 }
