@@ -16,7 +16,8 @@ export class RegisterComponent {
   repPass = '';
   type = 0;
   user:any;
-
+  result : boolean = false;
+  expression: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
   onNickname(event:any){
     this.nickname = event.target.value
@@ -30,6 +31,11 @@ export class RegisterComponent {
   onEmail(event:any)
   {
     this.email = event.target.value
+  }
+  checkEmail() : boolean
+  {
+    this.result = this.expression.test(this.email);
+    return this.result;
   }
 
   onPass(event:any){
@@ -47,9 +53,8 @@ export class RegisterComponent {
   }
   onClickReg()
   {
-    if(this.checkPass() && this.onCheckNickname())
+    if(this.checkPass() && this.onCheckNickname() && this.checkEmail() && this.type != 0)
     {
-
       this.createUser();
     }
     else
