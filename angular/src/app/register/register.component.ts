@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {User} from "../entity/user";
 
 @Component({
@@ -60,11 +60,8 @@ export class RegisterComponent {
 
   createUser()
   {
-    //debugger;
-    console.log("created user");
     const headers = {'My-Custom-Header': 'foobar'};
     const user:User = {"username":this.nickname,"email":this.email,"password":this.pass, "userType":this.type};
-    console.log(this.type);
     return this.http.post('http://localhost:8080/register', user, {headers:headers}).subscribe().unsubscribe();
   }
   onTypeEmployee()
