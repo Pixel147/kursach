@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "../entity/user";
 
 @Component({
@@ -15,6 +15,7 @@ export class RegisterComponent {
   pass = '';
   repPass = '';
   type = 0;
+  user:any;
 
 
   onNickname(event:any){
@@ -48,8 +49,8 @@ export class RegisterComponent {
   {
     if(this.checkPass() && this.onCheckNickname())
     {
-      const user:User = {"username":this.nickname,"email":this.email,"password":this.pass, "type":this.type};
-      this.createUser(user);
+
+      this.createUser();
     }
     else
     {
@@ -57,12 +58,14 @@ export class RegisterComponent {
     }
   }
 
-  createUser(user:Object)
+  createUser()
   {
+    //debugger;
     console.log("created user");
-    this.http.post(`http://localhost:8080/register`, user).subscribe(result =>{
-      console.log(result);
-    }).unsubscribe();
+    const headers = {'My-Custom-Header': 'foobar'};
+    const user:User = {"username":this.nickname,"email":this.email,"password":this.pass, "userType":this.type};
+    console.log(this.type);
+    return this.http.post('http://localhost:8080/register', user, {headers:headers}).subscribe().unsubscribe();
   }
   onTypeEmployee()
   {
