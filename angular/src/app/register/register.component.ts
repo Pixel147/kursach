@@ -53,9 +53,8 @@ export class RegisterComponent {
   }
   onClickReg()
   {
-    if(this.checkPass() && this.onCheckNickname() && this.checkEmail())
+    if(this.checkPass() && this.onCheckNickname() && this.checkEmail() && this.type != 0)
     {
-
       this.createUser();
     }
     else
