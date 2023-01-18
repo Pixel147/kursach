@@ -4,6 +4,7 @@ import com.example.spring.config.AESDecryption;
 import com.example.spring.config.AESEncryption;
 import com.example.spring.entity.User;
 import com.example.spring.repository.UserRepository;
+import com.example.spring.response.LoginResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,6 @@ public class LoginController {
             return null;
         }
         LoginResponse returnUser = new LoginResponse(dbUser.getUsername(), dbUser.getUserType());
-
         if (aesEncryption.encrypt(user.getPassword()).equals(dbUser.getPassword()))
         {
             return returnUser;
@@ -35,7 +35,6 @@ public class LoginController {
         {
             return null;
         }
-
     }
 }
 

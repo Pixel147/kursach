@@ -1,4 +1,4 @@
-package com.example.spring.controller;
+package com.example.spring.response;
 
 public class LoginResponse {
     private String username;

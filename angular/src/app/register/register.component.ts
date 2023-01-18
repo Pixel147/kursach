@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpRequest, HttpResponse} from "@angular/common/http";
 import {User} from "../entity/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -8,8 +9,9 @@ import {User} from "../entity/user";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor(private http: HttpClient) {}
-  checkLog = true
+  constructor(private http: HttpClient, private router: Router) {}
+  recivedUser:User | any;
+  checkLog = true;
   nickname = '';
   email = '';
   pass = '';
@@ -71,7 +73,22 @@ export class RegisterComponent {
     console.log("user created");
     const headers = {'My-Custom-Header': 'foobar'};
     const user:User = {"username":this.nickname,"email":this.email,"password":this.pass, "userType":this.type};
-    return this.http.post('http://localhost:8080/register', user, {headers:headers}).subscribe().unsubscribe();
+    return this.http.post('http://localhost:8080/register', user, {headers:headers}).subscribe({
+      error: error => {
+        console.log(error);
+        //todo if for red border
+      },
+      next:(data: any) => {
+        if(data.type == 1)
+        {
+          this.router.navigate(["/client"]);
+        }
+        else if(data.type == 2)
+        {
+          this.router.navigate(["/employee"])
+        }
+      }
+    });
   }
   onTypeEmployee()
   {
