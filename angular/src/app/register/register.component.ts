@@ -25,7 +25,7 @@ export class RegisterComponent {
 
   onCheckNickname() : boolean
   {
-    return this.nickname.length > 4;
+    return this.nickname.length >= 4;
   }
 
   onEmail(event:any)
@@ -37,7 +37,10 @@ export class RegisterComponent {
     this.result = this.expression.test(this.email);
     return this.result;
   }
-
+  onCheckPassLen() : boolean
+  {
+    return this.pass.length >= 4;
+  }
   onPass(event:any){
     this.pass = event.target.value
   }
@@ -53,7 +56,7 @@ export class RegisterComponent {
   }
   onClickReg()
   {
-    if(this.checkPass() && this.onCheckNickname() && this.checkEmail() && this.type != 0)
+    if(this.checkPass() && this.onCheckPassLen() && this.onCheckNickname() && this.checkEmail() && this.type != 0)
     {
       this.createUser();
     }
