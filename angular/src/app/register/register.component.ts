@@ -68,6 +68,7 @@ export class RegisterComponent {
 
   createUser()
   {
+    console.log("user created");
     const headers = {'My-Custom-Header': 'foobar'};
     const user:User = {"username":this.nickname,"email":this.email,"password":this.pass, "userType":this.type};
     return this.http.post('http://localhost:8080/register', user, {headers:headers}).subscribe().unsubscribe();
