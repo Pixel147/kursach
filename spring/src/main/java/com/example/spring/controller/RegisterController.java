@@ -39,11 +39,11 @@ public class RegisterController {
         String messageUsername = "ok";
         if(userByUsername != null)
         {
-            messageUsername += "validation.username.found";
+            messageUsername = "validation.username.found";
         }
         if(userByEmail != null)
         {
-            messageEmail += "validation.email.found";
+            messageEmail = "validation.email.found";
         }
         RegisterBadResponse registerBadResponse = new RegisterBadResponse(2,messageEmail,messageUsername);
         return new ResponseEntity<>(registerBadResponse,HttpStatus.BAD_REQUEST);

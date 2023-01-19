@@ -12,19 +12,39 @@
       <form class="register-form">
         <h2 class="text-center pt-3 pb-3">Sign Up</h2>
         <div class="mb-3">
-          <input (input)="onNickname($event)" type="text" placeholder="Nickname" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp">
+          <input (input)="onNickname($event)"
+                 type="text"
+                 placeholder="Username"
+                 class="form-control test"
+                 [style.border-color]="usernameFlag ? usernameColorRed : usernameColorGrey"
+                 [style.border-width]="usernameFlag ? usernameBorder2px : usernameBorder1px"
+                 id="exampleInputEmail2">
         </div>
 
         <div class="mb-3">
-          <input (input)="onEmail($event)" type="email" placeholder="Email address" class="form-control" id="exampleInputEmail4" aria-describedby="emailHelp">
+          <input (input)="onEmail($event)"
+                 type="email"
+                 placeholder="Email address"
+                 class="form-control test"
+                 [style.border-color]="emailFlag ? emailColorRed : emailColorGrey"
+                 [style.border-width]="emailFlag ? emailBorder2px : emailBorder1px"
+                 id="exampleInputEmail4">
         </div>
 
         <div class="mb-3">
-          <input (input)="onPass($event)" placeholder="Password" type="password" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp">
+          <input (input)="onPass($event)"
+                 placeholder="Password"
+                 type="password"
+                 class="form-control border-color-grey"
+                 id="exampleInputEmail5">
         </div>
 
         <div class="mb-3">
-          <input (input)="onRepPass($event)" placeholder=" Repeat Password" type="password"  class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp">
+          <input (input)="onRepPass($event)"
+                 placeholder=" Repeat Password"
+                 type="password"
+                 class="form-control border-color-grey"
+                 id="exampleInputEmail6">
         </div>
 
         <div class="d-flex justify-content-around w-100% p-3 pt-0 choose">
