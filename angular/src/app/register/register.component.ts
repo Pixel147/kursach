@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import {HttpClient, HttpRequest, HttpResponse} from "@angular/common/http";
-import {User} from "../entity/user";
+import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {RegisterBadResponse} from "../entity/RegisterBadResponse";
 
 @Component({
   selector: 'app-register',
@@ -92,32 +90,13 @@ export class RegisterComponent {
   createUser()
   {
     const headers = {'My-Custom-Header': 'foobar'};
-    const user:User = {"username":this.nickname,"email":this.email,"password":this.pass, "userType":this.type};
+    const user = {"username":this.nickname,"email":this.email,"password":this.pass, "type":this.type};
     return this.http.post('http://localhost:8080/register', user, {headers:headers}).subscribe({
-
-      error: error => {
-        this.emailMessage = error.error.messageEmail;
-        this.usernameMessage = error.error.messageUsername;
-        if(this.emailMessage == "validation.email.found")
-        {
-          console.log("validation.email.found");
-          this.emailFlag = true;
-        }
-        if(this.usernameMessage == "validation.username.found")
-        {
-          console.log("validation.username.found")
-          this.usernameFlag = true;
-        }
-      },
       next:(data: any) => {
-        if(data.type == 1)
-        {
-          this.router.navigate(["/client"]);
-        }
-        else if(data.type == 2)
-        {
-          this.router.navigate(["/employee"])
-        }
+        this.router.navigate(["/login"]);
+      },
+      error:(error : any) => {
+        this.router.navigate(["/login"]);
       }
     });
   }
