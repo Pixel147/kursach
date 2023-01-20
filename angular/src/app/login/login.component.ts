@@ -1,6 +1,5 @@
 import {Component, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {LoginResponse} from "../entity/loginResponse";
 import {Router} from "@angular/router";
 
 @Component({
@@ -13,7 +12,7 @@ export class LoginComponent {
   constructor(private http: HttpClient, private router: Router) {}
   username:string = '';
   password:string = '';
-  receivedUser: LoginResponse | undefined; // полученный пользователь
+  token:string = "";
   onCheckUsername() : boolean
   {
     return this.username.length >= 4;
@@ -35,20 +34,14 @@ export class LoginComponent {
     console.log("try to login user");
     const user:{ password: string; username: string } = {"username":this.username,"password":this.password};
     this.http.post(`http://localhost:8080/login`, user).subscribe({
-
-      error: error => console.log(error),
       next:(data: any) => {
-        if(data.type == 1)
-        {
+          localStorage.setItem("token", data.token);
           this.router.navigate(["/client"]);
-        }
-        else if(data.type == 2)
-        {
-          this.router.navigate(["/employee"])
-        }
-      }
+      },
+      error: error => console.log(error),
 
-    });//trouble
+
+    });
   }
   login() {
     if(this.onCheckUsername() && this.onCheckPassLen())

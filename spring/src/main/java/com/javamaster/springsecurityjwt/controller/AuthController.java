@@ -5,10 +5,8 @@ import com.javamaster.springsecurityjwt.entity.RoleEntity;
 import com.javamaster.springsecurityjwt.entity.UserEntity;
 import com.javamaster.springsecurityjwt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -32,4 +30,10 @@ public class AuthController {
         String token = jwtProvider.generateToken(userEntity.getUsername());
         return new AuthResponse(token);
     }
+
+//    @GetMapping("/userType")
+//    public ResponseEntity getType()
+//    {
+//
+//    }
 }
