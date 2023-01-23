@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'app-client-profile',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./client-profile.component.css']
 })
 export class ClientProfileComponent {
-
+  
 }

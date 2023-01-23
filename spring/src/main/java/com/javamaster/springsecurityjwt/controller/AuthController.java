@@ -28,12 +28,7 @@ public class AuthController {
     public AuthResponse login(@RequestBody AuthRequest request) {
         UserEntity userEntity = userService.findByLoginAndPassword(request.getUsername(), request.getPassword());
         String token = jwtProvider.generateToken(userEntity.getUsername());
-        return new AuthResponse(token);
+        return new AuthResponse(token,userEntity.getRoleEntity().getId());
     }
 
-//    @GetMapping("/userType")
-//    public ResponseEntity getType()
-//    {
-//
-//    }
 }

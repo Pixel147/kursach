@@ -36,7 +36,7 @@ export class LoginComponent {
     this.http.post(`http://localhost:8080/login`, user).subscribe({
       next:(data: any) => {
           localStorage.setItem("token", data.token);
-          this.router.navigate(["/client"]);
+          this.router.navigate(["/"]);
       },
       error: error => console.log(error),
 
