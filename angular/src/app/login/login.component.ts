@@ -39,8 +39,6 @@ export class LoginComponent {
           this.router.navigate(["/"]);
       },
       error: error => console.log(error),
-
-
     });
   }
   login() {

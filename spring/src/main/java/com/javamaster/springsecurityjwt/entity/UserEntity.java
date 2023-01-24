@@ -1,15 +1,7 @@
 package com.javamaster.springsecurityjwt.entity;
 
 import lombok.Data;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
@@ -19,17 +11,19 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
+    @JoinColumn(name = "id_company")
+    @ManyToOne
+    private CompanyEntity companyEntity;
     @Column
     private String username;
-
     @Column
     private String password;
-
     @Column
     private String email;
-
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private RoleEntity roleEntity;
+    @Column
+    private String fullname;
+    @Column
+    private String phone;
+    @Column
+    private String role;
 }

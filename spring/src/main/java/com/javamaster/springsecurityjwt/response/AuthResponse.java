@@ -1,4 +1,4 @@
-package com.javamaster.springsecurityjwt.controller;
+package com.javamaster.springsecurityjwt.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,5 +8,4 @@ import lombok.Data;
 public class AuthResponse {
 
     private String token;
-    private int type;
 }

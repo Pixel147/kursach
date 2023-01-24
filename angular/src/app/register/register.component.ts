@@ -9,24 +9,12 @@ import {Router} from "@angular/router";
 })
 export class RegisterComponent {
   constructor(private http: HttpClient, private router: Router) {}
-  usernameFlag = false;
-  usernameColorRed = 'red';
-  usernameColorGrey = 'grey';
-  usernameBorder2px = '2px';
-  usernameBorder1px = '1px';
-  emailFlag = false;
-  emailColorRed = 'red';
-  emailColorGrey = 'grey';
-  emailBorder2px = '2px';
-  emailBorder1px = '1px';
-  emailMessage = '';
-  usernameMessage = '';
   nickname = '';
   email = '';
   pass = '';
   repPass = '';
-  type = 0;
-  result : boolean = false;
+  usernameFlag = false;
+  emailFlag = false;
   expression: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
   onNickname(event:any){
@@ -67,7 +55,7 @@ export class RegisterComponent {
   }
   onClickReg()
   {
-    if(this.checkPass() && this.onCheckPassLen() && this.onCheckNickname() && this.checkEmail() && this.type != 0)
+    if(this.checkPass() && this.onCheckPassLen() && this.onCheckNickname() && this.checkEmail())
     {
       this.createUser();
     }
@@ -77,28 +65,23 @@ export class RegisterComponent {
     }
   }
 
-  onTypeEmployee()
-  {
-    this.type = 2;
-  }
-
-  onTypeClient()
-  {
-    this.type = 1;
-  }
-
   createUser()
   {
     const headers = {'My-Custom-Header': 'foobar'};
-    const user = {"username":this.nickname,"email":this.email,"password":this.pass, "type":this.type};
-    return this.http.post('http://localhost:8080/register', user, {headers:headers}).subscribe({
-      next:(data: any) => {
-        this.router.navigate(["/login"]);
+    const user = {"username":this.nickname,"email":this.email,"password":this.pass};
+    return this.http.post('http://localhost:8080/register', user, {headers:headers}).subscribe(
+      (data:any) => {
+          this.router.navigate(["/login"]);
       },
-      error:(error : any) => {
-        this.router.navigate(["/login"]);
+      (error:any) => {
+            if(error.error.emailMessage == "validation.email.found"){
+              this.emailFlag = true;
+            }
+            if(error.error.usernameMessage == "validation.username.found"){
+              this.usernameFlag = true;
+            }
       }
-    });
+    );
   }
 
 }
