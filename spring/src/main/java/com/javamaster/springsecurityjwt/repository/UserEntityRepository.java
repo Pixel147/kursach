@@ -4,7 +4,7 @@ import com.javamaster.springsecurityjwt.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserEntityRepository extends JpaRepository<UserEntity, Integer> {
-
     UserEntity findByUsername(String username);
     UserEntity findByEmail(String email);
+    UserEntity findByPhone(String phone);
 }
