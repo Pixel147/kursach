@@ -38,15 +38,13 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public AuthResponse login(@RequestBody AuthRequest request) {
+    public ResponseEntity login(@RequestBody AuthRequest request) {
         UserEntity userEntity = userService.findByLoginAndPassword(request.getUsername(), request.getPassword());
+        if(userEntity == null){
+            return new ResponseEntity("invalid data",HttpStatus.BAD_REQUEST);
+        }
         String token = jwtProvider.generateToken(userEntity.getUsername());
-        return new AuthResponse(token);
+        return new ResponseEntity(new AuthResponse(userEntity.getRole(),token),HttpStatus.OK);
     }
-
-//    @PostMapping("/user_type")
-//    public String userType(@RequestBody AuthResponse request) {
-//        todo mb use doFilter
-//    }
 
 }
