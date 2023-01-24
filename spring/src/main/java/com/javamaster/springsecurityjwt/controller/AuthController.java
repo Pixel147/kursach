@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @RestController
@@ -58,5 +59,10 @@ public class AuthController {
         String token = jwtProvider.generateToken(userEntity.getUsername());
         return new AuthResponse(token);
     }
+
+//    @PostMapping("/user_type")
+//    public String userType(@RequestBody AuthResponse request) {
+//        todo mb use doFilter
+//    }
 
 }

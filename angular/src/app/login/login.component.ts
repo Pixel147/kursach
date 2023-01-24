@@ -1,6 +1,7 @@
 import {Component, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-login',
@@ -9,10 +10,10 @@ import {Router} from "@angular/router";
 })
 @Injectable()
 export class LoginComponent {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router,private appc:AppComponent) {}
   username:string = '';
   password:string = '';
-  token:string = "";
+  tokenData:String="";
   onCheckUsername() : boolean
   {
     return this.username.length >= 4;
@@ -29,14 +30,19 @@ export class LoginComponent {
   {
     this.password = event.target.value;
   }
-  logIntoAccount()
+
+
+logIntoAccount()
   {
     console.log("try to login user");
     const user:{ password: string; username: string } = {"username":this.username,"password":this.password};
     this.http.post(`http://localhost:8080/login`, user).subscribe({
       next:(data: any) => {
-          localStorage.setItem("token", data.token);
-          this.router.navigate(["/"]);
+
+        this.router.navigate(["/"]);
+        localStorage.setItem("token", data.token);
+        this.appc.CheckToken();
+
       },
       error: error => console.log(error),
     });

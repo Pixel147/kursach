@@ -13,11 +13,25 @@
           </li>
         </ul>
         <div class="d-flex justify-content-center">
-          <button type="button" class="btn px-3 me-2 btn-menu-login" routerLink="/login">
+          <button type="button" class="btn px-3 me-2 btn-menu-login" (click)="CheckUser()"
+                  [style.display] = "tokenFlag ? 'block' : 'none'">
+            <i class="fa-solid fa-user" style="scale: 1.6; padding-top: 3px"></i>
+          </button>
+        <button type="button" class="btn px-3 me-2 btn-menu-login"
+                routerLink="/login"
+                [style.display]="tokenFlag ? 'none' : 'block'">
             Log In
           </button>
-          <button type="button" class="btn btn-light me-3 btn-outline-light shadow m-0 btn-menu-register" routerLink="/register">
+          <button type="button" class="btn btn-light me-3 btn-outline-light shadow m-0 btn-menu-register"
+                  routerLink="/register"
+                  [style.display]="tokenFlag ? 'none' : 'block'">
             Register
+          </button>
+          <button type="button" class="btn btn-light me-3 btn-outline-light shadow m-0 btn-menu-register"
+                  (click)="out()"
+                  routerLink="/login"
+                  [style.display]="tokenFlag ? 'block' : 'none'">
+            logout
           </button>
         </div>
       </div>
