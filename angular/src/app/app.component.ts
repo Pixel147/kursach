@@ -16,7 +16,7 @@ export class AppComponent {
 
   title = 'angular';
   tokenFlag = false;
-  type:number = 1;
+  role: any = '';
   userFlag = 1;
 
   CheckToken()
@@ -32,20 +32,19 @@ export class AppComponent {
     }
   }
 
-  CheckUser() //todo page for diferent users
+  CheckUser()
   {
-    // this.http.post(`http://localhost:8080/user_type`, localStorage.getItem("token")).subscribe({
-    //   next:(data: any) => {
+        this.role = localStorage.getItem("role");
 
-        if(this.type == 1)
+        if(this.role == "ROLE_CLIENT")
         {
           this.router.navigate(["/client"]);
         }
-        else if(this.type == 2)
+        else if(this.role == "ROLE_EMPLOYEE")
         {
           this.router.navigate(["/employee"]);
         }
-        else if(this.type == 3)
+        else if(this.role == "ROLE_OWNER")
         {
           this.router.navigate(["/company_owner"]);
         }
@@ -64,6 +63,7 @@ export class AppComponent {
   out()
   {
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
     this.tokenFlag = false;
     this.router.navigate(["/login"])
   }

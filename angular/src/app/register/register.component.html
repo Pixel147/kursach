@@ -9,46 +9,308 @@
     </div>
     <div class="form-cover shadow-lg d d-flex flex-column">
 
-      <form class="register-form">
+      <div class="register-form">
         <h2 class="text-center pt-3 pb-3">Sign Up</h2>
-        <div class="mb-3">
-          <input (input)="onNickname($event)"
-                 type="text"
-                 placeholder="Username"
-                 class="form-control test"
-                 [style.border-color]="usernameFlag ? 'red' : 'grey'"
-                 [style.border-width]="usernameFlag ? '2px' : '1px'"
-                 id="exampleInputEmail2">
+
+
+
+
+
+        <!--   columns     -->
+
+        <div class="justify-content-center"
+             [style.display]="radioOwnerFlag ? 'flex' : 'none'">
+
+          <div class="flex-column p-3">
+
+
+            <div class="mb-3 column-input">
+              <input (input)="onNickname($event)"
+                     type="text"
+                     placeholder="Username"
+                     class="form-control test"
+                     [style.border-color]="usernameFlag ? usernameColorRed : usernameColorGrey"
+                     [style.border-width]="usernameFlag ? usernameBorder2px : usernameBorder1px"
+                     id="owner1">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onEmail($event)"
+                     type="email"
+                     placeholder="Email address"
+                     class="form-control test"
+                     [style.border-color]="emailFlag ? emailColorRed : emailColorGrey"
+                     [style.border-width]="emailFlag ? emailBorder2px : emailBorder1px"
+                     id="owner2">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onPass($event)"
+                     placeholder="Password"
+                     type="password"
+                     class="form-control border-color-grey"
+                     id="owner3">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onRepPass($event)"
+                     placeholder=" Repeat Password"
+                     type="password"
+                     class="form-control border-color-grey"
+                     id="owner4">
+            </div>
+
+
+          </div>
+
+
+
+          <div class="flex-column  p-3">
+
+
+            <div class="mb-3">
+              <input (input)="onFullName($event)"
+                     type="text"
+                     placeholder="Full Name"
+                     class="form-control test"
+                     [style.border-color]="usernameFlag ? usernameColorRed : usernameColorGrey"
+                     [style.border-width]="usernameFlag ? usernameBorder2px : usernameBorder1px"
+                     id="owner5">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onCompanyName($event)"
+                     type="text"
+                     placeholder="Company Name"
+                     class="form-control test"
+                     [style.border-color]="emailFlag ? emailColorRed : emailColorGrey"
+                     [style.border-width]="emailFlag ? emailBorder2px : emailBorder1px"
+                     id="owner6">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onLocation($event)"
+                     placeholder="Location"
+                     type="text"
+                     class="form-control border-color-grey"
+                     id="owner7">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onPhone($event)"
+                     placeholder="Phone"
+                     type="tel" minlength="8" maxlength="15"
+                     class="form-control border-color-grey"
+                     id="owner8">
+            </div>
+
+
+          </div>
+
         </div>
 
-        <div class="mb-3">
-          <input (input)="onEmail($event)"
-                 type="email"
-                 placeholder="Email address"
-                 class="form-control test"
-                 [style.border-color]="emailFlag ? 'red' : 'grey'"
-                 [style.border-width]="emailFlag ? '2px' : '1px'"
-                 id="exampleInputEmail4">
+
+
+
+
+        <div class="justify-content-center"
+             [style.display]="radioEmployeeFlag ? 'flex' : 'none'">
+
+          <div class="flex-column p-3">
+
+
+            <div class="mb-3 column-input">
+              <input (input)="onNickname($event)"
+                     type="text"
+                     placeholder="Username"
+                     class="form-control test"
+                     [style.border-color]="usernameFlag ? usernameColorRed : usernameColorGrey"
+                     [style.border-width]="usernameFlag ? usernameBorder2px : usernameBorder1px"
+                     id="employee1">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onEmail($event)"
+                     type="email"
+                     placeholder="Email address"
+                     class="form-control test"
+                     [style.border-color]="emailFlag ? emailColorRed : emailColorGrey"
+                     [style.border-width]="emailFlag ? emailBorder2px : emailBorder1px"
+                     id="employee2">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onPass($event)"
+                     placeholder="Password"
+                     type="password"
+                     class="form-control border-color-grey"
+                     id="employee3">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onRepPass($event)"
+                     placeholder=" Repeat Password"
+                     type="password"
+                     class="form-control border-color-grey"
+                     id="employee4">
+            </div>
+
+
+          </div>
+
+
+
+          <div class="flex-column  p-3">
+
+
+            <div class="mb-3">
+              <input (input)="onFullName($event)"
+                     type="text"
+                     placeholder="Full Name"
+                     class="form-control test"
+                     [style.border-color]="usernameFlag ? usernameColorRed : usernameColorGrey"
+                     [style.border-width]="usernameFlag ? usernameBorder2px : usernameBorder1px"
+                     id="employee5">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onCompanyName($event)"
+                     type="text"
+                     placeholder="Company Name"
+                     class="form-control test"
+                     [style.border-color]="emailFlag ? emailColorRed : emailColorGrey"
+                     [style.border-width]="emailFlag ? emailBorder2px : emailBorder1px"
+                     id="employee6">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onRoleInCompany($event)"
+                     placeholder="Role In Company"
+                     type="text"
+                     class="form-control border-color-grey"
+                     id="employee7">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onPhone($event)"
+                     placeholder="Phone"
+                     type="tel" minlength="8" maxlength="15"
+                     class="form-control border-color-grey"
+                     id="employee8">
+            </div>
+
+
+          </div>
+
         </div>
 
-        <div class="mb-3">
-          <input (input)="onPass($event)"
-                 placeholder="Password"
-                 type="password"
-                 class="form-control border-color-grey"
-                 id="exampleInputEmail5">
+
+
+
+
+
+        <div class="justify-content-center  client_col"
+             [style.display]="radioClientFlag ? 'flex' : 'none'" >
+
+          <div class="flex-column p-3">
+
+            <div class="mb-3 column-input">
+              <input (input)="onNickname($event)"
+                     type="text"
+                     placeholder="Username"
+                     class="form-control test"
+                     [style.border-color]="usernameFlag ? usernameColorRed : usernameColorGrey"
+                     [style.border-width]="usernameFlag ? usernameBorder2px : usernameBorder1px"
+                     id="client1">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onEmail($event)"
+                     type="email"
+                     placeholder="Email address"
+                     class="form-control test"
+                     [style.border-color]="emailFlag ? emailColorRed : emailColorGrey"
+                     [style.border-width]="emailFlag ? emailBorder2px : emailBorder1px"
+                     id="client2">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onFullName($event)"
+                     type="text"
+                     placeholder="Full Name"
+                     class="form-control test"
+                     [style.border-color]="usernameFlag ? usernameColorRed : usernameColorGrey"
+                     [style.border-width]="usernameFlag ? usernameBorder2px : usernameBorder1px"
+                     id="client5">
+            </div>
+
+
+          </div>
+
+
+
+          <div class="flex-column  p-3">
+
+
+            <div class="mb-3">
+              <input (input)="onPhone($event)"
+                     placeholder="Phone"
+                     type="tel" minlength="8" maxlength="15"
+                     class="form-control border-color-grey"
+                     id="client8">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onPass($event)"
+                     placeholder="Password"
+                     type="password"
+                     class="form-control border-color-grey"
+                     id="client3">
+            </div>
+
+            <div class="mb-3">
+              <input (input)="onRepPass($event)"
+                     placeholder=" Repeat Password"
+                     type="password"
+                     class="form-control border-color-grey"
+                     id="client4">
+            </div>
+
+
+          </div>
+
         </div>
 
-        <div class="mb-3">
-          <input (input)="onRepPass($event)"
-                 placeholder=" Repeat Password"
-                 type="password"
-                 class="form-control border-color-grey"
-                 id="exampleInputEmail6">
+
+
+
+
+        <!--     ratio buttons   -->
+        <div class="d-flex justify-content-around w-100% p-3 pt-0 choose">
+          <div class="form-check">
+            <input (click)="onTypeOwner()" class="form-check-input" type="radio" checked name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Im Company Owner
+            </label>
+          </div>
+          <div class="form-check">
+            <input (click)="onTypeEmployee()" class="form-check-input" type="radio"  name="flexRadioDefault" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault2">
+              Im Employee
+            </label>
+          </div>
+          <div class="form-check">
+            <input (click)="onTypeClient()" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+            <label class="form-check-label" for="flexRadioDefault3">
+              Im Client
+            </label>
+          </div>
         </div>
 
-      </form>
-      <button (click)="onClickReg()" type="submit" class="btn btn-primary" style="margin-top: -50px; margin-bottom: 50px">Register</button>
+
+      </div>
+
+      <button (click)="onClickReg()" type="submit" class="btn btn-primary submit" style="margin-top: -50px; margin-bottom: 50px">Register</button>
     </div>
 
 

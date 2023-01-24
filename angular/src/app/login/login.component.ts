@@ -39,10 +39,12 @@ logIntoAccount()
     this.http.post(`http://localhost:8080/login`, user).subscribe({
       next:(data: any) => {
 
+
+
         this.router.navigate(["/"]);
         localStorage.setItem("token", data.token);
+        localStorage.setItem("role", data.role);
         this.appc.CheckToken();
-
       },
       error: error => console.log(error),
     });
