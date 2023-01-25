@@ -1,6 +1,6 @@
 package com.javamaster.springsecurityjwt.config;
 
-import com.javamaster.springsecurityjwt.entity.UserEntity;
+import com.javamaster.springsecurityjwt.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,12 +15,12 @@ public class CustomUserDetails implements UserDetails {
     private String email;
     private Collection<? extends GrantedAuthority> grantedAuthorities;
 
-    public static CustomUserDetails fromUserEntityToCustomUserDetails(UserEntity userEntity) {
+    public static CustomUserDetails fromUserEntityToCustomUserDetails(User user) {
         CustomUserDetails c = new CustomUserDetails();
-        c.username = userEntity.getUsername();
-        c.password = userEntity.getPassword();
-        c.email = userEntity.getEmail();
-        c.grantedAuthorities = Collections.singletonList(new SimpleGrantedAuthority(userEntity.getRole()));
+        c.username = user.getUsername();
+        c.password = user.getPassword();
+        c.email = user.getEmail();
+        c.grantedAuthorities = Collections.singletonList(new SimpleGrantedAuthority(user.getRole()));
         return c;
     }
 

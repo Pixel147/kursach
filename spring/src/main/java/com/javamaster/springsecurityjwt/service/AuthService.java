@@ -1,12 +1,14 @@
 package com.javamaster.springsecurityjwt.service;
 
-import com.javamaster.springsecurityjwt.entity.CompanyEntity;
-import com.javamaster.springsecurityjwt.entity.UserEntity;
+import com.javamaster.springsecurityjwt.entity.Company;
+import com.javamaster.springsecurityjwt.entity.User;
 import com.javamaster.springsecurityjwt.repository.CompanyEntityRepository;
 import com.javamaster.springsecurityjwt.repository.UserEntityRepository;
 import com.javamaster.springsecurityjwt.request.RegistrationRequest;
 import com.javamaster.springsecurityjwt.response.RegistrationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +20,11 @@ public class AuthService {
     private UserEntityRepository userEntityRepository;
     @Autowired
     private CompanyEntityRepository companyEntityRepository;
-    public RegistrationResponse registerValidation(RegistrationRequest registrationRequest){
-        UserEntity validationEmail = userEntityRepository.findByEmail(registrationRequest.getEmail());
-        UserEntity validationUsername = userEntityRepository.findByUsername(registrationRequest.getUsername());
-        UserEntity validationPhone = userEntityRepository.findByPhone(registrationRequest.getPhone());
-        CompanyEntity validationCompanyName = companyEntityRepository.findByName(registrationRequest.getCompany_name());
+    private RegistrationResponse registerValidation(RegistrationRequest registrationRequest){
+        User validationEmail = userEntityRepository.findByEmail(registrationRequest.getEmail());
+        User validationUsername = userEntityRepository.findByUsername(registrationRequest.getUsername());
+        User validationPhone = userEntityRepository.findByPhone(registrationRequest.getPhone());
+        Company validationCompanyName = companyEntityRepository.findByName(registrationRequest.getCompany_name());
         if(validationEmail != null || validationUsername != null || validationPhone != null || validationCompanyName != null){
             return new RegistrationResponse(
                     validationUsername != null ? "validation.username.found" : "ok",
@@ -33,19 +35,28 @@ public class AuthService {
         }
         return null;
     }
-    public void saveNewOwner(RegistrationRequest registrationRequest){
-        CompanyEntity companyEntity = new CompanyEntity();
-        companyEntity.setName(registrationRequest.getCompany_name());
-        companyEntity.setLocation(registrationRequest.getLocation());
-        companyEntityRepository.save(companyEntity);
-        UserEntity userEntity = new UserEntity();
-        userEntity.setCompanyEntity(companyEntity);
-        userEntity.setRole("ROLE_OWNER");
-        userEntity.setUsername(registrationRequest.getUsername());
-        userEntity.setEmail(registrationRequest.getEmail());
-        userEntity.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
-        userEntity.setFullname(registrationRequest.getFullname());
-        userEntity.setPhone(registrationRequest.getPhone());
-        userEntityRepository.save(userEntity);
+    public ResponseEntity<RegistrationResponse> createCompanyAndOwner(RegistrationRequest registrationRequest){
+        RegistrationResponse validation = registerValidation(registrationRequest);
+        if(validation == null)
+        {
+            Company company = new Company();
+            company.setName(registrationRequest.getCompany_name());
+            company.setLocation(registrationRequest.getLocation());
+            companyEntityRepository.save(company);
+            User user = new User();
+            user.setCompany(company);
+            user.setRole("ROLE_OWNER");
+            user.setUsername(registrationRequest.getUsername());
+            user.setEmail(registrationRequest.getEmail());
+            user.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
+            user.setFullname(registrationRequest.getFullname());
+            user.setPhone(registrationRequest.getPhone());
+            userEntityRepository.save(user);
+            return new ResponseEntity<RegistrationResponse>(
+                    new RegistrationResponse("ok","ok","ok","ok"),
+                    HttpStatus.CREATED
+            );
+        }
+        return new ResponseEntity<RegistrationResponse>(validation,HttpStatus.BAD_REQUEST);
     }
 }

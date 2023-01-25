@@ -6,13 +6,13 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class WorkerEntity {
+public class Worker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @ManyToOne
     @JoinColumn(name = "id_company")
-    private CompanyEntity companyEntity;
+    private Company company;
     @Column
     private int id_schedule;
     @Column

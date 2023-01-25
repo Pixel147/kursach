@@ -1,6 +1,6 @@
 package com.javamaster.springsecurityjwt.config;
 
-import com.javamaster.springsecurityjwt.entity.UserEntity;
+import com.javamaster.springsecurityjwt.entity.User;
 import com.javamaster.springsecurityjwt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,7 +14,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public CustomUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity userEntity = userService.findByUsername(username);
-        return CustomUserDetails.fromUserEntityToCustomUserDetails(userEntity);
+        User user = userService.findByUsername(username);
+        return CustomUserDetails.fromUserEntityToCustomUserDetails(user);
     }
 }

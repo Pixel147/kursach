@@ -1,7 +1,7 @@
 package com.javamaster.springsecurityjwt.controller;
 
 import com.javamaster.springsecurityjwt.config.jwt.JwtProvider;
-import com.javamaster.springsecurityjwt.entity.UserEntity;
+import com.javamaster.springsecurityjwt.entity.User;
 
 import com.javamaster.springsecurityjwt.request.AuthRequest;
 import com.javamaster.springsecurityjwt.request.RegistrationRequest;
@@ -27,24 +27,18 @@ public class AuthController {
     private JwtProvider jwtProvider;
 
     @PostMapping("/register/owner")
-    public ResponseEntity registerOwner(@RequestBody @Valid RegistrationRequest registrationRequest) {
-        RegistrationResponse validation = authService.registerValidation(registrationRequest);
-        if(validation == null)
-        {
-            authService.saveNewOwner(registrationRequest);
-            return new ResponseEntity("created",HttpStatus.CREATED);
-        }
-        return new ResponseEntity(validation,HttpStatus.BAD_REQUEST);
+    public ResponseEntity<RegistrationResponse> registerOwner(@RequestBody @Valid RegistrationRequest registrationRequest) {
+        return authService.createCompanyAndOwner(registrationRequest);
     }
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody AuthRequest request) {
-        UserEntity userEntity = userService.findByLoginAndPassword(request.getUsername(), request.getPassword());
-        if(userEntity == null){
-            return new ResponseEntity("invalid data",HttpStatus.BAD_REQUEST);
+    public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
+        User user = userService.findByLoginAndPassword(request.getUsername(), request.getPassword());
+        if(user == null){
+            return new ResponseEntity<AuthResponse>(new AuthResponse("invalid data","invalid data"),HttpStatus.BAD_REQUEST);
         }
-        String token = jwtProvider.generateToken(userEntity.getUsername());
-        return new ResponseEntity(new AuthResponse(userEntity.getRole(),token),HttpStatus.OK);
+        String token = jwtProvider.generateToken(user.getUsername());
+        return new ResponseEntity<AuthResponse>(new AuthResponse(user.getRole(),token),HttpStatus.OK);
     }
 
 }

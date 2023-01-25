@@ -1,10 +1,10 @@
 package com.javamaster.springsecurityjwt.repository;
 
-import com.javamaster.springsecurityjwt.entity.UserEntity;
+import com.javamaster.springsecurityjwt.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserEntityRepository extends JpaRepository<UserEntity, Integer> {
-    UserEntity findByUsername(String username);
-    UserEntity findByEmail(String email);
-    UserEntity findByPhone(String phone);
+public interface UserEntityRepository extends JpaRepository<User, Integer> {
+    User findByUsername(String username);
+    User findByEmail(String email);
+    User findByPhone(String phone);
 }

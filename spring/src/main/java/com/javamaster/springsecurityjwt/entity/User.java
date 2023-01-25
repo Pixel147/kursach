@@ -6,14 +6,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 @Data
-public class UserEntity {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @JoinColumn(name = "id_company")
     @ManyToOne
-    private CompanyEntity companyEntity;
+    private Company company;
     @Column
     private String username;
     @Column
@@ -28,5 +28,5 @@ public class UserEntity {
     private String role;
     @OneToOne
     @JoinColumn(name = "id_worker")
-    private WorkerEntity workerEntity;
+    private Worker worker;
 }
