@@ -23,4 +23,5 @@ public class RegistrationRequest {
     private String company_name;
     @NotEmpty
     private String role;
+
 }
