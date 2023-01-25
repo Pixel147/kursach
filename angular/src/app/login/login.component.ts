@@ -13,7 +13,6 @@ export class LoginComponent {
   constructor(private http: HttpClient, private router: Router,private appc:AppComponent) {}
   username:string = '';
   password:string = '';
-  tokenData:String="";
   onCheckUsername() : boolean
   {
     return this.username.length >= 4;
@@ -38,9 +37,6 @@ logIntoAccount()
     const user:{ password: string; username: string } = {"username":this.username,"password":this.password};
     this.http.post(`http://localhost:8080/login`, user).subscribe({
       next:(data: any) => {
-
-
-
         this.router.navigate(["/"]);
         localStorage.setItem("token", data.token);
         localStorage.setItem("role", data.role);
