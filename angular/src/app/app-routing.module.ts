@@ -7,6 +7,7 @@ import {ClientProfileComponent} from "./client-profile/client-profile.component"
 import {EmployeeProfileComponent} from "./employee-profile/employee-profile.component";
 import {OwnerInfoPanelComponent} from "./owner-info-panel/owner-info-panel.component";
 
+
 const routes: Routes = [
   {path: '', component:HomeComponent},
   {path: 'login', component: LoginComponent},
