@@ -26,4 +26,7 @@ public class UserEntity {
     private String phone;
     @Column
     private String role;
+    @OneToOne
+    @JoinColumn(name = "id_worker")
+    private WorkerEntity workerEntity;
 }
