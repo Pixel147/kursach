@@ -6,6 +6,7 @@ import {RegisterComponent} from "./register/register.component";
 import {ClientProfileComponent} from "./client-profile/client-profile.component";
 import {EmployeeProfileComponent} from "./employee-profile/employee-profile.component";
 import {OwnerInfoPanelComponent} from "./owner-info-panel/owner-info-panel.component";
+import {OwnerWorkerPanelComponent} from "./owner-worker-panel/owner-worker-panel.component";
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'register', component:RegisterComponent},
   {path: 'client', component:ClientProfileComponent},
   {path: 'employee', component:EmployeeProfileComponent},
-  {path: 'ownerInfo', component:OwnerInfoPanelComponent}
+  {path: 'ownerInfo', component:OwnerInfoPanelComponent},
+  {path: 'ownerWorkers', component:OwnerWorkerPanelComponent},
 ]
 
 @NgModule({
