@@ -1,5 +1,7 @@
 import {Component, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-login',
@@ -8,9 +10,17 @@ import {HttpClient} from "@angular/common/http";
 })
 @Injectable()
 export class LoginComponent {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router,private appc:AppComponent) {}
   username:string = '';
   password:string = '';
+  onCheckUsername() : boolean
+  {
+    return this.username.length >= 4;
+  }
+  onCheckPassLen() : boolean
+  {
+    return this.password.length >= 4;
+  }
   onInputUsername(event:any)
   {
     this.username = event.target.value;
@@ -19,16 +29,30 @@ export class LoginComponent {
   {
     this.password = event.target.value;
   }
-  logIntoAccount(user:Object)
+
+
+logIntoAccount()
   {
-    console.log("sign in");
-    this.http.post(`http://localhost:8080/login`, user).subscribe(result =>{
-      console.log(result);
-    }).unsubscribe();
+    const user:{ password: string; username: string } = {"username":this.username,"password":this.password};
+    this.http.post(`http://localhost:8080/login`, user).subscribe({
+      next:(data: any) => {
+        this.router.navigate(["/"]);
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("role", data.role);
+        this.appc.CheckToken();
+      },
+      error: error => console.log(error),
+    });
   }
   login() {
-    console.log("login clicked");
-    const body = {username: this.username, password: this.password};
-    this.logIntoAccount(body);
+    if(this.onCheckUsername() && this.onCheckPassLen())
+    {
+      this.logIntoAccount();
+    }
+    else
+    {
+      console.log("login error");
+    }
+
   }
 }

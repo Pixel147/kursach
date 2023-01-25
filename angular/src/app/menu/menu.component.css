@@ -1,0 +1,13 @@
+.menu
+{
+  background-color: #56C8D6;
+  height: 861px;
+  width: 170px;
+}
+
+.block
+{
+  border: black 1px solid;
+  width: 100%;
+  height: 50px;
+}

@@ -24,15 +24,21 @@
   padding-top:9%;
 }
 
+.sign
+{
+  margin-bottom: 25px;
+}
+
+
 .login-background
 {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 30%;
+  width: 43%;
   background: #31383A;
-  height: 500px;
+  height: 580px;
   border-radius: 25px 0 0 25px;
 
 }
@@ -60,7 +66,7 @@
 
 .form-cover
 {
-  width: 30%;
+  width: 43%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,7 +77,7 @@
 .login-form
 {
   width: 70%;
-  height: 500px;
+  height: 580px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -79,7 +85,7 @@
 
 .register-text
 {
-  padding-top: 10px;
+  padding-top: 60px;
   display: flex;
   justify-content: center;
   color: black;
@@ -91,7 +97,9 @@
 .Sign-Up
 {
   padding-left: 5px;
+  margin-top: 0px;
 }
+
 
 a
 {
@@ -103,6 +111,21 @@ a
 {
   color:black;
   bottom: 10px;
+}
+
+.submit
+{
+  width: 20%;
+}
+
+.form-control
+{
+  margin-top: 20px;
+}
+
+.reg
+{
+  padding-top: 20px;
 }
 
 @media (max-width: 555px) {
@@ -169,7 +192,7 @@ a
     border-radius: 30px;
   }
   .gradient {
-    height: 1300px!important;
+    height: 1350px!important;
   }
 }
 
@@ -199,11 +222,11 @@ a
     font-size: 25px;
   }
   .gradient {
-    height: 930px;
+    height: 920px;
   }
 
   .sign-in
   {
-    padding-top:10%;
+    padding-top:8%;
   }
 }

@@ -1,5 +1,5 @@
 .gradient {
-  height: 880px;
+  height: 920px;
   width: 100%;
   background: linear-gradient(149deg, #56C8D6 0%, #2A98AD 42%, #DA865B 72%, #EFA68B 100%);
   animation: gradient 10s infinite linear;
@@ -18,11 +18,13 @@
     background-position: 80% 0;
   }
 }
-
+.border-color-grey{
+  border-color: grey;
+}
 .sign-in
 {
   width: 100%;
-  padding-top:9.5%;
+  padding-top:8%;
 }
 
 .register-background
@@ -31,9 +33,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 30%;
+  width: 43%;
   background: #31383A;
-  height: 500px;
+  height: 580px;
   border-radius: 25px 0 0 25px;
 
 }
@@ -61,7 +63,7 @@
 
 .form-cover
 {
-  width: 30%;
+  width: 43%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,8 +73,8 @@
 
 .register-form
 {
-  width: 70%;
-  height: 500px;
+  width: 75%;
+  height: 540px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -106,6 +108,11 @@ a
   bottom: 10px;
 }
 
+.client_col
+{
+  margin-top: 27px;
+  margin-bottom: 27px;
+}
 
 @media (max-width: 1200px) {
   .header-text
@@ -140,12 +147,11 @@ a
   .gradient {
     height: 1200px!important;
   }
+}
 
-  .choose
-  {
-    display: flex;
-    flex-direction: column;
-  }
+.submit
+{
+  width: 20%;
 }
 
 @media (max-width: 1000px) {
@@ -160,5 +166,11 @@ a
   }
   .gradient {
     height: 1000px;
+  }
+
+  .choose
+  {
+    display: flex;
+    flex-direction: column;
   }
 }
