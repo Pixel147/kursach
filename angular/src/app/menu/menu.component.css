@@ -11,3 +11,20 @@
   width: 100%;
   height: 50px;
 }
+
+.row
+{
+  top: -80px;
+  z-index: 0;
+}
+
+.wrapper
+{
+  background-color: #56C8D6;
+}
+
+.icons:hover
+{
+  opacity: 1!important;
+  transition: 0.2s;
+}
