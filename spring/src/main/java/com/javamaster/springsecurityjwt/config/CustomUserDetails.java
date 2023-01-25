@@ -2,9 +2,11 @@ package com.javamaster.springsecurityjwt.config;
 
 import com.javamaster.springsecurityjwt.entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 
 public class CustomUserDetails implements UserDetails {
 
@@ -18,7 +20,7 @@ public class CustomUserDetails implements UserDetails {
         c.username = userEntity.getUsername();
         c.password = userEntity.getPassword();
         c.email = userEntity.getEmail();
-        //c.grantedAuthorities = Collections.singletonList(new SimpleGrantedAuthority(userEntity.getRoleEntity().getName()));
+        c.grantedAuthorities = Collections.singletonList(new SimpleGrantedAuthority(userEntity.getRole()));
         return c;
     }
 

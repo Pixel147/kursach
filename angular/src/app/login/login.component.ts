@@ -33,7 +33,6 @@ export class LoginComponent {
 
 logIntoAccount()
   {
-    console.log("try to login user");
     const user:{ password: string; username: string } = {"username":this.username,"password":this.password};
     this.http.post(`http://localhost:8080/login`, user).subscribe({
       next:(data: any) => {
@@ -52,7 +51,7 @@ logIntoAccount()
     }
     else
     {
-      console.log("you invalid");
+      console.log("login error");
     }
 
   }

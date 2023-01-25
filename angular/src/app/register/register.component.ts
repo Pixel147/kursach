@@ -10,15 +10,12 @@ import {Router} from "@angular/router";
 export class RegisterComponent {
   constructor(private http: HttpClient, private router: Router) {}
   usernameFlag = false;
-  usernameColorRed = 'red';
-  usernameColorGrey = 'grey';
-  usernameBorder2px = '2px';
-  usernameBorder1px = '1px';
   emailFlag = false;
-  emailColorRed = 'red';
-  emailColorGrey = 'grey';
-  emailBorder2px = '2px';
-  emailBorder1px = '1px';
+  phoneFlag = false;
+  passFlag = false;
+  companyFlag = false;
+  fullnameFlag = false;
+  locationFlag = false;
   nicknameClient = '';
   nicknameEmployee = '';
   nicknameOwner = '';
@@ -46,6 +43,51 @@ export class RegisterComponent {
   radioClientFlag = false;
   expression: RegExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
+
+  checkIsEmptyLocation()
+  {
+      if(this.location == '')
+      {
+        this.locationFlag = true;
+        return false;
+      }
+      this.locationFlag = false;
+      return true;
+  }
+
+  checkIsEmptyFullName()
+  {
+    if(this.type == "ROLE_CLIENT")
+    {
+      if(this.fullNameClient == '')
+      {
+        this.fullnameFlag = true;
+        return false;
+      }
+      this.fullnameFlag = false;
+      return true;
+    }
+    else if(this.type == "ROLE_EMPLOYEE")
+    {
+      if(this.fullNameEmployee == '')
+      {
+        this.fullnameFlag = true;
+        return false;
+      }
+      this.fullnameFlag = false;
+      return true;
+    }
+    else
+    {
+      if(this.fullNameOwner == '')
+      {
+        this.fullnameFlag = true;
+        return false;
+      }
+      this.fullnameFlag = false;
+      return true;
+    }
+  }
   onNickname(event:any){
     if(this.type == "ROLE_CLIENT")
     {
@@ -103,15 +145,33 @@ export class RegisterComponent {
   {
     if(this.type == "ROLE_CLIENT")
     {
-      return this.expression.test(this.emailClient);
+      if(this.expression.test(this.emailClient))
+      {
+        this.emailFlag = false;
+        return true;
+      }
+      this.emailFlag = true;
+      return false;
     }
     else if(this.type == "ROLE_EMPLOYEE")
     {
-      return this.expression.test(this.emailEmployee);
+      if(this.expression.test(this.emailEmployee))
+      {
+        this.emailFlag = false;
+        return true;
+      }
+      this.emailFlag = true;
+      return false;
     }
     else
     {
-      return this.expression.test(this.emailOwner);
+      if(this.expression.test(this.emailOwner))
+      {
+        this.emailFlag = false;
+        return true;
+      }
+      this.emailFlag = true;
+      return false;
     }
 
   }
@@ -119,15 +179,33 @@ export class RegisterComponent {
   {
     if(this.type == "ROLE_CLIENT")
     {
-      return this.passClient.length >= 4;
+      if(this.passClient.length >= 4)
+      {
+        this.passFlag = false;
+        return true;
+      }
+      this.passFlag = true;
+      return false;
     }
     else if(this.type == "ROLE_EMPLOYEE")
     {
-      return this.passEmployee.length >= 4;
+      if(this.passEmployee.length >= 4)
+      {
+        this.passFlag = false;
+        return true;
+      }
+      this.passFlag = true;
+      return false;
     }
     else
     {
-      return this.passOwner.length >= 4;
+      if(this.passOwner.length >= 4)
+      {
+        this.passFlag = false;
+        return true;
+      }
+      this.passFlag = true;
+      return false;
     }
   }
 
@@ -210,26 +288,45 @@ export class RegisterComponent {
 
     if(this.type == "ROLE_CLIENT")
     {
-      return this.passClient == this.repPassClient;
+      if(this.passClient == this.repPassClient)
+      {
+        this.passFlag = false;
+        return true;
+      }
+      this.passFlag = true;
+      return false;
     }
     else if(this.type == "ROLE_EMPLOYEE")
     {
-      return this.passEmployee == this.repPassEmployee;
+      if(this.passEmployee == this.repPassEmployee)
+      {
+        this.passFlag = false;
+        return true;
+      }
+      this.passFlag = true;
+      return false;
     }
     else
     {
-      return this.passOwner == this.repPassOwner;
+      if(this.passOwner == this.repPassOwner)
+      {
+        this.passFlag = false;
+        return true;
+      }
+      this.passFlag = true;
+      return false;
     }
   }
   onClickReg()
   {
-    if(this.checkPass() && this.onCheckPassLen() && this.onCheckNickname() && this.checkEmail() && this.type != '')
+    if(this.checkPass() && this.onCheckPassLen() && this.onCheckNickname() && this.checkEmail() && this.checkIsEmptyLocation() &&
+      this.checkIsEmptyFullName())
     {
       this.createUser();
     }
     else
     {
-      console.log("you invalid");
+      console.log("Register Error");
     }
   }
 
@@ -300,6 +397,21 @@ export class RegisterComponent {
           this.router.navigate(["/login"]);
         },
         error:(error : any) => {
+          if(error.error.usernameMessage == "validation.username.found"){
+            this.usernameFlag = true;
+          }
+          if(error.error.phoneMessage == "validation.phone.found"){
+            this.phoneFlag = true;
+          }
+          if(error.error.companyNameMessage == "validation.company.found")
+          {
+            this.companyFlag = true;
+          }
+          if(error.error.emailMessage == "validation.email.found")
+          {
+            this.emailFlag = true;
+          }
+
           console.log(error);
         }
       });
