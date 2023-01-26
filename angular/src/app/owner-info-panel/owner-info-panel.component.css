@@ -17,9 +17,7 @@ body
 
 .menu
 {
-  height: 951px;
-  position: fixed;
-  position: relative;
+  position: relative!important;
   z-index: 0!important;
 }
 
@@ -47,7 +45,27 @@ body
   }
 }
 
-/*important to add z-index to all pages*/
+/*////////////////////////////////*/
+
+.block
+{
+  height: 900px;
+  background-color: #2A98AD;
+  border: solid 1px #2A98AD;
+  border-radius: 30px;
+  ;
+}
+
+
+
+
+
+
+
+
+
+/*////////////////////////////////*/
+
 .footer
 {
   z-index: 1;
