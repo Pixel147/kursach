@@ -13,6 +13,7 @@ import {ClientProfileComponent} from "./client-profile/client-profile.component"
 import {EmployeeProfileComponent} from "./employee-profile/employee-profile.component";
 import {HttpClientModule} from "@angular/common/http";
 import { OwnerInfoPanelComponent } from './owner-info-panel/owner-info-panel.component';
+import {OwnerWorkerPanelComponent} from "./owner-worker-panel/owner-worker-panel.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { OwnerInfoPanelComponent } from './owner-info-panel/owner-info-panel.com
     FooterComponent,
     ClientProfileComponent,
     EmployeeProfileComponent,
-    OwnerInfoPanelComponent
+    OwnerInfoPanelComponent,
+    OwnerWorkerPanelComponent
   ],
   imports: [
     BrowserModule,
