@@ -1,7 +1,52 @@
+.list
+{
+  list-style-type: none;
+}
+
+.icon:hover
+{
+  opacity: 1!important;
+  transition: 0.2s!important;
+}
+
+body
+{
+  height: 100%;
+
+}
+
 .menu
 {
-  z-index: 0;
+  height: 951px;
+  position: fixed;
+  position: relative;
+  z-index: 0!important;
 }
+
+@media (max-width: 1000px) {
+  .cover
+  {
+    display: flex;
+    flex-direction: column;
+  }
+  .menu
+  {
+    width: 100%!important;
+    height: 60px;
+  }
+
+  .menu-covered
+  {
+    flex-direction: row!important;
+    padding-top: 20px!important;
+  }
+
+  .icon
+  {
+    scale: 1.8!important;
+  }
+}
+
 /*important to add z-index to all pages*/
 .footer
 {

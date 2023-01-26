@@ -53,11 +53,6 @@ export class AppComponent {
           this.router.navigate(["/admin"]);
         }
     }
-    // ,
-    //   error: error => console.log(error),
-    //
-    // });
-    // }
 
 
   out()

@@ -12,7 +12,6 @@ import { FooterComponent } from './footer/footer.component';
 import {ClientProfileComponent} from "./client-profile/client-profile.component";
 import {EmployeeProfileComponent} from "./employee-profile/employee-profile.component";
 import {HttpClientModule} from "@angular/common/http";
-import { MenuComponent } from './menu/menu.component';
 import { OwnerInfoPanelComponent } from './owner-info-panel/owner-info-panel.component';
 
 @NgModule({
@@ -24,8 +23,7 @@ import { OwnerInfoPanelComponent } from './owner-info-panel/owner-info-panel.com
     FooterComponent,
     ClientProfileComponent,
     EmployeeProfileComponent,
-    MenuComponent,
-    OwnerInfoPanelComponent,
+    OwnerInfoPanelComponent
   ],
   imports: [
     BrowserModule,
