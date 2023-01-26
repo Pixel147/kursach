@@ -49,8 +49,11 @@ body
 
 .block
 {
-    height: 900px;
-    background-color: #2A98AD;
+  height: 900px;
+  background-color: #2A98AD;
+  border: solid 1px #2A98AD;
+  border-radius: 30px;
+  ;
 }
 
 
