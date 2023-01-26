@@ -22,8 +22,6 @@
              [style.display]="radioOwnerFlag ? 'flex' : 'none'">
 
           <div class="flex-column p-3">
-
-
             <div class="mb-3 column-input">
               <input (input)="onNickname($event)"
                      type="text"
@@ -33,7 +31,6 @@
                      [style.border-width]="usernameFlag ? '2px' : '1px'"
                      id="owner1">
             </div>
-
             <div class="mb-3">
               <input (input)="onEmail($event)"
                      type="email"
@@ -44,7 +41,6 @@
 
                      id="owner2">
             </div>
-
             <div class="mb-3">
               <input (input)="onPass($event)"
                      placeholder="Password"
@@ -54,7 +50,6 @@
                      [style.border-width]="passFlag ? '2px' : '1px'"
                      id="owner3">
             </div>
-
             <div class="mb-3">
               <input (input)="onRepPass($event)"
                      placeholder=" Repeat Password"
@@ -64,15 +59,11 @@
                      [style.border-width]="passFlag ? '2px' : '1px'"
                      id="owner4">
             </div>
-
-
           </div>
 
 
 
           <div class="flex-column  p-3">
-
-
             <div class="mb-3">
               <input (input)="onFullName($event)"
                      type="text"
@@ -82,7 +73,6 @@
                      [style.border-width]="fullnameFlag ? '2px' : '1px'"
                      id="owner5">
             </div>
-
             <div class="mb-3">
               <input (input)="onCompanyName($event)"
                      type="text"
@@ -92,7 +82,6 @@
                      [style.border-width]="companyFlag ? '2px' : '1px'"
                      id="owner6">
             </div>
-
             <div class="mb-3">
               <input (input)="onLocation($event)"
                      placeholder="Location"
@@ -102,7 +91,6 @@
                      [style.border-width]="locationFlag ? '2px' : '1px'"
                      id="owner7">
             </div>
-
             <div class="mb-3">
               <input (input)="onPhone($event)"
                      placeholder="Phone"
@@ -112,98 +100,8 @@
                      [style.border-width]="phoneFlag ? '2px' : '1px'"
                      id="owner8">
             </div>
-
-
           </div>
-
         </div>
-
-
-
-
-
-        <div class="justify-content-center client_col"
-             [style.display]="radioEmployeeFlag ? 'flex' : 'none'">
-
-          <div class="flex-column p-3">
-
-            <div class="mb-3 column-input">
-              <input (input)="onNickname($event)"
-                     type="text"
-                     placeholder="Username"
-                     class="form-control test form"
-                     [style.border-color]="usernameFlag ? 'red' : 'gray'"
-                     [style.border-width]="usernameFlag ? '2px' : '1px'"
-                     id="employee1">
-            </div>
-
-            <div class="mb-3">
-              <input (input)="onEmail($event)"
-                     type="email"
-                     placeholder="Email address"
-                     class="form-control test"
-                     [style.border-color]="emailFlag ? 'red' : 'gray'"
-                     [style.border-width]="emailFlag ? '2px' : '1px'"
-                     id="employee2">
-            </div>
-
-            <div class="mb-3">
-              <input (input)="onFullName($event)"
-                     type="text"
-                     placeholder="Full Name"
-                     class="form-control test"
-                     [style.border-color]="fullnameFlag ? 'red' : 'gray'"
-                     [style.border-width]="fullnameFlag ? '2px' : '1px'"
-                     id="employee3">
-            </div>
-
-
-          </div>
-
-
-
-          <div class="flex-column  p-3">
-
-
-            <div class="mb-3">
-              <input (input)="onPhone($event)"
-                     placeholder="Phone"
-                     type="tel" minlength="8" maxlength="15"
-                     class="form-control border-color-grey"
-                     [style.border-color]="phoneFlag ? 'red' : 'gray'"
-                     [style.border-width]="phoneFlag ? '2px' : '1px'"
-                     id="employee4">
-            </div>
-
-            <div class="mb-3">
-              <input (input)="onPass($event)"
-                     placeholder="Password"
-                     type="password"
-                     class="form-control border-color-grey"
-                     [style.border-color]="passFlag ? 'red' : 'gray'"
-                     [style.border-width]="passFlag ? '2px' : '1px'"
-                     id="employee5">
-            </div>
-
-            <div class="mb-3">
-              <input (input)="onRepPass($event)"
-                     placeholder=" Repeat Password"
-                     type="password"
-                     class="form-control border-color-grey"
-                     [style.border-color]="passFlag ? 'red' : 'gray'"
-                     [style.border-width]="passFlag ? '2px' : '1px'"
-                     id="employee6">
-            </div>
-
-
-          </div>
-
-        </div>
-
-
-
-
-
 
         <div class="justify-content-center  client_col"
              [style.display]="radioClientFlag ? 'flex' : 'none'" >
@@ -294,13 +192,6 @@
                    checked name="flexRadioDefault" id="flexRadioDefault1">
             <label class="form-check-label" for="flexRadioDefault1">
               Im Company Owner
-            </label>
-          </div>
-          <div class="form-check">
-            <input (click)="onTypeEmployee()" class="form-check-input" type="radio"
-                   name="flexRadioDefault" id="flexRadioDefault2">
-            <label class="form-check-label" for="flexRadioDefault2">
-              Im Employee
             </label>
           </div>
           <div class="form-check">

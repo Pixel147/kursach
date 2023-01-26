@@ -17,25 +17,20 @@ export class RegisterComponent {
   fullnameFlag = false;
   locationFlag = false;
   nicknameClient = '';
-  nicknameEmployee = '';
   nicknameOwner = '';
 
   emailClient = '';
-  emailEmployee = '';
   emailOwner = '';
   passClient = '';
   passEmployee = '';
   passOwner = '';
   repPassClient = '';
-  repPassEmployee = '';
   repPassOwner = '';
   fullNameClient = '';
-  fullNameEmployee = '';
   fullNameOwner = '';
   companyName = '';
   location = '';
   phoneClient = 0;
-  phoneEmployee = 0;
   phoneOwner = 0;
   type = 'ROLE_OWNER';
   radioOwnerFlag = true;
@@ -67,16 +62,6 @@ export class RegisterComponent {
       this.fullnameFlag = false;
       return true;
     }
-    else if(this.type == "ROLE_EMPLOYEE")
-    {
-      if(this.fullNameEmployee == '')
-      {
-        this.fullnameFlag = true;
-        return false;
-      }
-      this.fullnameFlag = false;
-      return true;
-    }
     else
     {
       if(this.fullNameOwner == '')
@@ -94,11 +79,6 @@ export class RegisterComponent {
       this.nicknameClient = event.target.value;
       this.usernameFlag = false;
     }
-    else if(this.type == "ROLE_EMPLOYEE")
-    {
-      this.nicknameEmployee = event.target.value;
-      this.usernameFlag = false;
-    }
     else
     {
       this.nicknameOwner = event.target.value;
@@ -113,10 +93,6 @@ export class RegisterComponent {
     {
        return this.nicknameClient.length >= 4;
     }
-    else if(this.type == "ROLE_EMPLOYEE")
-    {
-      return this.nicknameEmployee.length >= 4;
-    }
     else
     {
       return this.nicknameOwner.length >= 4;
@@ -130,11 +106,6 @@ export class RegisterComponent {
       this.emailClient = event.target.value;
       this.emailFlag = false;
     }
-    else if(this.type == "ROLE_EMPLOYEE")
-    {
-      this.emailEmployee = event.target.value;
-      this.emailFlag = false;
-    }
     else
     {
       this.emailOwner = event.target.value;
@@ -146,16 +117,6 @@ export class RegisterComponent {
     if(this.type == "ROLE_CLIENT")
     {
       if(this.expression.test(this.emailClient))
-      {
-        this.emailFlag = false;
-        return true;
-      }
-      this.emailFlag = true;
-      return false;
-    }
-    else if(this.type == "ROLE_EMPLOYEE")
-    {
-      if(this.expression.test(this.emailEmployee))
       {
         this.emailFlag = false;
         return true;
@@ -187,16 +148,6 @@ export class RegisterComponent {
       this.passFlag = true;
       return false;
     }
-    else if(this.type == "ROLE_EMPLOYEE")
-    {
-      if(this.passEmployee.length >= 4)
-      {
-        this.passFlag = false;
-        return true;
-      }
-      this.passFlag = true;
-      return false;
-    }
     else
     {
       if(this.passOwner.length >= 4)
@@ -215,10 +166,6 @@ export class RegisterComponent {
     {
       this.passClient = event.target.value;
     }
-    else if(this.type == "ROLE_EMPLOYEE")
-    {
-      this.passEmployee = event.target.value;
-    }
     else
     {
       this.passOwner = event.target.value;
@@ -231,10 +178,6 @@ export class RegisterComponent {
     {
       this.repPassClient = event.target.value;
     }
-    else if(this.type == "ROLE_EMPLOYEE")
-    {
-      this.repPassEmployee = event.target.value;
-    }
     else
     {
       this.repPassOwner = event.target.value;
@@ -246,10 +189,6 @@ export class RegisterComponent {
     if(this.type == "ROLE_CLIENT")
     {
       this.fullNameClient = event.target.value;
-    }
-    else if(this.type == "ROLE_EMPLOYEE")
-    {
-      this.fullNameEmployee = event.target.value;
     }
     else
     {
@@ -273,10 +212,6 @@ export class RegisterComponent {
     {
       this.phoneClient = event.target.value;
     }
-    else if(this.type == "ROLE_EMPLOYEE")
-    {
-      this.phoneEmployee = event.target.value;
-    }
     else
     {
       this.phoneOwner = event.target.value;
@@ -296,16 +231,6 @@ export class RegisterComponent {
       this.passFlag = true;
       return false;
     }
-    else if(this.type == "ROLE_EMPLOYEE")
-    {
-      if(this.passEmployee == this.repPassEmployee)
-      {
-        this.passFlag = false;
-        return true;
-      }
-      this.passFlag = true;
-      return false;
-    }
     else
     {
       if(this.passOwner == this.repPassOwner)
@@ -317,32 +242,11 @@ export class RegisterComponent {
       return false;
     }
   }
-  onClickReg()
-  {
-    if(this.checkPass() && this.onCheckPassLen() && this.onCheckNickname() && this.checkEmail() && this.checkIsEmptyLocation() &&
-      this.checkIsEmptyFullName())
-    {
-      this.createUser();
-    }
-    else
-    {
-      console.log("Register Error");
-    }
-  }
-
   onTypeOwner()
   {
     this.type = "ROLE_OWNER";
     this.radioOwnerFlag = true;
     this.radioEmployeeFlag = false;
-    this.radioClientFlag = false;
-
-  }
-  onTypeEmployee()
-  {
-    this.type = "ROLE_EMPLOYEE";
-    this.radioOwnerFlag = false;
-    this.radioEmployeeFlag = true;
     this.radioClientFlag = false;
   }
 
@@ -353,6 +257,42 @@ export class RegisterComponent {
     this.radioEmployeeFlag = false;
     this.radioClientFlag = true;
   }
+
+  onClickReg()
+  {
+    if(this.type == "ROLE_OWNER"){
+      if(
+        this.checkPass() &&
+        this.onCheckPassLen() &&
+        this.onCheckNickname() &&
+        this.checkEmail() &&
+        this.checkIsEmptyLocation() &&
+        this.checkIsEmptyFullName())
+      {
+        this.createUser();
+      }
+      else
+      {
+        console.log("Register Error");
+      }
+    }
+    else{
+      if(
+        this.checkPass() &&
+        this.onCheckPassLen() &&
+        this.onCheckNickname() &&
+        this.checkEmail() &&
+        this.checkIsEmptyFullName())
+      {
+        this.createUser();
+      }
+      else
+      {
+        console.log("Register Error");
+      }
+    }
+  }
+
 
   createUser()
   {
@@ -372,21 +312,6 @@ export class RegisterComponent {
         }
       });
     }
-
-    else if(this.type == "ROLE_EMPLOYEE")
-    {
-      const user = {"username":this.nicknameEmployee,"email":this.emailEmployee,"password":this.passEmployee, "role":this.type,
-        "fullname": this.fullNameEmployee, "phone":this.phoneEmployee};
-      return this.http.post('http://localhost:8080/register/employee', user, {headers:headers}).subscribe({
-        next:(data: any) => {
-          this.router.navigate(["/login"]);
-        },
-        error:(error : any) => {
-          console.log(error);
-        }
-      });
-    }
-
     else if(this.type == "ROLE_OWNER")
     {
 
@@ -411,8 +336,6 @@ export class RegisterComponent {
           {
             this.emailFlag = true;
           }
-
-          console.log(error);
         }
       });
     }
