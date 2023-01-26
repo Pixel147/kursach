@@ -1,4 +1,9 @@
 .menu
 {
-  height: 100%;
+  z-index: 0;
+}
+/*important to add z-index to all pages*/
+.footer
+{
+  z-index: 1;
 }
