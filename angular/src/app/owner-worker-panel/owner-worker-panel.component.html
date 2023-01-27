@@ -98,14 +98,14 @@
         <!--WORKERS-->
         <!--WORKERS-->
         <!--WORKERS-->
-        <div class="col-xxl-4 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div *ngFor="let worker of workers" class="col-xxl-4 col-xl-12 col-lg-12 col-md-12 col-sm-12">
           <div class="card mb-3" style="border-radius: .5rem;">
             <div class="row g-0">
               <div class="col-md-4 gradient-custom text-center text-white"
                    style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
                      alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                <h5>Marie Horwitz</h5>
+                <h5>{{worker.username}}</h5>
                 <p>Service name</p>
               </div>
               <div class="col-xxl-8 col-xl-6 col-md-8 col-sm-12">
@@ -115,51 +115,15 @@
                   <div class="row pt-1">
                     <div class="col-6 col-sm-6">
                       <h6>Email</h6>
-                      <p class="text-muted">null</p>
+                      <p class="text-muted">{{worker.email}}</p>
                     </div>
                     <div class="col-6 col-sm-6">
                       <h6>Phone</h6>
-                      <p class="text-muted">null</p>
+                      <p class="text-muted">{{worker.phone}}</p>
                     </div>
                     <div class="col-6 col-sm-6">
                       <h6>Fullname</h6>
-                      <p class="text-muted">null</p>
-                    </div>
-                    <div class="col-6 col-sm-6 pt-3">
-                      <button class="btn btn-outline-dark">Schedule</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xxl-4 col-xl-12 col-lg-12 col-md-12 col-sm-12">
-          <div class="card mb-3" style="border-radius: .5rem;">
-            <div class="row g-0">
-              <div class="col-md-4 gradient-custom text-center text-white"
-                   style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                     alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                <h5>Marie Horwitz</h5>
-                <p>Service name</p>
-              </div>
-              <div class="col-xxl-8 col-xl-6 col-md-8 col-sm-12">
-                <div class="card-body p-4">
-                  <h6 class="mt-3">Information</h6>
-                  <hr class="mt-0 mb-4">
-                  <div class="row pt-1">
-                    <div class="col-6 col-sm-6">
-                      <h6>Email</h6>
-                      <p class="text-muted">null</p>
-                    </div>
-                    <div class="col-6 col-sm-6">
-                      <h6>Phone</h6>
-                      <p class="text-muted">null</p>
-                    </div>
-                    <div class="col-6 col-sm-6">
-                      <h6>Fullname</h6>
-                      <p class="text-muted">null</p>
+                      <p class="text-muted">{{worker.fullname}}</p>
                     </div>
                     <div class="col-6 col-sm-6 pt-3">
                       <button class="btn btn-outline-dark">Schedule</button>

@@ -87,6 +87,7 @@ public class AuthService {
             workerRepository.save(worker);
             User user = new User();
             user.setWorker(worker);
+            user.setCompany(owner.getCompany());
             user.setUsername(workerRegistrationRequest.getUsername());
             user.setEmail(workerRegistrationRequest.getEmail());
             user.setPassword(passwordEncoder.encode(workerRegistrationRequest.getPassword()));

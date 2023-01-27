@@ -1,5 +1,6 @@
 package ua.com.online.appointment.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ public class Worker {
     private int id;
     @ManyToOne
     @JoinColumn(name = "id_company")
+    @JsonBackReference
     private Company company;
     @Column
     private int id_schedule;
