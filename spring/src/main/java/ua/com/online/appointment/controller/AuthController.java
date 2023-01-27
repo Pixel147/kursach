@@ -1,5 +1,6 @@
 package ua.com.online.appointment.controller;
 
+import ua.com.online.appointment.config.jwt.JwtFilter;
 import ua.com.online.appointment.config.jwt.JwtProvider;
 import ua.com.online.appointment.entity.User;
 
@@ -15,6 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @RestController
@@ -26,15 +29,17 @@ public class AuthController {
     private AuthService authService;
     @Autowired
     private JwtProvider jwtProvider;
-
+    @Autowired
+    private JwtFilter jwtFilter;
     @PostMapping("/register/owner")
     public ResponseEntity<RegistrationResponse> registerOwner(@RequestBody @Valid OwnerRegistrationRequest ownerRegistrationRequest) {
         return authService.createCompanyAndOwner(ownerRegistrationRequest);
     }
 
     @PostMapping("/register/worker")
-    public ResponseEntity<RegistrationResponse> registerWorker(@RequestBody @Valid WorkerRegistrationRequest workerRegistrationRequest) {
-        return authService.createWorker(workerRegistrationRequest);
+    public ResponseEntity<RegistrationResponse> registerWorker(@RequestBody @Valid WorkerRegistrationRequest workerRegistrationRequest, ServletRequest servletRequest) {
+        String token = jwtFilter.getTokenFromRequest((HttpServletRequest) servletRequest);
+        return authService.createWorker(workerRegistrationRequest,token);
     }
 
     @PostMapping("/login")

@@ -23,5 +23,4 @@ public class OwnerRegistrationRequest {
     private String company_name;
     @NotEmpty
     private String role;
-
 }

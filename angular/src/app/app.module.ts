@@ -14,6 +14,7 @@ import {EmployeeProfileComponent} from "./employee-profile/employee-profile.comp
 import {HttpClientModule} from "@angular/common/http";
 import { OwnerInfoPanelComponent } from './owner-info-panel/owner-info-panel.component';
 import {OwnerWorkerPanelComponent} from "./owner-worker-panel/owner-worker-panel.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -27,13 +28,14 @@ import {OwnerWorkerPanelComponent} from "./owner-worker-panel/owner-worker-panel
     OwnerInfoPanelComponent,
     OwnerWorkerPanelComponent
   ],
-  imports: [
-    BrowserModule,
-    NgbModule,
-    RouterOutlet,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        NgbModule,
+        RouterOutlet,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
