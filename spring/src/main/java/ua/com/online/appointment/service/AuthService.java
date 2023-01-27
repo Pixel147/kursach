@@ -1,9 +1,6 @@
 package ua.com.online.appointment.service;
 
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-import ua.com.online.appointment.config.jwt.JwtFilter;
-import ua.com.online.appointment.config.jwt.JwtProvider;
+
 import ua.com.online.appointment.entity.Company;
 import ua.com.online.appointment.entity.User;
 import ua.com.online.appointment.entity.Worker;
@@ -29,8 +26,6 @@ public class AuthService {
     private WorkerRepository workerRepository;
     @Autowired
     private CompanyRepository companyRepository;
-    @Autowired
-    private JwtProvider jwtProvider;
     private RegistrationResponse registerOwnerValidation(OwnerRegistrationRequest ownerRegistrationRequest){
         User validationEmail = userRepository.findByEmail(ownerRegistrationRequest.getEmail());
         User validationUsername = userRepository.findByUsername(ownerRegistrationRequest.getUsername());
@@ -84,12 +79,7 @@ public class AuthService {
         }
         return new ResponseEntity<>(validation,HttpStatus.BAD_REQUEST);
     }
-    public ResponseEntity<RegistrationResponse> createWorker(WorkerRegistrationRequest workerRegistrationRequest, String token){
-        if(token == null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        String username = jwtProvider.getLoginFromToken(token);
-        User owner = userRepository.findByUsername(username);
+    public ResponseEntity<RegistrationResponse> createWorker(WorkerRegistrationRequest workerRegistrationRequest, User owner){
         RegistrationResponse validation = registerWorkerValidation(workerRegistrationRequest);
         if(validation == null){
             Worker worker = new Worker();

@@ -10,6 +10,7 @@ import ua.com.online.appointment.request.WorkerRegistrationRequest;
 import ua.com.online.appointment.response.AuthResponse;
 import ua.com.online.appointment.response.RegistrationResponse;
 import ua.com.online.appointment.service.AuthService;
+import ua.com.online.appointment.service.JwtService;
 import ua.com.online.appointment.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class AuthController {
     @Autowired
     private JwtProvider jwtProvider;
     @Autowired
-    private JwtFilter jwtFilter;
+    private JwtService jwtService;
     @PostMapping("/register/owner")
     public ResponseEntity<RegistrationResponse> registerOwner(@RequestBody @Valid OwnerRegistrationRequest ownerRegistrationRequest) {
         return authService.createCompanyAndOwner(ownerRegistrationRequest);
@@ -38,8 +39,11 @@ public class AuthController {
 
     @PostMapping("/register/worker")
     public ResponseEntity<RegistrationResponse> registerWorker(@RequestBody @Valid WorkerRegistrationRequest workerRegistrationRequest, ServletRequest servletRequest) {
-        String token = jwtFilter.getTokenFromRequest((HttpServletRequest) servletRequest);
-        return authService.createWorker(workerRegistrationRequest,token);
+        User owner = jwtService.getUserByToken(servletRequest);
+        if(owner != null){
+            return authService.createWorker(workerRegistrationRequest,owner);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/login")
