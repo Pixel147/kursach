@@ -2,6 +2,7 @@ import {Component, Injectable} from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,6 +18,7 @@ export class AppComponent {
 
 
   title = 'angular';
+  token: any;
   tokenFlag = false;
   role: any = '';
   userFlag = 1;
@@ -48,7 +50,7 @@ export class AppComponent {
         }
         else if(this.role == "ROLE_OWNER")
         {
-          this.router.navigate(["/company_owner"]);
+          this.router.navigate(["/ownerInfo"]);
         }
         else
         {

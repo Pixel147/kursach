@@ -56,4 +56,5 @@ public class AuthController {
         return new ResponseEntity<AuthResponse>(new AuthResponse(user.getRole(), token), HttpStatus.OK);
     }
 
+
 }
