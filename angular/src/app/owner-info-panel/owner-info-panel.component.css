@@ -21,6 +21,13 @@ body
   z-index: 0!important;
 }
 
+@media (max-width: 2000px) {
+  .block-cover
+  {
+    width: 100% !important;
+  }
+}
+
 @media (max-width: 1500px) {
   .infoText
   {
@@ -89,12 +96,22 @@ body
     align-items: center;
     padding-right: 0!important;
     padding-left: 0!important;
-    margin-left: 5%;
+
   }
 
   .block
   {
     width: 85%;
+  }
+  .blocks
+  {
+
+    padding-right: 30px;
+  }
+
+  .block2
+  {
+    padding-left: 30px;
   }
 }
 

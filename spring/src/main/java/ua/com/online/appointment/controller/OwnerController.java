@@ -28,11 +28,21 @@ public class OwnerController {
     @GetMapping("/ownerInfo")
     public ResponseEntity<OwnerInfoResponse> getOwnerInfo(ServletRequest servletRequest)
     {
+
+
+
         User user = jwtService.getUserByToken(servletRequest);
         OwnerInfoResponse ownerInfoResponse = new OwnerInfoResponse();
         ownerInfoResponse.setFullname(user.getFullname());
         ownerInfoResponse.setPhone(user.getPhone());
         ownerInfoResponse.setCompanyName(user.getCompany().getName());
+        ownerInfoResponse.setLocation(user.getCompany().getLocation());
+        ownerInfoResponse.setDescription(user.getCompany().getDescription());
+        System.out.println(ownerInfoResponse.getPhone());
+        System.out.println(ownerInfoResponse.getCompanyName());
+        System.out.println(ownerInfoResponse.getLocation());
+        System.out.println(ownerInfoResponse.getDescription());
+        System.out.println(ownerInfoResponse.getFullname());
         return new ResponseEntity<OwnerInfoResponse>(ownerInfoResponse, HttpStatus.OK);
     }
 }
