@@ -6,8 +6,7 @@ export class ownerInfo{
   description:string;
 
 
-
-  constructor(phone: string, fullname: string, nameOfCompany:string, location:string, description:string) {
+  constructor(phone: string, fullname: string, nameOfCompany: string, location: string, description: string, username: any) {
     this.phone = phone;
     this.fullname = fullname;
     this.nameOfCompany = nameOfCompany;

@@ -16,6 +16,7 @@ export class OwnerInfoPanelComponent {
   ownerInfo:ownerInfo| any;
   token: any;
   fullname: any;
+  username: any;
   companyName:any;
   phoneOwner:any;
   location:any;
@@ -27,7 +28,7 @@ export class OwnerInfoPanelComponent {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${this.token}`
       })
-      this.ownerInfo = new ownerInfo(this.phoneOwner, this.fullname, this.companyName, this.location, this.description)
+      this.ownerInfo = new ownerInfo(this.phoneOwner, this.fullname, this.companyName, this.location, this.description, this.username)
       this.http.get('http://localhost:8080/ownerInfo',{headers: headers}).subscribe(
         {
           next:(data:any) => {
@@ -36,6 +37,7 @@ export class OwnerInfoPanelComponent {
             this.phoneOwner = data.phone;
             this.location = data.location;
             this.description = data.description;
+            this.username = data.username;
           },
           error:(err:any) =>{
             console.log(err);

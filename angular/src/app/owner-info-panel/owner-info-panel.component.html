@@ -25,27 +25,56 @@
     </ul>
   </div>
 
-  <div class="d-flex justify-content-around justify-content-center pb-5 block-cover">
-      <div class="block col-5 shadow-lg  mt-5">
-        <div class="d-flex justify-content-around pt-5 block_info">
-          <div class="blocks pb-5 justify-items-center">
-            <i class="fa-brands fa-accessible-icon pt-1" style="scale: 6;"></i>
-          </div>
-          <div class="text-center block2 pb-4" style="font-size: 40px">
-            {{companyName}}
-          </div>
-        </div>
+  <div class="d-flex justify-content-around pb-5 block-cover align-items-center">
 
-        <div class="mainBlock d-flex flex-column justify-content-around pt-5 pe-5 ps-5 bg-white">
-          <div class="infoText">Company Owner: {{fullname}}</div>
-          <div class="pt-5 infoText">Phone: {{phoneOwner}}</div>
-          <div class="pt-5 infoText">{{description}}
+    <div class="d-flex flex-column blocks-cover ">
+      <div class="first-block col-xxl-4 col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+        <div class="card mb-3" style="border-radius: .5rem;">
+          <div class="row g-0">
+            <div class="col-md-4 gradient text-center text-white block-info"
+                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                   alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+              <h5>{{username}}</h5>
+              <p>{{companyName}}</p>
+            </div>
+            <div class="col-xxl-8 col-xl-6 col-md-8 col-sm-12 info-block">
+              <div class="card-body p-4">
+                <h6 class="mt-3">Information</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 col-sm-6">
+                    <h6>Fullname</h6>
+                    <p class="text-muted">{{fullname}}</p>
+                  </div>
+                  <div class="col-6 col-sm-6">
+                    <h6>Phone</h6>
+                    <p class="text-muted">{{phoneOwner}}</p>
+                  </div>
+                  <div class="col-6 col-sm-6">
+                    <h6>Location</h6>
+                    <p class="text-muted">{{location}}</p>
+                  </div>
+                  <div class="col-6 col-sm-6 pt-3">
+                    <button class="btn btn-outline-dark">Workers</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="pt-5 text-end infoText">Company Location: {{location}}</div>
-          <div class="pt-5 text-end infoText ">Total Workers: WORKERCOUNT</div>
-          <div class="pt-5 pb-5 text-end infoText">Total Meetings: MEETINGCOUNTER</div>
         </div>
       </div>
+
+      <div class="sec-block bg-white col-5 shadow-lg mt-5 d-flex justify-content-around align-items-center flex-column">
+        <p class="text-center w-75">
+          {{description}}
+          {{description}}
+        </p>
+      </div>
+
+    </div>
+
+
 
 
       <div class="block bg-white col-5 shadow-lg mt-5 d-flex justify-content-around align-items-center flex-column">

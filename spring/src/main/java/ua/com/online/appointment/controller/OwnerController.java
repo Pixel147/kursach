@@ -38,11 +38,13 @@ public class OwnerController {
         ownerInfoResponse.setCompanyName(user.getCompany().getName());
         ownerInfoResponse.setLocation(user.getCompany().getLocation());
         ownerInfoResponse.setDescription(user.getCompany().getDescription());
+        ownerInfoResponse.setUsername(user.getUsername());
         System.out.println(ownerInfoResponse.getPhone());
         System.out.println(ownerInfoResponse.getCompanyName());
         System.out.println(ownerInfoResponse.getLocation());
         System.out.println(ownerInfoResponse.getDescription());
         System.out.println(ownerInfoResponse.getFullname());
+        System.out.println(ownerInfoResponse.getUsername());
         return new ResponseEntity<OwnerInfoResponse>(ownerInfoResponse, HttpStatus.OK);
     }
 }

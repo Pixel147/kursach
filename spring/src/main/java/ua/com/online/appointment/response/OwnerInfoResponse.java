@@ -13,4 +13,5 @@ public class OwnerInfoResponse {
         private String phone;
         private String location;
         private String description;
+        private String username;
 }
