@@ -32,7 +32,6 @@
         <div class="col-12 pb-4 ms-1">
           <h3>Workers</h3>
         </div>
-
         <div class="col-xxl-4 col-xl-12">
           <div class="card mb-3 pt-4 ps-3 pe-3 pb-3" style="border-radius: .5rem;">
             <div class="row">
@@ -128,24 +127,22 @@
                     <div class="col-6 col-sm-6 pt-3">
                       <button class="btn btn-outline-dark">Schedule</button>
                     </div>
+                    <div class="col-6 col-sm-6">
+                      <button id="{{worker.id}}" (click)="deleteWorker($event)" class="btn btn-outline-warning">Delete</button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-
         <!--WORKERS-->
         <!--WORKERS-->
         <!--WORKERS-->
-
       </div>
     </div>
   </div>
 </div>
-
-
 
 <app-footer class="position-relative footer"></app-footer>
 

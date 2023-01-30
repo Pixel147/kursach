@@ -22,12 +22,6 @@ export class OwnerWorkerPanelComponent {
   repeatPassword: string = '';
 
   dataValidation(): boolean {
-    console.log("username :", this.username);
-    console.log("email :", this.email);
-    console.log("fullname :", this.fullname);
-    console.log("phone :", this.phone);
-    console.log("password :", this.password);
-    console.log("repeatPassword :", this.repeatPassword);
     return this.username != '' && this.password == this.repeatPassword && this.phone != '' && this.fullname != '' && this.email != '';
   }
 
@@ -42,6 +36,7 @@ export class OwnerWorkerPanelComponent {
         {
           next: (data: any) => {
             console.log("added pidaras");
+            this.getUsers();
           },
           error: (err: any) => {
             console.log(err);
@@ -62,9 +57,25 @@ export class OwnerWorkerPanelComponent {
       next: (data: any) => {
         this.workers = data;
         console.log(data);
-        console.log(this.workers);
       },
       error: (err: any) => {
+        console.log(err);
+      }
+    });
+  }
+
+  deleteWorker($event:any){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem("token")}`
+    })
+    const id = $event.target.id;
+    this.http.delete(`http://localhost:8080/worker${id}`,{headers: headers}).subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.getUsers();
+      },
+        error: (err: any) => {
         console.log(err);
       }
     });
