@@ -6,14 +6,18 @@ import {RegisterComponent} from "./register/register.component";
 import {ClientProfileComponent} from "./client-profile/client-profile.component";
 import {EmployeeProfileComponent} from "./employee-profile/employee-profile.component";
 import {OwnerInfoPanelComponent} from "./owner-info-panel/owner-info-panel.component";
+import {OwnerWorkerPanelComponent} from "./owner-worker-panel/owner-worker-panel.component";
+import {AuthGuard} from "./auth/auth.guard";
+
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component:RegisterComponent},
-  {path: 'client', component:ClientProfileComponent},
-  {path: 'employee', component:EmployeeProfileComponent},
-  {path: 'ownerInfo', component:OwnerInfoPanelComponent}
+  {path: 'client', component:ClientProfileComponent, canActivate:[AuthGuard]},
+  {path: 'employee', component:EmployeeProfileComponent, canActivate:[AuthGuard]},
+  {path: 'ownerInfo', component:OwnerInfoPanelComponent, canActivate:[AuthGuard]},
+  {path: 'ownerWorkers', component:OwnerWorkerPanelComponent, canActivate:[AuthGuard]},
 ]
 
 @NgModule({

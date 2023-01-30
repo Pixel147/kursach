@@ -1,4 +1,172 @@
-.menu
+.list
+{
+  list-style-type: none;
+}
+
+.icon:hover
+{
+  opacity: 1!important;
+  transition: 0.2s!important;
+}
+
+body
 {
   height: 100%;
+
+}
+
+.menu
+{
+  position: relative!important;
+  z-index: 0!important;
+}
+
+@media (max-width: 1500px) {
+  .infoText
+  {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .block_info
+  {
+    justify-content: center!important;
+    align-items: center!important;
+  }
+
+  .blocks
+  {
+    scale: 0.7;
+    padding-right: 30px;
+  }
+
+  .block2
+  {
+    font-size: 30px!important;
+    padding-left: 30px;
+  }
+
+  .mainBlock
+  {
+    height: 675px!important;
+    border-radius: 0 0 30px 30px!important;
+  }
+
+}
+
+@media (max-width: 1000px) {
+  .cover
+  {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu
+  {
+    width: 100%!important;
+    height: 60px;
+    position: relative!important;
+
+  }
+
+  .menu-covered
+  {
+    flex-direction: row!important;
+    margin-top: -30px!important;
+    position: relative!important;
+  }
+
+  .icon
+  {
+    scale: 1.8!important;
+  }
+
+  .block-cover
+  {
+    display: flex!important;
+    flex-direction: column!important;
+    align-items: center;
+    padding-right: 0!important;
+    padding-left: 0!important;
+    margin-left: 5%;
+  }
+
+  .block
+  {
+    width: 85%;
+  }
+}
+
+/*////////////////////////////////*/
+
+.block
+{
+  height: 800px;
+  background-color: #56C8D6;
+  border: solid 2px #2A98AD;
+  border-radius: 30px;
+}
+
+.mainBlock
+{
+  height: 664px;
+  border-radius: 0 0 28px 28px;
+}
+
+.box-cover
+{
+  width:100% !important;
+  height: 100px!important;
+
+}
+
+.box
+{
+  width: 35% !important;
+  height: 170px!important;
+}
+
+.countCard
+{
+  background-color: cyan;
+  width: 100%;
+  height: 60%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.textCard
+{
+  background-color: white;
+  width: 100%;
+  height: 40%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.gradient {
+  background: linear-gradient(149deg, #56C8D6 0%, #2A98AD 42%, #DA865B 72%, #EFA68B 100%);
+  animation: gradient 4s infinite linear;
+  background-size: 400%;
+  z-index: 0;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 80% 0;
+  }
+  50% {
+    background-position: 20% 100%;
+  }
+  100% {
+    background-position: 80% 0;
+  }
+}
+
+/*////////////////////////////////*/
+
+.footer
+{
+  z-index: 1;
 }
