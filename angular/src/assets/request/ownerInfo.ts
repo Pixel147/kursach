@@ -1,11 +1,17 @@
 export class ownerInfo{
-  fullname:string;
   phone:string;
+  fullname:string;
   nameOfCompany:string;
+  location:string;
+  description:string;
 
-  constructor(phone: string, fullname: string, nameOfCompany:string) {
+
+  constructor(phone: string, fullname: string, nameOfCompany: string, location: string, description: string, username: any) {
     this.phone = phone;
     this.fullname = fullname;
     this.nameOfCompany = nameOfCompany;
+    this.location = location;
+    this.description = description;
+
   }
 }

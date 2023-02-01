@@ -12,7 +12,6 @@
 body
 {
   height: 100%;
-
 }
 
 .menu
@@ -21,45 +20,105 @@ body
   z-index: 0!important;
 }
 
-@media (max-width: 1500px) {
-  .infoText
+.block-cover
+{
+  width: 100%!important;
+
+
+}
+.blocks-cover
+{
+  width: 45%!important;
+  height: 800px!important;
+  padding-top: 30px;
+}
+
+.first-block
+{
+  width: 100%!important;
+  height: 40%!important;
+}
+
+.sec-block
+{
+  width: 100%!important;
+  height: 57%!important;
+  border: solid #2A98AD 2px;
+  border-radius: 28px;
+}
+
+.card-body
+{
+  height: 100%!important;
+  width: 100% !important;
+  margin: 0!important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.block-info
+{
+  height: 300px;
+}
+
+
+@media (max-width: 2000px) {
+  .block-cover
   {
-    font-size: 14px;
+    width: 100% !important;
+  }
+  .blocks-cover
+  {
+    width: 80%;
+    height: 80%;
+  }
+
+  .sec-block
+  {
+    width: 80%;
+    height: 50%;
   }
 }
 
-@media (max-width: 1200px) {
-  .block_info
+@media (min-width: 1200px)
+{
+  .info-block
   {
-    justify-content: center!important;
-    align-items: center!important;
+    width: 66.6%;
   }
-
-  .blocks
-  {
-    scale: 0.7;
-    padding-right: 30px;
-  }
-
-  .block2
-  {
-    font-size: 30px!important;
-    padding-left: 30px;
-  }
-
-  .mainBlock
-  {
-    height: 675px!important;
-    border-radius: 0 0 30px 30px!important;
-  }
-
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 770px)
+{
+  .sec-block
+  {
+    margin-bottom: 300px!important;
+  }
+
+  .blocks-cover
+  {
+    margin-bottom: 290px;
+  }
+
+  .first-block
+  {
+    padding-bottom: 565px;
+  }
+}
+
+@media (max-width: 1400px) {
   .cover
   {
     display: flex;
     flex-direction: column;
+  }
+
+  .blocks-cover
+  {
+    width: 85%!important;
+    height: 800px!important;
+    padding-top: 30px;
   }
 
   .menu
@@ -89,14 +148,25 @@ body
     align-items: center;
     padding-right: 0!important;
     padding-left: 0!important;
-    margin-left: 5%;
+
   }
 
   .block
   {
     width: 85%;
   }
+  .blocks
+  {
+
+    padding-right: 30px;
+  }
+
+  .block2
+  {
+    padding-left: 30px;
+  }
 }
+
 
 /*////////////////////////////////*/
 
@@ -151,6 +221,8 @@ body
   background-size: 400%;
   z-index: 0;
 }
+
+
 
 @keyframes gradient {
   0% {
