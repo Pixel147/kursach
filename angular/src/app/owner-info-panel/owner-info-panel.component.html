@@ -3,22 +3,22 @@
   <div class="d-flex col-1 justify-content-center p-0 bg-dark menu position-relative">
     <ul class="list d-flex flex-column align-items-center ps-0 pt-5 menu-covered position-fixed">
       <li class="pt-5 pb-5 ps-5 pe-5">
-        <a href="/ownerInfo" class="w-100 h-100">
+        <a routerLink="/ownerInfo">
           <i class="fa-solid fa-circle-info icon" style="scale: 3; color: white; opacity: 1;"></i>
         </a>
       </li>
       <li class="pt-5 pb-5 ps-5 pe-5">
-        <a href="/ownerWorkers">
+        <a routerLink="/ownerWorkers">
           <i class="fa-solid fa-users icon" style="scale: 3; color: white; opacity: 0.8;"></i>
         </a>
       </li>
       <li class="pt-5 pb-5 ps-5 pe-5">
-        <a href="/ownerInfo">
+        <a routerLink="/ownerInfo">
           <i class="fa-solid fa-calendar icon" style="scale: 3; color: white; opacity: 0.8;"></i>
         </a>
       </li>
       <li class="pt-5 pb-5 ps-5 pe-5">
-        <a href="/ownerInfo">
+        <a routerLink="/ownerInfo">
           <i class="fa-solid fa-table-list icon" style="scale: 3; color: white; opacity: 0.8;"></i>
         </a>
       </li>
@@ -54,9 +54,6 @@
                   <div class="col-6 col-sm-6">
                     <h6>Location</h6>
                     <p class="text-muted">{{location}}</p>
-                  </div>
-                  <div class="col-6 col-sm-6 pt-3">
-                    <button class="btn btn-outline-dark">Workers</button>
                   </div>
                 </div>
               </div>
@@ -115,8 +112,4 @@
 
 
 
-
-
 <app-footer class="position-relative footer"></app-footer>
-
-

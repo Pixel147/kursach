@@ -1,8 +1,10 @@
 package ua.com.online.appointment.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
 @Table(name = "company")
@@ -17,4 +19,7 @@ public class Company {
     private String location;
     @Column
     private String description;
+    @OneToMany(mappedBy = "company")
+    @JsonManagedReference
+    List<Worker> workers;
 }
