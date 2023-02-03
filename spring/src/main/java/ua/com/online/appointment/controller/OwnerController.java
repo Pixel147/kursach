@@ -6,8 +6,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.com.online.appointment.DTO.WorkerDTO;
 import java.util.*;
+
+import ua.com.online.appointment.entity.Company;
 import ua.com.online.appointment.entity.User;
 import ua.com.online.appointment.entity.Worker;
+import ua.com.online.appointment.repository.CompanyRepository;
 import ua.com.online.appointment.repository.UserRepository;
 import ua.com.online.appointment.repository.WorkerRepository;
 import ua.com.online.appointment.response.OwnerInfoResponse;
@@ -30,6 +33,8 @@ public class OwnerController {
     private UserRepository userRepository;
     @Autowired
     private WorkerRepository workerRepository;
+    @Autowired
+    private CompanyRepository companyRepository;
 
     @GetMapping("/ownerInfo")
     public ResponseEntity<OwnerInfoResponse> getOwnerInfo(ServletRequest servletRequest)
@@ -65,5 +70,14 @@ public class OwnerController {
             workerRepository.delete(worker);
             System.out.println("deleted user id = " + id);
         }
+    }
+    @PutMapping("/owner/description")
+    public HttpStatus updateDescription(@RequestBody String description, ServletRequest servletRequest){
+        User user = jwtService.getUserByToken(servletRequest);
+        Company company = user.getCompany();
+        company.setDescription(description);
+        companyRepository.save(company);
+        System.out.println("Description updated");
+        return HttpStatus.OK;
     }
 }

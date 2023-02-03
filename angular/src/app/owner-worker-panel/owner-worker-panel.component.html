@@ -1,149 +1,111 @@
-<div class="cover d-flex justify-content-center pb-100">
+<app-owner-menu></app-owner-menu>
 
-  <div class="d-flex col-1 justify-content-center p-0 bg-dark menu position-relative">
-    <ul class="list d-flex flex-column align-items-center ps-0 pt-5 menu-covered position-fixed">
-      <li class="pt-5 pb-5 ps-5 pe-5">
-        <a href="/ownerInfo" class="w-100 h-100">
-          <i class="fa-solid fa-circle-info icon" style="scale: 3; color: white; opacity: 0.8;"></i>
-        </a>
-      </li>
-      <li class="pt-5 pb-5 ps-5 pe-5">
-        <a href="/ownerInfo">
-          <i class="fa-solid fa-users icon" style="scale: 3; color: white; opacity: 0.8;"></i>
-        </a>
-      </li>
-      <li class="pt-5 pb-5 ps-5 pe-5">
-        <a href="/ownerInfo">
-          <i class="fa-solid fa-calendar icon" style="scale: 3; color: white; opacity: 0.8;"></i>
-        </a>
-      </li>
-      <li class="pt-5 pb-5 ps-5 pe-5">
-        <a href="/ownerInfo">
-          <i class="fa-solid fa-table-list icon" style="scale: 3; color: white; opacity: 0.8;"></i>
-        </a>
-      </li>
-    </ul>
-  </div>
-
-
-  <div class="col-xxl-11 pt-4 ps-3 pb-5 pe-3">
-    <div class="container-fluid">
-      <div class="row ">
-        <div class="col-12 pb-4 ms-1">
-          <h3>Workers</h3>
-        </div>
-        <div class="col-xxl-5 col-lg-12">
-          <div class="card mb-3 pt-4 ps-3 pe-3 pb-3" style="border-radius: .5rem;">
-            <div class="row">
-              <div class="col-12">
-                <h3>Add worker</h3>
-              </div>
-              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
-                <div class="group">
-                  <input [(ngModel)]="username" required="" type="text" class="input">
-                  <span class="highlight"></span>
-                  <span class="bar"></span>
-                  <label>Username</label>
-                </div>
-              </div>
-              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
-                <div class="group">
-                  <input [(ngModel)]="fullname" required="" type="text" class="input">
-                  <span class="highlight"></span>
-                  <span class="bar"></span>
-                  <label>Full name</label>
-                </div>
-              </div>
-              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
-                <div class="group">
-                  <input [(ngModel)]="email" required="" type="text" class="input">
-                  <span class="highlight"></span>
-                  <span class="bar"></span>
-                  <label>Email</label>
-                </div>
-              </div>
-              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
-                <div class="group">
-                  <input [(ngModel)]="phone" required="" type="text" class="input">
-                  <span class="highlight"></span>
-                  <span class="bar"></span>
-                  <label>Phone</label>
-                </div>
-              </div>
-              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
-                <div class="group">
-                  <input [(ngModel)]="password" required="" type="password" class="input">
-                  <span class="highlight"></span>
-                  <span class="bar"></span>
-                  <label>Password</label>
-                </div>
-              </div>
-              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
-                <div class="group">
-                  <input [(ngModel)]="repeatPassword" required="" type="password" class="input">
-                  <span class="highlight"></span>
-                  <span class="bar"></span>
-                  <label>Repeat password</label>
-                </div>
-              </div>
-              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
-                <button (click)="createWorker()" class="btn btn-outline-dark">Add</button>
-              </div>
+<div class="container-fluid min-vh-100">
+  <div class="row p-5">
+    <div class="col-12 ms-1">
+      <h3>Workers</h3>
+    </div>
+    <div class="col-xxl-5 col-lg-12">
+      <div class="card mb-3 pt-4 ps-3 pe-3 pb-3" style="border-radius: .5rem;">
+        <div class="row">
+          <div class="col-12">
+            <h3>Add worker</h3>
+          </div>
+          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+            <div class="group">
+              <input [(ngModel)]="username" required="" type="text" class="input">
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Username</label>
             </div>
           </div>
+          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+            <div class="group">
+              <input [(ngModel)]="fullname" required="" type="text" class="input">
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Full name</label>
+            </div>
+          </div>
+          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+            <div class="group">
+              <input [(ngModel)]="email" required="" type="text" class="input">
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Email</label>
+            </div>
+          </div>
+          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+            <div class="group">
+              <input [(ngModel)]="phone" required="" type="text" class="input">
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Phone</label>
+            </div>
+          </div>
+          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+            <div class="group">
+              <input [(ngModel)]="password" required="" type="password" class="input">
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Password</label>
+            </div>
+          </div>
+          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+            <div class="group">
+              <input [(ngModel)]="repeatPassword" required="" type="password" class="input">
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Repeat password</label>
+            </div>
+          </div>
+          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+            <button (click)="createWorker()" class="btn btn-outline-dark">Add</button>
+          </div>
         </div>
-        <div class="col-12"></div>
+      </div>
+    </div>
+    <div class="col-12"></div>
 
-        <!--WORKERS-->
-        <!--WORKERS-->
-        <!--WORKERS-->
-        <div *ngFor="let worker of workers" class="col-xxl-4 col-xl-12 col-lg-12 col-md-12 col-sm-12">
-          <div class="card mb-3" style="border-radius: .5rem;">
-            <div class="row g-0">
-              <div class="col-md-4 gradient-custom text-center text-white"
-                   style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                     alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                <h5>{{worker.username}}</h5>
-                <p>Service name</p>
-              </div>
-              <div class="col-xxl-8 col-xl-6 col-md-8 col-sm-12">
-                <div class="card-body p-4">
-                  <h6 class="mt-3">Information</h6>
-                  <hr class="mt-0 mb-4">
-                  <div class="row pt-1">
-                    <div class="col-6 col-sm-6">
-                      <h6>Email</h6>
-                      <p class="text-muted">{{worker.email}}</p>
-                    </div>
-                    <div class="col-6 col-sm-6">
-                      <h6>Phone</h6>
-                      <p class="text-muted">{{worker.phone}}</p>
-                    </div>
-                    <div class="col-6 col-sm-6">
-                      <h6>Fullname</h6>
-                      <p class="text-muted">{{worker.fullname}}</p>
-                    </div>
-                    <div class="col-6 col-sm-6 pt-3">
-                      <button class="btn btn-outline-dark">Schedule</button>
-                    </div>
-                    <div class="col-6 col-sm-6">
-                      <button id="{{worker.id}}" (click)="deleteWorker($event)" class="btn btn-outline-warning">Delete</button>
-                    </div>
-                  </div>
+    <div *ngFor="let worker of workers" class="col-xxl-4 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+      <div class="card mb-3" style="border-radius: .5rem;">
+        <div class="row g-0">
+          <div class="col-md-4 gradient-custom text-center text-white"
+               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                 alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+            <h5>{{worker.username}}</h5>
+            <p>Service name</p>
+          </div>
+          <div class="col-xxl-8 col-xl-6 col-md-8 col-sm-12">
+            <div class="card-body p-4">
+              <h6 class="mt-3">Information</h6>
+              <hr class="mt-0 mb-4">
+              <div class="row pt-1">
+                <div class="col-6 col-sm-6">
+                  <h6>Email</h6>
+                  <p class="text-muted">{{worker.email}}</p>
+                </div>
+                <div class="col-6 col-sm-6">
+                  <h6>Phone</h6>
+                  <p class="text-muted">{{worker.phone}}</p>
+                </div>
+                <div class="col-6 col-sm-6">
+                  <h6>Fullname</h6>
+                  <p class="text-muted">{{worker.fullname}}</p>
+                </div>
+                <div class="col-6 col-sm-6 pt-3">
+                  <button class="btn btn-outline-dark">Schedule</button>
+                </div>
+                <div class="col-6 col-sm-6">
+                  <button id="{{worker.id}}" (click)="deleteWorker($event)" class="btn btn-outline-warning">Delete</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!--WORKERS-->
-        <!--WORKERS-->
-        <!--WORKERS-->
       </div>
     </div>
   </div>
 </div>
-
 <app-footer class="position-relative footer"></app-footer>
-
-
