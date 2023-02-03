@@ -11,40 +11,48 @@ import {ownerInfo} from "../../assets/request/ownerInfo";
 })
 export class OwnerInfoPanelComponent {
   constructor(private http: HttpClient) {
-    this.getOwnerInfo();
+    this.loadOwnerInfo();
   }
-  ownerInfo:ownerInfo| any;
+  ownerInfo:ownerInfo = new ownerInfo("","","",'','','');
   token: any;
-  fullname: any;
-  username: any;
-  companyName:any;
-  phoneOwner:any;
-  location:any;
-  description:any;
-
-  getOwnerInfo(){
+  descriptionEditingFlag = false;
+  textAreaDescriptionText = '';
+  clickedOnEdit():void{
+    this.textAreaDescriptionText = this.ownerInfo.description;
+    this.descriptionEditingFlag = true;
+  }
+  updateDescription():void{
+    this.token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+    this.http.put(`http://localhost:8080/owner/${localStorage.getItem("id")}/description`,this.textAreaDescriptionText,{headers: headers}).subscribe({
+      next:(data:any) => {
+        console.log(data);
+      },
+      error:(err:any) =>{
+        console.log(err)
+      }
+    })
+    this.ownerInfo.description = this.textAreaDescriptionText;
+    this.descriptionEditingFlag = false;
+  }
+  loadOwnerInfo():void{
       this.token = localStorage.getItem('token');
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${this.token}`
       })
-      this.ownerInfo = new ownerInfo(this.phoneOwner, this.fullname, this.companyName, this.location, this.description, this.username)
-      this.http.get('http://localhost:8080/ownerInfo',{headers: headers}).subscribe(
+      this.http.get(`http://localhost:8080/owner/${localStorage.getItem("id")}`,{headers: headers}).subscribe(
         {
           next:(data:any) => {
-            this.companyName = data.companyName;
-            this.fullname = data.fullname;
-            this.phoneOwner = data.phone;
-            this.location = data.location;
-            this.description = data.description;
-            this.username = data.username;
+            this.ownerInfo = new ownerInfo(data.phone, data.fullname, data.companyName, data.location, data.description, data.username)
           },
           error:(err:any) =>{
             console.log(err);
           }
         },
-
-
       );
   }
 }

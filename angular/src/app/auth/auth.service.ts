@@ -12,7 +12,6 @@ export class AuthService{
    isAuthenticated():Promise<boolean>{
      return new Promise<boolean>(resolve => {
        resolve(this.isAuth)
-       console.log(this.isAuth);
      });
    }
 }

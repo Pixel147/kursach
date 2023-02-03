@@ -46,6 +46,7 @@ logIntoAccount()
         this.auth.login();
         localStorage.setItem("token", data.token);
         localStorage.setItem("role", data.role);
+        localStorage.setItem("id",data.id);
         this.appc.CheckToken();
       },
       error: error => console.log(error),

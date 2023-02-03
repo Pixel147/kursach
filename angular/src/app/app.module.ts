@@ -15,6 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { OwnerInfoPanelComponent } from './owner-info-panel/owner-info-panel.component';
 import {OwnerWorkerPanelComponent} from "./owner-worker-panel/owner-worker-panel.component";
 import {FormsModule} from "@angular/forms";
+import { OwnerMenuComponent } from './owner-menu/owner-menu.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {FormsModule} from "@angular/forms";
     ClientProfileComponent,
     EmployeeProfileComponent,
     OwnerInfoPanelComponent,
-    OwnerWorkerPanelComponent
+    OwnerWorkerPanelComponent,
+    OwnerMenuComponent
   ],
     imports: [
         BrowserModule,
