@@ -1,0 +1,131 @@
+.main-block
+{
+  background-image: url("src/assets/images/company/main-image.jpg");
+  opacity: 0.9;
+}
+
+.block
+{
+  height: 900px;
+}
+
+.second-row
+{
+  height: 750px;
+}
+
+.block-second
+{
+  height: 600px;
+}
+
+.blocks
+{
+  height: 400px;
+}
+
+.btn
+{
+  width: 22%;
+  height: 60px;
+  margin: 10px 8px;
+  border-radius: 50px;
+  font-size: 20px;
+  opacity: 1;
+  background: rgb(52,171,199);
+  background: linear-gradient(90deg, rgba(52,171,199,1) 0%, rgba(231,237,122,1) 86%);
+  font-family: Mulish,sans-serif;
+}
+
+.btn-mini
+{
+  text-decoration:none;
+  color: black;
+  width: 100%;
+  height: 40px;
+  margin: 10px 8px;
+  border-radius: 50px;
+  border:none;
+  font-size: 20px;
+  opacity: 1;
+  background: rgb(52,171,199);
+  background: linear-gradient(90deg, rgba(52,171,199,1) 0%, rgba(231,237,122,1) 86%);
+  font-family: Mulish,sans-serif;
+}
+
+.btn-mini:hover
+{
+  text-decoration:none;
+  color: black;
+  width: 100%;
+  height: 40px;
+  margin: 10px 8px;
+  border-radius: 50px;
+  font-size: 20px;
+  opacity: 0.7;
+  transition: 0.4s;
+  background: rgb(52,171,199);
+  background: linear-gradient(90deg, rgba(52,171,199,1) 0%, rgba(231,237,122,1) 86%);
+  font-family: Mulish,sans-serif;
+}
+
+.text-company
+{
+  font-size: 65px;
+  font-weight: 1000;
+  color: #2A98AD;
+  opacity: 1;
+}
+
+.btn:hover
+{
+  opacity: 0.8;
+  transition: 0.4s;
+}
+
+.block-info
+{
+  height: 300px;
+  border-radius: 28px;
+}
+
+
+
+.subText
+{
+  font-size: 18px;
+}
+
+.valueText
+{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@media (max-width: 1600px) {
+
+}
+
+@media (max-width: 1400px) {
+  .text-company
+  {
+    font-size: 45px;
+  }
+
+  .btn
+  {
+    width: 27%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .text-company
+  {
+    font-size: 45px;
+  }
+
+  .btn
+  {
+    width: 35%;
+  }
+}
