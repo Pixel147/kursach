@@ -20,8 +20,30 @@ export class OwnerInfoPanelComponent {
   companyName:any;
   phoneOwner:any;
   location:any;
-  description:any;
-
+  description:any = '';
+  descriptionFlag = false;
+  textAreaDescriptionText = '';
+  editDescription(){
+    this.textAreaDescriptionText = this.description;
+    this.descriptionFlag = true;
+  }
+  updateDescription(){
+    this.token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+    this.http.put("http://localhost:8080/owner/description",this.textAreaDescriptionText,{headers: headers}).subscribe({
+      next:(data:any) => {
+        console.log(data);
+      },
+      error:(err:any) =>{
+        console.log(err)
+      }
+    })
+    this.description = this.textAreaDescriptionText;
+    this.descriptionFlag = false;
+  }
   getOwnerInfo(){
       this.token = localStorage.getItem('token');
       const headers = new HttpHeaders({
@@ -43,8 +65,6 @@ export class OwnerInfoPanelComponent {
             console.log(err);
           }
         },
-
-
       );
   }
 }
