@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./company-appointment.component.css']
 })
 export class CompanyAppointmentComponent {
-
 }
