@@ -4,7 +4,7 @@
       <div>
         <h1 class="pb-5 text-company">ABOBA INC</h1>
       </div>
-      <button class="btn d-flex justify-content-center align-items-center" href="#">
+      <button class="btn1 d-flex justify-content-center align-items-center" href="#">
         Забронювати
       </button>
     </div>
@@ -18,7 +18,7 @@
 
         <div class="col-xxl-12 col-lg-12 col-sm-12 blocks d-flex justify-content-around align-items-center">
 
-          <div class="block-info col-xxl-2 col-lg-3 col-sm-8 shadow p-5 d-flex flex-column justify-content-between">
+          <div class="block-info col-xxl-2 col-lg-4 col-sm-7 col-8 shadow p-5 d-flex flex-column justify-content-between">
             <h3 class="text-center">Service</h3>
             <div class="d-flex justify-content-between">
               <div class="d-flex">
@@ -33,7 +33,21 @@
             </button>
           </div>
 
-          <div class="block-info col-xxl-2 col-lg-3 col-sm-6 shadow p-5 d-flex flex-column justify-content-between">
+          <div class="block-info col-xxl-2 col-lg-4 col-sm-7 col-8 shadow p-5 d-flex flex-column justify-content-between">
+            <h3 class="text-center">Service</h3>
+            <div class="d-flex justify-content-between">
+              <div class="d-flex">
+                <i class="fa-regular fa-clock pe-2"></i>
+                <h4 class="subText">1 год.</h4>
+              </div>
+              <h4 class="valueText">200,00₴</h4>
+            </div>
+            <button class="btn-mini d-flex justify-content-center align-items-center" href="#">
+              Вибрати
+            </button>
+          </div>
+
+          <div class="block-info col-xxl-2 col-lg-4 col-sm-7 col-8 shadow p-5 d-flex flex-column justify-content-between">
             <h3 class="text-center">Service</h3>
             <div class="d-flex justify-content-between">
               <div class="d-flex">
@@ -48,22 +62,7 @@
             </button>
           </div>
 
-          <div class="block-info col-xxl-2 col-lg-3 col-sm-6 shadow p-5 d-flex flex-column justify-content-between">
-            <h3 class="text-center">Service</h3>
-            <div class="d-flex justify-content-between">
-              <div class="d-flex">
-                <i class="fa-regular fa-clock pe-2"></i>
-                <h4 class="subText">1 год.</h4>
-              </div>
-
-              <h4 class="valueText">200,00₴</h4>
-            </div>
-            <button class="btn-mini d-flex justify-content-center align-items-center" href="#">
-              Вибрати
-            </button>
-          </div>
-
-          <div class="block-info col-xxl-2 col-lg-3 col-sm-6 shadow p-5 d-flex flex-column justify-content-between">
+          <div class="block-info col-xxl-2 col-lg-4 col-sm-7 col-8 shadow p-5 d-flex flex-column justify-content-between">
             <h3 class="text-center">Service</h3>
             <div class="d-flex justify-content-between">
               <div class="d-flex">
@@ -81,10 +80,118 @@
 
       </div>
     </div>
+  </div>
+</div>
 
+  <div class="calendar col-xxl-12 col-lg-12 col-sm-12 col-12" style="padding-bottom: 100px; padding-top: 100px">
+    <div class="month"><a href="/company" class="nav"><i class="fas fa-angle-left"></i></a><div>{{this.month}} <span class="year">{{this.year}}
+    </span></div><a href="/company" class="nav"><i class="fas fa-angle-right"></i></a></div>
+    <div class="days">
+      <span>Mon</span>
+      <span>Tue</span>
+      <span>Wed</span>
+      <span>Thu</span>
+      <span>Fri</span>
+      <span>Sat</span>
+      <span>Sun</span>
+    </div>
+    <div class="dates">
+     <button class="button3" (click)="getTime()">
+        <time>1</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>2</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>3</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>4</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>5</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>6</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>7</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>8</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>9</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>10</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>11</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>12</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>13</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>14</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>15</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>16</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>17</time>
+      </button>
+      <button class="today button3"  (click)="getTime()">
+        <time>18</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>19</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>20</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>21</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>22</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>23</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>24</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>25</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>26</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>27</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>28</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>29</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>30</time>
+      </button>
+      <button class="button3" (click)="getTime()">
+        <time>31</time>
+      </button>
+    </div>
   </div>
 
 
-</div>
 
 <app-footer></app-footer>
