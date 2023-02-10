@@ -17,5 +17,7 @@ public class WorkerRegistrationRequest {
     @NotEmpty
     private String phone;
     @NotEmpty
+    private String service;
+    @NotEmpty
     private String role;
 }

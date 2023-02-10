@@ -13,6 +13,7 @@ import ua.com.online.appointment.entity.Worker;
 import ua.com.online.appointment.repository.CompanyRepository;
 import ua.com.online.appointment.repository.UserRepository;
 import ua.com.online.appointment.repository.WorkerRepository;
+import ua.com.online.appointment.request.EditWorkerRequest;
 import ua.com.online.appointment.response.OwnerInfoResponse;
 import ua.com.online.appointment.service.AuthService;
 import ua.com.online.appointment.service.JwtService;
@@ -56,7 +57,7 @@ public class OwnerController {
         List<User>userList = userRepository.getUsersByCompanyAndAndRole(user.getCompany(),"ROLE_WORKER");
         List<WorkerDTO>workerDTOS = new ArrayList<>();
         for (User u:userList) {
-            workerDTOS.add(new WorkerDTO(u.getId(),u.getUsername(),u.getEmail(),u.getPhone(),u.getFullname()));
+            workerDTOS.add(new WorkerDTO(u.getId(),u.getUsername(),u.getEmail(),u.getPhone(),u.getFullname(), u.getWorker().getService()));
         }
         return new ResponseEntity<>(workerDTOS,HttpStatus.OK);
     }
@@ -78,6 +79,17 @@ public class OwnerController {
         company.setDescription(description);
         companyRepository.save(company);
         System.out.println("Description updated");
+        return HttpStatus.OK;
+    }
+
+    @PutMapping("/owner/edit")
+    public HttpStatus updateDescriptionWorker(@RequestBody EditWorkerRequest editWorkerRequest, ServletRequest servletRequest){
+        User user = jwtService.getUserByToken(servletRequest);
+        user.setEmail(editWorkerRequest.getEditEmail());
+        user.setPhone(editWorkerRequest.getEditPhone());
+        user.setFullname(editWorkerRequest.getEditFullname());
+        userRepository.save(user);
+        System.out.println("Worker updated");
         return HttpStatus.OK;
     }
 }

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Worker} from "../../assets/request/worker";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {EditWorker} from "../../assets/request/editWorker";
 
 @Component({
   selector: 'app-owner-worker-panel',
@@ -13,6 +14,7 @@ export class OwnerWorkerPanelComponent {
   }
 
   worker: Worker | any;
+  editWorker: EditWorker | any;
   workers: Worker[] | any;
   username: string = '';
   email: string = '';
@@ -20,6 +22,40 @@ export class OwnerWorkerPanelComponent {
   fullname: string = '';
   password: string = '';
   repeatPassword: string = '';
+  service: string = '';
+  token: any;
+
+  editEmail:any = '';
+  editPhone:any = '';
+  editFullname:any = '';
+  editFlag = false;
+  editDescriptionWorker(){
+    console.log(this.worker.email)
+    this.editEmail = this.worker.email;
+    this.editPhone = this.worker.phone;
+    this.editFullname = this.worker.fullname;
+    this.editFlag = true;
+  }
+  updateDescriptionWorker(){
+    this.token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+    this.editWorker = new EditWorker(this.editEmail, this.editPhone, this.editFullname)
+    this.http.put("http://localhost:8080/owner/edit",this.editWorker,{headers: headers}).subscribe({
+      next:(data:any) => {
+        console.log(data);
+      },
+      error:(err:any) =>{
+        console.log(err)
+      }
+    })
+    this.worker.email = this.editEmail;
+    this.worker.phone = this.editPhone;
+    this.worker.fullname = this.editFullname;
+    this.editFlag = false;
+  }
 
   dataValidation(): boolean {
     return this.username != '' && this.password == this.repeatPassword && this.phone != '' && this.fullname != '' && this.email != '';
@@ -31,11 +67,11 @@ export class OwnerWorkerPanelComponent {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem("token")}`
       })
-      this.worker = new Worker(this.username, this.email, this.phone, this.fullname, this.password)
+      this.worker = new Worker(this.username, this.email, this.phone, this.fullname, this.password, this.service)
       this.http.post('http://localhost:8080/register/worker', this.worker, {headers: headers}).subscribe(
         {
           next: (data: any) => {
-            console.log("added pidaras");
+            console.log("added worker");
             this.getUsers();
           },
           error: (err: any) => {

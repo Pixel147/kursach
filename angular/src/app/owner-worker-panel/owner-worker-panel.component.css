@@ -120,3 +120,8 @@ label {
     background: transparent;
   }
 }
+
+#btn-outline-dark-add
+{
+  width: 130px;
+}

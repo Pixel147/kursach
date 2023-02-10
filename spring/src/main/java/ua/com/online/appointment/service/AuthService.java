@@ -84,6 +84,7 @@ public class AuthService {
         if(validation == null){
             Worker worker = new Worker();
             worker.setCompany(owner.getCompany());
+            worker.setService(workerRegistrationRequest.getService());
             workerRepository.save(worker);
             User user = new User();
             user.setWorker(worker);
