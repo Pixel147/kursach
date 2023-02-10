@@ -20,8 +20,6 @@ public class OwnerService {
     @Autowired
     private JwtService jwtService;
     @Autowired
-    private UserService userService;
-    @Autowired
     private UserRepository userRepository;
     @Autowired
     private CompanyRepository companyRepository;
