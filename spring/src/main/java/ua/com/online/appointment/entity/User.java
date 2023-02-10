@@ -2,6 +2,7 @@ package ua.com.online.appointment.entity;
 
 import lombok.Data;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -29,4 +30,7 @@ public class User {
     @OneToOne
     @JoinColumn(name = "id_worker")
     private Worker worker;
+    @OneToMany
+    @JoinColumn(name = "id_appointment")
+    private List<Appointment> appointments;
 }
