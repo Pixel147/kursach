@@ -13,7 +13,7 @@
           </div>
           <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
             <div class="group">
-              <input [(ngModel)]="username" type="text" class="input">
+              <input [(ngModel)]="worker.username" required="" type="text" class="input">
               <span class="highlight"></span>
               <span class="bar"></span>
               <label>Username</label>
@@ -21,7 +21,7 @@
           </div>
           <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
             <div class="group">
-              <input [(ngModel)]="fullname" type="text" class="input">
+              <input [(ngModel)]="worker.fullname" required="" type="text" class="input">
               <span class="highlight"></span>
               <span class="bar"></span>
               <label>Full name</label>
@@ -29,7 +29,7 @@
           </div>
           <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
             <div class="group">
-              <input [(ngModel)]="email" type="text" class="input">
+              <input [(ngModel)]="worker.email" required="" type="text" class="input">
               <span class="highlight"></span>
               <span class="bar"></span>
               <label>Email</label>
@@ -37,7 +37,7 @@
           </div>
           <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
             <div class="group">
-              <input [(ngModel)]="phone" type="text" class="input">
+              <input [(ngModel)]="worker.phone" required="" type="text" class="input">
               <span class="highlight"></span>
               <span class="bar"></span>
               <label>Phone</label>
@@ -45,7 +45,7 @@
           </div>
           <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
             <div class="group">
-              <input [(ngModel)]="password" type="password" class="input">
+              <input [(ngModel)]="worker.password" required="" type="password" class="input">
               <span class="highlight"></span>
               <span class="bar"></span>
               <label>Password</label>
@@ -53,22 +53,14 @@
           </div>
           <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
             <div class="group">
-              <input [(ngModel)]="repeatPassword" type="password" class="input">
+              <input [(ngModel)]="repeatPassword" required="" type="password" class="input">
               <span class="highlight"></span>
               <span class="bar"></span>
               <label>Repeat password</label>
             </div>
           </div>
           <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
-            <div class="group">
-              <input [(ngModel)]="service" type="text" class="input">
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Service</label>
-            </div>
-          </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4 ps-5">
-            <button (click)="createWorker()" id="btn-outline-dark-add" class="btn btn-outline-dark">Add</button>
+            <button (click)="createWorker()" class="btn btn-outline-dark">Add</button>
           </div>
         </div>
       </div>
@@ -83,58 +75,27 @@
             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
                  alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
             <h5>{{worker.username}}</h5>
-            <p>{{worker.service}}</p>
+            <p>Service name</p>
           </div>
           <div class="col-xxl-8 col-xl-6 col-md-8 col-sm-12">
             <div class="card-body p-4">
-              <div class="d-flex justify-content-between align-items-start">
-                <h6 class="mt-3">Information</h6>
-                <div class="d-flex justify-content-between align-items-center">
-                  <i
-                    [style.display] = "editFlag ? 'none' : 'block'"
-                    (click)="editDescriptionWorker()"
-                    class="fa-regular fa-pen-to-square align-self-center"
-                    style="font-size: 30px"></i>
-                  <button
-                    [style.display] = "editFlag ? 'block' : 'none'"
-                    (click)="updateDescriptionWorker()"
-                    class="btn btn-success">Save
-                  </button>
-                </div>
-              </div>
-
+              <h6 class="mt-3">Information</h6>
               <hr class="mt-0 mb-4">
               <div class="row pt-1">
                 <div class="col-6 col-sm-6">
                   <h6>Email</h6>
-                  <p [style.display] = "editFlag ? 'none' : 'block'" class="text-muted">{{worker.email}}</p>
-                  <div [style.display] = "editFlag ? 'block' : 'none'" class="mb-3">
-                    <textarea [(ngModel)]="editEmail" maxlength="45" class="form-control" style=" height: 10px; resize: none" rows="2"></textarea>
-                  </div>
+                  <p class="text-muted">{{worker.email}}</p>
                 </div>
                 <div class="col-6 col-sm-6">
                   <h6>Phone</h6>
-                  <p [style.display] = "editFlag ? 'none' : 'block'" class="text-muted">{{worker.phone}}</p>
-                  <div [style.display] = "editFlag ? 'block' : 'none'" class="mb-3">
-                    <textarea [(ngModel)]="editPhone" maxlength="15" class="form-control" style=" height: 10px; resize: none" rows="3"></textarea>
-                  </div>
+                  <p class="text-muted">{{worker.phone}}</p>
                 </div>
                 <div class="col-6 col-sm-6">
                   <h6>Fullname</h6>
-                  <p [style.display] = "editFlag ? 'none' : 'block'" class="text-muted">{{worker.fullname}}</p>
-                  <div [style.display] = "editFlag ? 'block' : 'none'" class="mb-3">
-                    <textarea [(ngModel)]="editFullname" maxlength="30" class="form-control" style=" height: 10px; resize: none" rows="3"></textarea>
-                  </div>
+                  <p class="text-muted">{{worker.fullname}}</p>
                 </div>
-                <div [style.display]="editFlag ? 'flex' : 'block'"
-                     [style.justify-content]="editFlag ? 'center' : 'flex-start'"
-                     class="col-6 col-sm-6 pt-3">
-                  <button
-                    [style.padding-left]="editFlag ? '40px' : '20px'"
-                    [style.padding-right]="editFlag ? '40px' : '20px'"
-                    [style.height]="editFlag ? '40px' : '40px'"
-                    [style.margin-top]="editFlag ? '10px':'0px'"
-                    class="btn btn-outline-dark">Schedule</button>
+                <div class="col-6 col-sm-6 pt-3">
+                  <button class="btn btn-outline-dark">Schedule</button>
                 </div>
                 <div class="col-6 col-sm-6">
                   <button id="{{worker.id}}" (click)="deleteWorker($event)" class="btn btn-outline-warning">Delete</button>

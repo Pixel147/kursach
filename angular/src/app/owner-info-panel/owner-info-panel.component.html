@@ -9,8 +9,8 @@
                style="border-radius: .5rem;">
             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
                  alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-            <h5>{{username}}</h5>
-            <p>{{companyName}}</p>
+            <h5>{{ownerInfo.username}}</h5>
+            <p>{{ownerInfo.nameOfCompany}}</p>
           </div>
           <div class="col-xxl-8 col-xl-12 col-md-12 info-block p-0">
             <div class="card-body p-4">
@@ -19,15 +19,15 @@
               <div class="row pt-1">
                 <div class="col-6 col-sm-6">
                   <h6>Fullname</h6>
-                  <p class="text-muted">{{fullname}}</p>
+                  <p class="text-muted">{{ownerInfo.fullname}}</p>
                 </div>
                 <div class="col-6 col-sm-6">
                   <h6>Phone</h6>
-                  <p class="text-muted">{{phoneOwner}}</p>
+                  <p class="text-muted">{{ownerInfo.phone}}</p>
                 </div>
                 <div class="col-6 col-sm-6">
                   <h6>Location</h6>
-                  <p class="text-muted">{{location}}</p>
+                  <p class="text-muted">{{ownerInfo.location}}</p>
                 </div>
               </div>
             </div>
@@ -41,12 +41,12 @@
           <div class="d-flex justify-content-between align-items-center">
             <p class="m-0" style="font-size: 26px">Description</p>
             <i
-              [style.display] = "descriptionFlag ? 'none' : 'block'"
-              (click)="editDescription()"
+              [style.display] = "descriptionEditingFlag ? 'none' : 'block'"
+              (click)="clickedOnEdit()"
               class="fa-regular fa-pen-to-square align-self-center"
               style="font-size: 30px"></i>
             <button
-              [style.display] = "descriptionFlag ? 'block' : 'none'"
+              [style.display] = "descriptionEditingFlag ? 'block' : 'none'"
               (click)="updateDescription()"
               class="btn btn-success"
             >Save
@@ -54,14 +54,14 @@
           </div>
         </div>
         <div class="card-body">
-          <p [style.display] = "descriptionFlag ? 'none' : 'block'" class="card-text">{{description}}</p>
-          <div [style.display] = "descriptionFlag ? 'block' : 'none'" class="mb-3">
-            <textarea [(ngModel)]="textAreaDescriptionText" maxlength="200" class="form-control" style=" height: 170px; resize: none" rows="3"></textarea>
+          <p [style.display] = "descriptionEditingFlag ? 'none' : 'block'" class="card-text">{{ownerInfo.description}}</p>
+          <div [style.display] = "descriptionEditingFlag ? 'block' : 'none'" class="mb-3">
+            <textarea [(ngModel)]="textAreaDescriptionText" maxlength="200" class="form-control" style="height: 170px; resize: none" rows="3"></textarea>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-xxl-3 col-lg-6 pt-4">
+    <div class="col-xxl-3 col-lg-6 col-sm-6 pt-4">
       <div class="card">
         <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/>
         <div class="card-body">
@@ -71,7 +71,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xxl-3 col-lg-6 pt-4">
+    <div class="col-xxl-3 col-lg-6 col-sm-6 pt-4">
       <div class="card">
         <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/>
         <div class="card-body">
@@ -81,7 +81,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xxl-3 col-lg-6 pt-4">
+    <div class="col-xxl-3 col-lg-6 col-sm-6 pt-4">
       <div class="card">
         <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/>
         <div class="card-body">
@@ -91,7 +91,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xxl-3 col-lg-6 pt-4">
+    <div class="col-xxl-3 col-lg-6 col-sm-6 pt-4">
       <div class="card">
         <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/>
         <div class="card-body">
@@ -108,3 +108,5 @@
 
 
 <app-footer class="position-relative footer"></app-footer>
+
+

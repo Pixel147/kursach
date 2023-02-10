@@ -50,10 +50,10 @@ public class AuthController {
     public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
         User user = userService.findByLoginAndPassword(request.getUsername(), request.getPassword());
         if (user == null) {
-            return new ResponseEntity<AuthResponse>(new AuthResponse("invalid data", "invalid data"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<AuthResponse>(new AuthResponse(-1,"invalid data", "invalid data"), HttpStatus.BAD_REQUEST);
         }
         String token = jwtProvider.generateToken(user.getUsername());
-        return new ResponseEntity<AuthResponse>(new AuthResponse(user.getRole(), token), HttpStatus.OK);
+        return new ResponseEntity<AuthResponse>(new AuthResponse(user.getId(),user.getRole(), token), HttpStatus.OK);
     }
 
 
