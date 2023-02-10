@@ -70,6 +70,7 @@ export class AppComponent {
   {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    localStorage.removeItem("id");
     this.tokenFlag = false;
     this.auth.logout();
     this.router.navigate(["/login"])

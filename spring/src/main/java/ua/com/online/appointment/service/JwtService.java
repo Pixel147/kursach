@@ -21,8 +21,11 @@ public class JwtService {
     private UserRepository userRepository;
     public User getUserByToken(ServletRequest servletRequest){
         String token = jwtFilter.getTokenFromRequest((HttpServletRequest) servletRequest);
-        String username = jwtProvider.getLoginFromToken(token);
-        User user = userRepository.findByUsername(username);
-        return user;
+        if(token != null && jwtProvider.validateToken(token)){
+            String username = jwtProvider.getLoginFromToken(token);
+            User user = userRepository.findByUsername(username);
+            return user;
+        }
+        return null;
     }
 }
