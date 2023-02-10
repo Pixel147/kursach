@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { CalendarOptions } from '@fullcalendar/core';
+import {CalendarOptions} from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
-
+import interactionPlugin from '@fullcalendar/interaction';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
 
 @Component({
   selector: 'app-company-appointment',
@@ -13,14 +15,22 @@ export class CompanyAppointmentComponent {
   constructor() {
 
   }
-  public calendarOptions: CalendarOptions = {
-    plugins: [dayGridPlugin],
+  private notWorkingDays = [6,0];
+  calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
-    height: 500
+    plugins: [
+      interactionPlugin,
+      dayGridPlugin,
+      timeGridPlugin,
+      listPlugin,
+    ],
+    firstDay:1,
+    hiddenDays: this.notWorkingDays,
+    height: 500,
+    dateClick: this.handleDateClick.bind(this)
   };
+
   handleDateClick(arg:any) {
-    console.log(arg.date);
+    console.log('date click! ', arg.dateStr)
   }
-
-
 }
