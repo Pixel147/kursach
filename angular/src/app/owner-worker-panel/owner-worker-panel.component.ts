@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Worker} from "../../assets/request/worker";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
+
 @Component({
   selector: 'app-owner-worker-panel',
   templateUrl: './owner-worker-panel.component.html',
@@ -12,7 +13,7 @@ export class OwnerWorkerPanelComponent {
     this.getUsers();
   }
   repeatPassword:string = '';
-  worker: Worker = new Worker('','','','','');
+  worker: Worker = new Worker('','','','','', '');
   workers: Worker[] | any;
 
   dataValidation(): boolean {

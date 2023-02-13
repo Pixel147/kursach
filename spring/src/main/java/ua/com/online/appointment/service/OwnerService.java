@@ -55,7 +55,7 @@ public class OwnerService {
             List<User> userList = userRepository.getUsersByCompanyAndAndRole(user.getCompany(),"ROLE_WORKER");
             List<WorkerDTO>workerDTOS = new ArrayList<>();
             for (User u:userList) {
-                workerDTOS.add(new WorkerDTO(u.getId(),u.getUsername(),u.getEmail(),u.getPhone(),u.getFullname()));
+                workerDTOS.add(new WorkerDTO(u.getId(),u.getUsername(),u.getEmail(),u.getPhone(),u.getFullname(), u.getWorker().getService()));
             }
             return new ResponseEntity<>(workerDTOS,HttpStatus.OK);
         }
