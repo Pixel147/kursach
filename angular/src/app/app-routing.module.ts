@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'employee', component:EmployeeProfileComponent, canActivate:[AuthGuard]},
   {path: 'ownerInfo', component:OwnerInfoPanelComponent, canActivate:[AuthGuard]},
   {path: 'ownerWorkers', component:OwnerWorkerPanelComponent, canActivate:[AuthGuard]},
-  {path: 'company/:nameCompany', component:CompanyAppointmentComponent},
+  {path: 'company/:id', component:CompanyAppointmentComponent},
 ]
 
 @NgModule({

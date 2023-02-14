@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import ua.com.online.appointment.entity.Company;
+import ua.com.online.appointment.repository.CompanyRepository;
+import ua.com.online.appointment.response.AppointmentResponse;
 import ua.com.online.appointment.service.AppointmentService;
 import ua.com.online.appointment.service.AuthService;
 import ua.com.online.appointment.service.JwtService;
@@ -23,11 +26,10 @@ public class AppointmentController {
     private JwtService jwtService;
     @Autowired
     private AppointmentService appointmentService;
-    @GetMapping("/company/{name}")
-    private ResponseEntity getCompanyAppointment(@PathVariable String name){
-        if(name != null){
-            return appointmentService.getCompanyAppointmentInfo(name);
-        }
-        return new ResponseEntity<>("NotFound", HttpStatus.NOT_FOUND);
+    @Autowired
+    private CompanyRepository companyRepository;
+    @GetMapping("/company/{id}")
+    private ResponseEntity getCompanyAppointment(@PathVariable int id){
+        return appointmentService.getCompanyAppointmentInfo(id);
     }
 }

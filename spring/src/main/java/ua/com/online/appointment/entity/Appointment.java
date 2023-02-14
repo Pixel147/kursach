@@ -17,6 +17,7 @@ public class Appointment {
     @JoinColumn(name = "id_worker")
     private Worker worker;
     @ManyToOne
+    @JoinColumn(name = "id_client")
     private User client;
     @Column(name = "time_start")
     private LocalDateTime timeStart;

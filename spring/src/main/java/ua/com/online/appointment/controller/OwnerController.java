@@ -8,6 +8,7 @@ import ua.com.online.appointment.entity.User;
 import ua.com.online.appointment.entity.Worker;
 import ua.com.online.appointment.repository.UserRepository;
 import ua.com.online.appointment.repository.WorkerRepository;
+import ua.com.online.appointment.request.WorkerScheduleRequest;
 import ua.com.online.appointment.response.OwnerInfoResponse;
 import ua.com.online.appointment.service.OwnerService;
 
@@ -47,5 +48,9 @@ public class OwnerController {
     @PutMapping("/owner/{id}/description")
     public HttpStatus updateDescription(@PathVariable int id,@RequestBody String description, ServletRequest servletRequest){
         return ownerService.updateCompanyDescription(id,servletRequest,description);
+    }
+    @PutMapping("/owner/worker/{id}/schedule/")
+    public HttpStatus createWorkerSchedule(@PathVariable int id, ServletRequest servletRequest, @RequestBody WorkerScheduleRequest workerScheduleRequest){
+        return ownerService.saveWorkerSchedule(id,servletRequest,workerScheduleRequest);
     }
 }

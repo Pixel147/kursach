@@ -30,7 +30,4 @@ public class User {
     @OneToOne
     @JoinColumn(name = "id_worker")
     private Worker worker;
-    @OneToMany
-    @JoinColumn(name = "id_appointment")
-    private List<Appointment> appointments;
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {CalendarOptions} from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -15,18 +15,22 @@ import {CompanyAppointment} from "../../assets/request/companyAppointment";
 })
 export class CompanyAppointmentComponent {
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  }
 
-  ngOnInit(){
+  ngOnInit() {
     this.route.params.subscribe((params) => {
-      const nameCompany = params['nameCompany'];
-      this.http.get(`http://localhost:8080/company/${nameCompany}`).subscribe((data:any) => {
-        this.companyData = new CompanyAppointment(data.name);
-      });
+      const id = params['id'];
+      this.http.get(`http://localhost:8080/company/${id}`).subscribe(
+        (data: any) => {
+          this.companyData = new CompanyAppointment(data.name);
+        }
+      );
     });
   }
+
   public companyData = new CompanyAppointment("");
-  private notWorkingDays = [6,0];
+  private notWorkingDays = [6, 0];
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [
@@ -35,14 +39,15 @@ export class CompanyAppointmentComponent {
       timeGridPlugin,
       listPlugin,
     ],
-    firstDay:1,
+    firstDay: 1,
     hiddenDays: this.notWorkingDays,
     height: 500,
     dateClick: this.handleDateClick.bind(this)
   };
 
-  handleDateClick(arg:any) {
+  handleDateClick(arg: any) {
     console.log('date click! ', arg.dateStr)
   }
 }
+
 //TODO get more data(services,workers) in companyData

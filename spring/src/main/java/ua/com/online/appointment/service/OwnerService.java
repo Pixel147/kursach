@@ -7,8 +7,11 @@ import org.springframework.stereotype.Service;
 import ua.com.online.appointment.DTO.WorkerDTO;
 import ua.com.online.appointment.entity.Company;
 import ua.com.online.appointment.entity.User;
+import ua.com.online.appointment.entity.Worker;
 import ua.com.online.appointment.repository.CompanyRepository;
 import ua.com.online.appointment.repository.UserRepository;
+import ua.com.online.appointment.repository.WorkerRepository;
+import ua.com.online.appointment.request.WorkerScheduleRequest;
 import ua.com.online.appointment.response.OwnerInfoResponse;
 
 import javax.servlet.ServletRequest;
@@ -23,6 +26,9 @@ public class OwnerService {
     private UserRepository userRepository;
     @Autowired
     private CompanyRepository companyRepository;
+    @Autowired
+    private WorkerRepository workerRepository;
+
     public ResponseEntity<OwnerInfoResponse> returnOwnerInfo(int id, ServletRequest servletRequest){
         User user = jwtService.getUserByToken(servletRequest);
         OwnerInfoResponse ownerInfoResponse = new OwnerInfoResponse();
@@ -58,5 +64,29 @@ public class OwnerService {
             return new ResponseEntity<>(workerDTOS,HttpStatus.OK);
         }
         return new ResponseEntity<>(user,HttpStatus.BAD_REQUEST);
+    }
+    public HttpStatus saveWorkerSchedule(int id, ServletRequest servletRequest, WorkerScheduleRequest workerScheduleRequest)
+    {
+        User user = jwtService.getUserByToken(servletRequest);
+        if(user != null){
+            Worker worker = userRepository.findById(id).getWorker();
+            worker.setMondayStart(workerScheduleRequest.getMondayStart());
+            worker.setMondayEnd(workerScheduleRequest.getMondayEnd());
+            worker.setTuesdayStart(workerScheduleRequest.getTuesdayStart());
+            worker.setTuesdayEnd(workerScheduleRequest.getTuesdayEnd());
+            worker.setWednesdayStart(workerScheduleRequest.getWednesdayStart());
+            worker.setWednesdayEnd(workerScheduleRequest.getWednesdayEnd());
+            worker.setThursdayStart(workerScheduleRequest.getThursdayStart());
+            worker.setThursdayEnd(workerScheduleRequest.getThursdayEnd());
+            worker.setFridayStart(workerScheduleRequest.getFridayStart());
+            worker.setFridayEnd(workerScheduleRequest.getFridayEnd());
+            worker.setSaturdayStart(workerScheduleRequest.getSaturdayStart());
+            worker.setSaturdayEnd(workerScheduleRequest.getSaturdayEnd());
+            worker.setSundayStart(workerScheduleRequest.getSundayStart());
+            worker.setSundayEnd(workerScheduleRequest.getSundayEnd());
+            workerRepository.save(worker);
+            return HttpStatus.ACCEPTED;
+        }
+        return HttpStatus.BAD_REQUEST;
     }
 }
