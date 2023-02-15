@@ -25,4 +25,8 @@ public class AppointmentController {
     private ResponseEntity getWorkerByService(@PathVariable int id, @PathVariable String service){
         return appointmentService.getWorkerByCompanyAndService(id,service);
     }
+    @GetMapping("/company/{id}/worker/{username}/days")
+    private ResponseEntity getWorkerWorkDays(@PathVariable int id, @PathVariable String username){
+        return appointmentService.getWorkDaysWorkerByCompanyAndUsername(id,username);
+    }
 }
