@@ -125,3 +125,16 @@ label {
 {
   width: 130px;
 }
+
+.btn-outline-dark-days
+{
+  width: 120px!important;
+  border: 1px black solid;
+}
+
+.btn-outline-dark-days:hover
+{
+  background-color: black;
+  color: white;
+}
+

@@ -8,11 +8,11 @@
     <div class="col-xxl-12 col-lg-12">
       <div class="card mb-3 pt-4 ps-3 pe-3 pb-3" style="border-radius: .5rem;">
         <div class="row">
-          <div class="col-12">
-            <h3>Add worker</h3>
-          </div>
           <div class="col-xxl-6 col-sm-12 col-lg-12">
             <div class="row">
+              <div class="col-12">
+                <h3>Add worker</h3>
+              </div>
               <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
                 <div class="group">
                   <input [(ngModel)]="worker.username" type="text" class="input">
@@ -77,7 +77,25 @@
           <div class="col-xxl-6 col-sm-12 col-lg-12">
             <div class="row">
               <div class="col-xxl-12">
-                <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+                <div class="col-12 pb-5">
+                  <h3 class="pb-5">Work Time</h3>
+                </div>
+                <ngx-slider class="pb-5 mb-1" [style.display]="monFlag ? 'block' : 'none'" [(value)]="minValueMon" [(highValue)]="maxValueMon" [options]="options"></ngx-slider>
+                <ngx-slider class="pb-5 mb-1" [style.display]="tueFlag ? 'block' : 'none'" [(value)]="minValueTue" [(highValue)]="maxValueTue" [options]="options"></ngx-slider>
+                <ngx-slider class="pb-5 mb-1" [style.display]="wedFlag ? 'block' : 'none'" [(value)]="minValueWed" [(highValue)]="maxValueWed" [options]="options"></ngx-slider>
+                <ngx-slider class="pb-5 mb-1" [style.display]="thuFlag ? 'block' : 'none'" [(value)]="minValueThu" [(highValue)]="maxValueThu" [options]="options"></ngx-slider>
+                <ngx-slider class="pb-5 mb-1" [style.display]="friFlag ? 'block' : 'none'" [(value)]="minValueFri" [(highValue)]="maxValueFri" [options]="options"></ngx-slider>
+                <ngx-slider class="pb-5 mb-1" [style.display]="satFlag ? 'block' : 'none'" [(value)]="minValueSat" [(highValue)]="maxValueSat" [options]="options"></ngx-slider>
+                <ngx-slider class="pb-5 mb-1" [style.display]="sunFlag ? 'block' : 'none'" [(value)]="minValueSun" [(highValue)]="maxValueSun" [options]="options"></ngx-slider>
+                <div class="col-xxl-12 d-flex justify-content-between pt-5">
+                  <button (click)="MonFlag()" class="btn btn-outline-dark-days">Monday</button>
+                  <button (click)="TueFlag()" class="btn btn-outline-dark-days">Tuesday</button>
+                  <button (click)="WedFlag()" class="btn btn-outline-dark-days">Wednesday</button>
+                  <button (click)="ThuFlag()" class="btn btn-outline-dark-days">Thursday</button>
+                  <button (click)="FriFlag()" class="btn btn-outline-dark-days">Friday</button>
+                  <button (click)="SatFlag()" class="btn btn-outline-dark-days">Saturday</button>
+                  <button (click)="SunFlag()" class="btn btn-outline-dark-days">Sunday</button>
+                </div>
               </div>
             </div>
           </div>
