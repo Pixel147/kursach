@@ -11,69 +11,78 @@
           <div class="col-12">
             <h3>Add worker</h3>
           </div>
-          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4">
-            <div class="group">
-              <input [(ngModel)]="worker.username" type="text" class="input">
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Username</label>
+          <div class="col-xxl-6 col-sm-12 col-lg-12">
+            <div class="row">
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+                <div class="group">
+                  <input [(ngModel)]="worker.username" type="text" class="input">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Username</label>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+                <div class="group">
+                  <input [(ngModel)]="worker.fullname" type="text" class="input">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Full name</label>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+                <div class="group">
+                  <input [(ngModel)]="worker.email" type="text" class="input">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Email</label>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+                <div class="group">
+                  <input [(ngModel)]="worker.phone" type="text" class="input">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Phone</label>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+                <div class="group">
+                  <input [(ngModel)]="worker.password" type="password" class="input">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Password</label>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+                <div class="group">
+                  <input [(ngModel)]="repeatPassword" type="password" class="input">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Repeat password</label>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+                <div class="group">
+                  <input [(ngModel)]="worker.service" type="text" class="input">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Service</label>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4 ps-5">
+                <button (click)="createWorker()" id="btn-outline-dark-add" class="btn btn-outline-dark">Add</button>
+              </div>
             </div>
           </div>
-          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4">
-            <div class="group">
-              <input [(ngModel)]="worker.fullname" type="text" class="input">
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Full name</label>
+          <div class="col-xxl-6 col-sm-12 col-lg-12">
+            <div class="row">
+              <div class="col-xxl-12">
+                <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+              </div>
             </div>
-          </div>
-          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4">
-            <div class="group">
-              <input [(ngModel)]="worker.email" type="text" class="input">
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Email</label>
-            </div>
-          </div>
-          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4">
-            <div class="group">
-              <input [(ngModel)]="worker.phone" type="text" class="input">
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Phone</label>
-            </div>
-          </div>
-          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4">
-            <div class="group">
-              <input [(ngModel)]="worker.password" type="password" class="input">
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Password</label>
-            </div>
-          </div>
-          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4">
-            <div class="group">
-              <input [(ngModel)]="repeatPassword" type="password" class="input">
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Repeat password</label>
-            </div>
-          </div>
-          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4">
-            <div class="group">
-              <input [(ngModel)]="worker.service" type="text" class="input">
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Service</label>
-            </div>
-          </div>
-          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4 ps-5">
-            <button (click)="createWorker()" id="btn-outline-dark-add" class="btn btn-outline-dark">Add</button>
           </div>
         </div>
-        <div class="col-xxl-4 col-lg-6 col-sm-6 mt-4 ps-5">
-          <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
-        </div>
+
       </div>
     </div>
     <div class="col-12"></div>
