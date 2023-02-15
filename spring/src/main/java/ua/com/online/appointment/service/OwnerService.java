@@ -39,9 +39,9 @@ public class OwnerService {
             ownerInfoResponse.setLocation(user.getCompany().getLocation());
             ownerInfoResponse.setDescription(user.getCompany().getDescription());
             ownerInfoResponse.setUsername(user.getUsername());
-            return new ResponseEntity<OwnerInfoResponse>(ownerInfoResponse, HttpStatus.OK);
+            return new ResponseEntity<>(ownerInfoResponse, HttpStatus.OK);
         }
-        return new ResponseEntity<OwnerInfoResponse>(ownerInfoResponse, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ownerInfoResponse, HttpStatus.BAD_REQUEST);
     }
     public HttpStatus updateCompanyDescription(int id, ServletRequest servletRequest, String description){
         User user = jwtService.getUserByToken(servletRequest);
@@ -56,7 +56,7 @@ public class OwnerService {
     public ResponseEntity returnWorkersCompany(int id,ServletRequest servletRequest){
         User user = jwtService.getUserByToken(servletRequest);
         if(user != null && user.getId() == id){
-            List<User> userList = userRepository.getUsersByCompanyAndAndRole(user.getCompany(),"ROLE_WORKER");
+            List<User> userList = userRepository.getUsersByCompanyAndRole(user.getCompany(),"ROLE_WORKER");
             List<WorkerDTO>workerDTOS = new ArrayList<>();
             for (User u:userList) {
                 workerDTOS.add(new WorkerDTO(u.getId(),u.getUsername(),u.getEmail(),u.getPhone(),u.getFullname()));

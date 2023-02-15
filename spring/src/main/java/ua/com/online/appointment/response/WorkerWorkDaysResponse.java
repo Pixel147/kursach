@@ -1,13 +1,11 @@
 package ua.com.online.appointment.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
-public class WorkerWorkDays {
+public class WorkerWorkDaysResponse {
     private boolean monday;
     private boolean tuesday;
     private boolean wednesday;
@@ -15,7 +13,7 @@ public class WorkerWorkDays {
     private boolean friday;
     private boolean saturday;
     private boolean sunday;
-    public WorkerWorkDays(){
+    public WorkerWorkDaysResponse(){
         this.monday = false;
         this.tuesday = false;
         this.wednesday = false;
