@@ -1,6 +1,5 @@
 package ua.com.online.appointment.controller;
 
-import ua.com.online.appointment.config.jwt.JwtFilter;
 import ua.com.online.appointment.config.jwt.JwtProvider;
 import ua.com.online.appointment.entity.User;
 
@@ -18,7 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @RestController
@@ -50,11 +48,9 @@ public class AuthController {
     public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
         User user = userService.findByLoginAndPassword(request.getUsername(), request.getPassword());
         if (user == null) {
-            return new ResponseEntity<AuthResponse>(new AuthResponse(-1,"invalid data", "invalid data"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new AuthResponse(-1,"invalid data", "invalid data"), HttpStatus.BAD_REQUEST);
         }
         String token = jwtProvider.generateToken(user.getUsername());
-        return new ResponseEntity<AuthResponse>(new AuthResponse(user.getId(),user.getRole(), token), HttpStatus.OK);
+        return new ResponseEntity<>(new AuthResponse(user.getId(),user.getRole(), token), HttpStatus.OK);
     }
-
-
 }
