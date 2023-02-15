@@ -5,13 +5,13 @@
     <div class="col-12 ms-1">
       <h3>Workers</h3>
     </div>
-    <div class="col-xxl-5 col-lg-12">
+    <div class="col-xxl-12 col-lg-12">
       <div class="card mb-3 pt-4 ps-3 pe-3 pb-3" style="border-radius: .5rem;">
         <div class="row">
           <div class="col-12">
             <h3>Add worker</h3>
           </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4">
             <div class="group">
               <input [(ngModel)]="worker.username" type="text" class="input">
               <span class="highlight"></span>
@@ -19,7 +19,7 @@
               <label>Username</label>
             </div>
           </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4">
             <div class="group">
               <input [(ngModel)]="worker.fullname" type="text" class="input">
               <span class="highlight"></span>
@@ -27,7 +27,7 @@
               <label>Full name</label>
             </div>
           </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4">
             <div class="group">
               <input [(ngModel)]="worker.email" type="text" class="input">
               <span class="highlight"></span>
@@ -35,7 +35,7 @@
               <label>Email</label>
             </div>
           </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4">
             <div class="group">
               <input [(ngModel)]="worker.phone" type="text" class="input">
               <span class="highlight"></span>
@@ -43,7 +43,7 @@
               <label>Phone</label>
             </div>
           </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4">
             <div class="group">
               <input [(ngModel)]="worker.password" type="password" class="input">
               <span class="highlight"></span>
@@ -51,7 +51,7 @@
               <label>Password</label>
             </div>
           </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4">
             <div class="group">
               <input [(ngModel)]="repeatPassword" type="password" class="input">
               <span class="highlight"></span>
@@ -59,7 +59,7 @@
               <label>Repeat password</label>
             </div>
           </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
+          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4">
             <div class="group">
               <input [(ngModel)]="worker.service" type="text" class="input">
               <span class="highlight"></span>
@@ -67,9 +67,12 @@
               <label>Service</label>
             </div>
           </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4 ps-5">
+          <div class="col-xxl-2 col-lg-2 col-sm-2 mt-4 ps-5">
             <button (click)="createWorker()" id="btn-outline-dark-add" class="btn btn-outline-dark">Add</button>
           </div>
+        </div>
+        <div class="col-xxl-4 col-lg-6 col-sm-6 mt-4 ps-5">
+          <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
         </div>
       </div>
     </div>

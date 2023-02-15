@@ -1,14 +1,24 @@
 import {Component} from '@angular/core';
 import {Worker} from "../../assets/request/worker";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-
+import { Options } from '@angular-slider/ngx-slider';
 
 @Component({
   selector: 'app-owner-worker-panel',
   templateUrl: './owner-worker-panel.component.html',
   styleUrls: ['./owner-worker-panel.component.css']
 })
+
 export class OwnerWorkerPanelComponent {
+
+  minValue: number = 0.0;
+  maxValue: number = 23;
+  options: Options = {
+    floor: 0,
+    ceil: 23,
+    showTicksValues: true
+
+}
   constructor(private http: HttpClient) {
     this.getUsers();
   }
@@ -76,4 +86,10 @@ export class OwnerWorkerPanelComponent {
     });
   }
 }
+
+
+
+
+
+
 
