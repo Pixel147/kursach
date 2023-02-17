@@ -88,13 +88,51 @@
                 <ngx-slider class="pb-5 mb-1" [style.display]="satFlag ? 'block' : 'none'" [(value)]="minValueSat" [(highValue)]="maxValueSat" [options]="options"></ngx-slider>
                 <ngx-slider class="pb-5 mb-1" [style.display]="sunFlag ? 'block' : 'none'" [(value)]="minValueSun" [(highValue)]="maxValueSun" [options]="options"></ngx-slider>
                 <div class="col-xxl-12 d-flex justify-content-between pt-5">
-                  <button (click)="MonFlag()" class="btn btn-outline-dark-days">Monday</button>
-                  <button (click)="TueFlag()" class="btn btn-outline-dark-days">Tuesday</button>
-                  <button (click)="WedFlag()" class="btn btn-outline-dark-days">Wednesday</button>
-                  <button (click)="ThuFlag()" class="btn btn-outline-dark-days">Thursday</button>
-                  <button (click)="FriFlag()" class="btn btn-outline-dark-days">Friday</button>
-                  <button (click)="SatFlag()" class="btn btn-outline-dark-days">Saturday</button>
-                  <button (click)="SunFlag()" class="btn btn-outline-dark-days">Sunday</button>
+
+
+                  <div class="d-flex align-items-center flex-column">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="monSwitch" checked>
+                    </div>
+                    <button (click)="MonFlag()" class="btn btn-outline-dark-days">Monday</button>
+                  </div>
+                  <div class="d-flex align-items-center flex-column">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="tueSwitch" checked>
+                    </div>
+                    <button (click)="TueFlag()" class="btn btn-outline-dark-days">Tuesday</button>
+                  </div>
+                  <div class="d-flex align-items-center flex-column">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="wedSwitch" checked>
+                    </div>
+                    <button (click)="WedFlag()" class="btn btn-outline-dark-days">Wednesday</button>
+                  </div>
+                  <div class="d-flex align-items-center flex-column">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="thuSwitch" checked>
+                    </div>
+                    <button (click)="ThuFlag()" class="btn btn-outline-dark-days">Thursday</button>
+                  </div>
+                  <div class="d-flex align-items-center flex-column">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="friSwitch" checked>
+                    </div>
+                    <button (click)="FriFlag()" class="btn btn-outline-dark-days">Friday</button>
+                  </div>
+                  <div class="d-flex align-items-center flex-column">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="satSwitch">
+                    </div>
+                    <button (click)="SatFlag()" class="btn btn-outline-dark-days">Saturday</button>
+                  </div>
+                  <div class="d-flex align-items-center flex-column">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="sunSwitch">
+                    </div>
+                    <button (click)="SunFlag()" class="btn btn-outline-dark-days">Sunday</button>
+                  </div>
+
                 </div>
               </div>
             </div>
