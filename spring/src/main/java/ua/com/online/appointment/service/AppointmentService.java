@@ -9,7 +9,7 @@ import ua.com.online.appointment.entity.User;
 import ua.com.online.appointment.entity.Worker;
 import ua.com.online.appointment.repository.CompanyRepository;
 import ua.com.online.appointment.repository.UserRepository;
-import ua.com.online.appointment.response.AppointmentResponse;
+import ua.com.online.appointment.response.CompanyResponse;
 import ua.com.online.appointment.response.WorkerWorkDaysResponse;
 
 import java.util.List;
@@ -23,18 +23,16 @@ public class AppointmentService {
     @Autowired
     private UserRepository userRepository;
 
-    public ResponseEntity<AppointmentResponse> getCompanyAppointmentInfo(int id){
-        if(id >= 1){
-            Company company = companyRepository.findById(id);
-            if(company != null){
-                AppointmentResponse response = new AppointmentResponse(companyRepository.findById(id).getName());
-                return new ResponseEntity<>(response, HttpStatus.OK);
-            }
+    public ResponseEntity<CompanyResponse> getCompanyAppointmentInfo(Integer id){
+        Optional<Company> company = companyRepository.findById(id);
+        if(company.isPresent()){
+            CompanyResponse response = new CompanyResponse(company.get().getName());
+            return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    public ResponseEntity<List<String>> getCompanyServices(int id){
-        Optional<Company> optionalCompany = Optional.ofNullable(companyRepository.findById(id));
+    public ResponseEntity<List<String>> getCompanyServices(Integer id){
+        Optional<Company> optionalCompany = companyRepository.findById(id);
         if(optionalCompany.isPresent()){
             List<String>services = optionalCompany.get().getWorkers().stream()
                     .map(Worker::getService)
@@ -43,8 +41,8 @@ public class AppointmentService {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    public ResponseEntity<List<String>> getWorkerByCompanyAndService(int id, String service) {
-        Optional<Company> optionalCompany = Optional.ofNullable(companyRepository.findById(id));
+    public ResponseEntity<List<String>> getWorkerByCompanyAndService(Integer id, String service) {
+        Optional<Company> optionalCompany = companyRepository.findById(id);
         if (optionalCompany.isPresent()) {
             List<String> workerUsernames = optionalCompany.get().getWorkers().stream()
                     .filter(worker -> service.equals(worker.getService()))
@@ -54,8 +52,8 @@ public class AppointmentService {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    public ResponseEntity<WorkerWorkDaysResponse> getWorkDaysWorkerByCompanyAndUsername(int id, String username){
-        Optional<Company> optionalCompany = Optional.ofNullable(companyRepository.findById(id));
+    public ResponseEntity<WorkerWorkDaysResponse> getWorkDays(Integer id, String username){
+        Optional<Company> optionalCompany = companyRepository.findById(id);
         if (optionalCompany.isPresent()) {
             Optional<User> optionalUser = Optional.ofNullable(userRepository.findByCompanyAndUsername(optionalCompany.get(),username));
             if(optionalUser.isPresent()){

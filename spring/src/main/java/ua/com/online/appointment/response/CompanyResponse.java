@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class AppointmentResponse {
+public class CompanyResponse {
     private String name;
 }
