@@ -21,16 +21,20 @@ export class CompanyAppointmentComponent {
   ngOnInit() {
     this.route.params.subscribe((params) => {
       const id = params['id'];
+      this.id = id;
       this.http.get(`http://localhost:8080/company/${id}`).subscribe(
         (data: any) => {
           this.companyData = new CompanyAppointment(data.name);
         }
       );
+      this.getWorkerAndServices();
     });
   }
 
   public companyData = new CompanyAppointment("");
   private notWorkingDays = [6, 0];
+  id:any;
+  workerAndService:any;
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [
@@ -44,10 +48,14 @@ export class CompanyAppointmentComponent {
     height: 500,
     dateClick: this.handleDateClick.bind(this)
   };
-
   handleDateClick(arg: any) {
     console.log('date click! ', arg.dateStr)
   }
+  getWorkerAndServices(){
+    this.http.get(`http://localhost:8080/company/${this.id}/services`).subscribe(
+      (data:any) =>{
+        this.workerAndService = data;
+      }
+    )
+  }
 }
-
-//TODO get more data(services,workers) in companyData
