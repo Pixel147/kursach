@@ -128,8 +128,9 @@ label {
 
 .btn-outline-dark-days
 {
-  width: 120px!important;
+  width: 90px!important;
   border: 1px black solid;
+  font-size: 14px;
 }
 
 .btn-outline-dark-days:hover
@@ -138,3 +139,10 @@ label {
   color: white;
 }
 
+.rotate{
+  height: 700px;
+}
+
+@media (max-width: 800px) {
+
+}

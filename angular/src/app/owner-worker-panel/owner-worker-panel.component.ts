@@ -11,38 +11,48 @@ import { Options } from '@angular-slider/ngx-slider';
 
 export class OwnerWorkerPanelComponent {
 
-  minValueMon: number = 0;
-  maxValueMon: number = 23;
-  minValueTue: number = 0;
-  maxValueTue: number = 23;
-  minValueWed: number = 0;
-  maxValueWed: number = 23;
-  minValueThu: number = 0;
-  maxValueThu: number = 23;
-  minValueFri: number = 0;
-  maxValueFri: number = 23;
-  minValueSat: number = 0;
-  maxValueSat: number = 23;
-  minValueSun: number = 0;
-  maxValueSun: number = 23;
-  monFlag = true;
+  monSwitch: boolean = true; //is day off or on
+  tueSwitch: boolean = true;
+  wedSwitch: boolean = true;
+  thuSwitch: boolean = true;
+  friSwitch: boolean = true;
+  satSwitch: boolean = false;
+  sunSwitch: boolean = false;
+  minValueMon: any = 0; //day values
+  maxValueMon: any = 23;
+  minValueTue: any = 0;
+  maxValueTue: any = 23;
+  minValueWed: any = 0;
+  maxValueWed: any = 23;
+  minValueThu: any = 0;
+  maxValueThu: any = 23;
+  minValueFri: any = 0;
+  maxValueFri: any = 23;
+  minValueSat: any = 0;
+  maxValueSat: any = 23;
+  minValueSun: any = 0;
+  maxValueSun: any = 23;
+  monFlag = true; //flag for choose needed slider
   tueFlag = false;
   wedFlag = false;
   thuFlag = false
   friFlag = false;
   satFlag = false;
   sunFlag = false;
+
   options: Options = {
     floor: 0,
     ceil: 23,
-    showTicksValues: true
+    step: 1
+  };
 
-}
   constructor(private http: HttpClient) {
     this.getUsers();
   }
   repeatPassword:string = '';
-  worker: Worker = new Worker('','','','','', '');
+  worker: Worker = new Worker('','','','','', '',
+    0,23,0,23,0,23,0,
+    23,0,23,0,23,0,23);
   workers: Worker[] | any;
 
   dataValidation(): boolean {
@@ -53,8 +63,48 @@ export class OwnerWorkerPanelComponent {
       this.worker.email != '';
   }
 
+  dayValidation():boolean
+  {
+    if(!this.monSwitch)
+    {
+      this.minValueMon = null;
+      this.maxValueMon = null;
+    }
+    if(!this.tueSwitch)
+    {
+      this.minValueTue = null;
+      this.maxValueTue = null;
+    }
+    if(!this.wedSwitch)
+    {
+      this.minValueWed = null;
+      this.maxValueWed = null;
+    }
+    if(!this.thuSwitch)
+    {
+      this.minValueThu = null;
+      this.maxValueThu = null;
+    }
+    if(!this.friSwitch)
+    {
+      this.minValueFri = null;
+      this.maxValueFri = null;
+    }
+    if(!this.satSwitch)
+    {
+      this.minValueSat = null;
+      this.maxValueSat = null;
+    }
+    if(!this.sunSwitch)
+    {
+      this.minValueSun = null;
+      this.maxValueSun = null;
+    }
+    return true;
+  }
+
   createWorker() {
-    if (this.dataValidation()) {
+    if (this.dataValidation() && this.dayValidation()) {
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem("token")}`
@@ -104,6 +154,94 @@ export class OwnerWorkerPanelComponent {
       }
     });
   }
+
+
+
+  monSwitchCheck()
+  {
+    if(this.monSwitch)
+    {
+      this.monSwitch = false;
+    }
+    else
+    {
+      this.monSwitch = true;
+    }
+  }
+
+  tueSwitchCheck()
+  {
+    if(this.tueSwitch)
+    {
+      this.tueSwitch = false;
+    }
+    else
+    {
+      this.tueSwitch = true;
+    }
+  }
+
+  wedSwitchCheck()
+  {
+    if(this.wedSwitch)
+    {
+      this.wedSwitch = false;
+    }
+    else
+    {
+      this.wedSwitch = true;
+    }
+  }
+
+  thuSwitchCheck()
+  {
+    if(this.thuSwitch)
+    {
+      this.thuSwitch = false;
+    }
+    else
+    {
+      this.thuSwitch = true;
+    }
+  }
+
+  friSwitchCheck()
+  {
+    if(this.friSwitch)
+    {
+      this.friSwitch = false;
+    }
+    else
+    {
+      this.friSwitch = true;
+    }
+  }
+
+  satSwitchCheck()
+  {
+    if(this.satSwitch)
+    {
+      this.satSwitch = false;
+    }
+    else
+    {
+      this.satSwitch = true;
+    }
+  }
+
+  sunSwitchCheck()
+  {
+    if(this.sunSwitch)
+    {
+      this.sunSwitch = false;
+    }
+    else
+    {
+      this.sunSwitch = true;
+    }
+  }
+
+
 
   MonFlag()
   {

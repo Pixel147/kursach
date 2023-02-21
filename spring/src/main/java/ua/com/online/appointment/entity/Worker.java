@@ -18,5 +18,5 @@ public class Worker {
     @Column
     private int id_schedule;
     @Column
-    private String service;
+    private String service;//todo getMonStar/End
 }

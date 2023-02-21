@@ -71,6 +71,7 @@ public class AuthService {
             user.setPassword(passwordEncoder.encode(ownerRegistrationRequest.getPassword()));
             user.setFullname(ownerRegistrationRequest.getFullname());
             user.setPhone(ownerRegistrationRequest.getPhone());
+
             userRepository.save(user);
             return new ResponseEntity<>(
                     new RegistrationResponse("ok","ok","ok","ok"),

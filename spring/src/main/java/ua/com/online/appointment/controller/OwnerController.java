@@ -34,18 +34,6 @@ public class OwnerController {
         return ownerService.returnOwnerInfo(id, servletRequest);
     }
 
-
-    @GetMapping("/ownerWorkers")
-    public ResponseEntity getWorkers(ServletRequest servletRequest) {
-        User user = jwtService.getUserByToken(servletRequest);
-        List<User> userList = userRepository.getUsersByCompanyAndAndRole(user.getCompany(), "ROLE_WORKER");
-        List<WorkerDTO> workerDTOS = new ArrayList<>();
-        for (User u : userList) {
-            workerDTOS.add(new WorkerDTO(u.getId(), u.getUsername(), u.getEmail(), u.getPhone(), u.getFullname(), u.getWorker().getService()));
-        }
-        return new ResponseEntity<>(workerDTOS, HttpStatus.OK);
-    }
-
     @GetMapping("/owner/{id}/workers")
     public ResponseEntity getWorkers(@PathVariable int id, ServletRequest servletRequest) {
         return ownerService.returnWorkersCompany(id, servletRequest);
