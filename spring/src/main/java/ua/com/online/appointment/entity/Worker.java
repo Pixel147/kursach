@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Time;
+import java.time.LocalTime;
 
 @Entity
 @Data
@@ -19,31 +19,31 @@ public class Worker {
     @Column
     private String service;
     @Column
-    private Time mondayStart;
+    private LocalTime mondayStart;
     @Column
-    private Time mondayEnd;
+    private LocalTime mondayEnd;
     @Column
-    private Time tuesdayStart;
+    private LocalTime tuesdayStart;
     @Column
-    private Time tuesdayEnd;
+    private LocalTime tuesdayEnd;
     @Column
-    private Time wednesdayStart;
+    private LocalTime wednesdayStart;
     @Column
-    private Time wednesdayEnd;
+    private LocalTime wednesdayEnd;
     @Column
-    private Time thursdayStart;
+    private LocalTime thursdayStart;
     @Column
-    private Time thursdayEnd;
+    private LocalTime thursdayEnd;
     @Column
-    private Time fridayStart;
+    private LocalTime fridayStart;
     @Column
-    private Time fridayEnd;
+    private LocalTime fridayEnd;
     @Column
-    private Time saturdayStart;
+    private LocalTime saturdayStart;
     @Column
-    private Time saturdayEnd;
+    private LocalTime saturdayEnd;
     @Column
-    private Time sundayStart;
+    private LocalTime sundayStart;
     @Column
-    private Time sundayEnd;
+    private LocalTime sundayEnd;
 }

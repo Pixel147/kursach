@@ -1,23 +1,22 @@
 package ua.com.online.appointment.request;
 
 import lombok.Data;
-
-import java.sql.Time;
+import java.time.LocalTime;
 
 @Data
 public class WorkerScheduleRequest {
-    private Time mondayStart;
-    private Time mondayEnd;
-    private Time tuesdayStart;
-    private Time tuesdayEnd;
-    private Time wednesdayStart;
-    private Time wednesdayEnd;
-    private Time thursdayStart;
-    private Time thursdayEnd;
-    private Time fridayStart;
-    private Time fridayEnd;
-    private Time saturdayStart;
-    private Time saturdayEnd;
-    private Time sundayStart;
-    private Time sundayEnd;
+    private LocalTime mondayStart;
+    private LocalTime mondayEnd;
+    private LocalTime tuesdayStart;
+    private LocalTime tuesdayEnd;
+    private LocalTime wednesdayStart;
+    private LocalTime wednesdayEnd;
+    private LocalTime thursdayStart;
+    private LocalTime thursdayEnd;
+    private LocalTime fridayStart;
+    private LocalTime fridayEnd;
+    private LocalTime saturdayStart;
+    private LocalTime saturdayEnd;
+    private LocalTime sundayStart;
+    private LocalTime sundayEnd;
 }

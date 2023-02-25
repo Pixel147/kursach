@@ -1,21 +1,25 @@
 package ua.com.online.appointment.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import ua.com.online.appointment.entity.Company;
-import ua.com.online.appointment.entity.User;
-import ua.com.online.appointment.entity.Worker;
+import ua.com.online.appointment.entity.*;
+import ua.com.online.appointment.repository.AppointmentRepository;
 import ua.com.online.appointment.repository.CompanyRepository;
 import ua.com.online.appointment.repository.UserRepository;
 import ua.com.online.appointment.repository.WorkerRepository;
+import ua.com.online.appointment.request.AppointmentRequest;
 import ua.com.online.appointment.response.CompanyResponse;
 import ua.com.online.appointment.response.FreeTimeResponse;
-import ua.com.online.appointment.response.WorkerAndServiceResponse;
+import ua.com.online.appointment.response.WorkerResponse;
 import ua.com.online.appointment.response.WorkerWorkDaysResponse;
 
+import javax.servlet.ServletRequest;
 import java.sql.Date;
-import java.sql.Time;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -28,21 +32,22 @@ public class AppointmentService {
     private UserRepository userRepository;
     @Autowired
     private WorkerRepository workerRepository;
+    @Autowired
+    private JwtService jwtService;
+    @Autowired
+    private AppointmentRepository appointmentRepository;
 
-    public CompanyResponse getCompanyAppointmentInfo(Integer id){
-        Optional<Company> company = companyRepository.findById(id);
-        if(company.isPresent()){
-            return new CompanyResponse(company.get().getName());
-        }
-        return null;
+    public CompanyResponse getCompanyInfo(Integer companyId){
+        Optional<Company> company = companyRepository.findById(companyId);
+        return company.map(value -> new CompanyResponse(value.getName())).orElse(null);
     }
-    public List<WorkerAndServiceResponse> getWorkersAndServices(Integer id){
-        Optional<Company> company = companyRepository.findById(id);
+    public List<WorkerResponse> getWorkers(Integer companyId){
+        Optional<Company> company = companyRepository.findById(companyId);
         if(company.isPresent()){
-            List<WorkerAndServiceResponse> response = new ArrayList<>();
+            List<WorkerResponse> response = new ArrayList<>();
             for(Worker worker : company.get().getWorkers()){
                 User userWorker = userRepository.findByWorker(worker);
-                response.add(new WorkerAndServiceResponse(worker.getId(),userWorker.getUsername(),worker.getService()));
+                response.add(new WorkerResponse(worker.getId(),userWorker.getFullname(),worker.getService()));
             }
             return response;
         }
@@ -67,42 +72,56 @@ public class AppointmentService {
         Optional<Worker>worker = workerRepository.findById(workerId);
         if(worker.isPresent()){
             LocalDate date = day.toLocalDate();
-            String nameDayOfWeek = date.getDayOfWeek().name();
-            if(nameDayOfWeek.equals("MONDAY")){
+            DayOfWeek myDayOfWeek = date.getDayOfWeek();
+            if(myDayOfWeek == DayOfWeek.MONDAY){
                 return getFreeTimes(worker.get().getMondayStart(), worker.get().getMondayEnd());
             }
-            if(nameDayOfWeek.equals("TUESDAY")){
+            if(myDayOfWeek == DayOfWeek.TUESDAY){
                 return getFreeTimes(worker.get().getTuesdayStart(),worker.get().getTuesdayEnd());
             }
-            if(nameDayOfWeek.equals("WEDNESDAY")){
+            if(myDayOfWeek == DayOfWeek.WEDNESDAY){
                 return getFreeTimes(worker.get().getWednesdayStart(), worker.get().getWednesdayEnd());
             }
-            if(nameDayOfWeek.equals("THURSDAY")){
+            if(myDayOfWeek == DayOfWeek.THURSDAY){
                 return getFreeTimes(worker.get().getThursdayStart(),worker.get().getThursdayEnd());
             }
-            if(nameDayOfWeek.equals("FRIDAY")){
+            if(myDayOfWeek == DayOfWeek.FRIDAY){
                 return getFreeTimes(worker.get().getFridayStart(),worker.get().getFridayEnd());
             }
-            if(nameDayOfWeek.equals("SATURDAY")){
+            if(myDayOfWeek == DayOfWeek.SATURDAY){
                 return getFreeTimes(worker.get().getSaturdayStart(),worker.get().getSaturdayEnd());
             }
-            if(nameDayOfWeek.equals("SUNDAY")){
+            if(myDayOfWeek == DayOfWeek.SUNDAY){
                 return getFreeTimes(worker.get().getSundayStart(),worker.get().getSundayEnd());
             }
         }
         return null;
     }
-    public static List<FreeTimeResponse> getFreeTimes(Time start, Time end) {
+    public HttpStatus createAppointment(ServletRequest servletRequest, AppointmentRequest request){
+        User user = jwtService.getUserByToken(servletRequest);
+        Optional<Worker> worker = workerRepository.findById(request.getWorkerId());
+        if(user != null && worker.isPresent()){
+            LocalDateTime timeStart = LocalDateTime.of(request.getDate(),request.getTime());
+            LocalDateTime timEnd = LocalDateTime.of(request.getDate(),request.getTime().plusHours(1));
+            Appointment appointment = new Appointment();
+            appointment.setWorker(worker.get());
+            appointment.setService(worker.get().getService());
+            appointment.setTimeStart(timeStart);
+            appointment.setTimeEnd(timEnd);
+            appointment.setClient(user);
+            appointment.setStatus("booked");
+            appointmentRepository.save(appointment);
+            return HttpStatus.CREATED;
+        }
+        return HttpStatus.BAD_REQUEST;
+    }
+    public static List<FreeTimeResponse> getFreeTimes(LocalTime start, LocalTime end) {
         List<FreeTimeResponse> freeTimes = new ArrayList<>();
-        Time currentTime = start;
-        while (currentTime.before(end)) {
+        LocalTime currentTime = start;
+        while (currentTime.isBefore(end)) {
             freeTimes.add(new FreeTimeResponse(currentTime));
-            currentTime = addOneHour(currentTime);
+            currentTime = currentTime.plusHours(1);
         }
         return freeTimes;
-    }
-    private static Time addOneHour(Time time) {
-        long timeInMillis = time.getTime() + (60 * 60 * 1000);
-        return new Time(timeInMillis);
     }
 }

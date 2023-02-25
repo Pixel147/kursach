@@ -1,20 +1,22 @@
 package ua.com.online.appointment.service;
 
-
+import ua.com.online.appointment.config.jwt.JwtProvider;
 import ua.com.online.appointment.entity.Company;
 import ua.com.online.appointment.entity.User;
 import ua.com.online.appointment.entity.Worker;
+import ua.com.online.appointment.response.AuthResponse;
 import ua.com.online.appointment.repository.CompanyRepository;
 import ua.com.online.appointment.repository.UserRepository;
 import ua.com.online.appointment.repository.WorkerRepository;
+import ua.com.online.appointment.request.AuthRequest;
 import ua.com.online.appointment.request.OwnerRegistrationRequest;
 import ua.com.online.appointment.request.WorkerRegistrationRequest;
 import ua.com.online.appointment.response.RegistrationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.ServletRequest;
 
 @Service
 public class AuthService {
@@ -26,6 +28,12 @@ public class AuthService {
     private WorkerRepository workerRepository;
     @Autowired
     private CompanyRepository companyRepository;
+    @Autowired
+    private JwtService jwtService;
+    @Autowired
+    private JwtProvider jwtProvider;
+    @Autowired
+    private UserService userService;
     private RegistrationResponse registerOwnerValidation(OwnerRegistrationRequest ownerRegistrationRequest){
         User validationEmail = userRepository.findByEmail(ownerRegistrationRequest.getEmail());
         User validationUsername = userRepository.findByUsername(ownerRegistrationRequest.getUsername());
@@ -55,7 +63,7 @@ public class AuthService {
         }
         return null;
     }
-    public ResponseEntity<RegistrationResponse> createCompanyAndOwner(OwnerRegistrationRequest ownerRegistrationRequest){
+    public RegistrationResponse createCompanyAndOwner(OwnerRegistrationRequest ownerRegistrationRequest){
         RegistrationResponse validation = registerOwnerValidation(ownerRegistrationRequest);
         if(validation == null)
         {
@@ -72,16 +80,14 @@ public class AuthService {
             user.setFullname(ownerRegistrationRequest.getFullname());
             user.setPhone(ownerRegistrationRequest.getPhone());
             userRepository.save(user);
-            return new ResponseEntity<>(
-                    new RegistrationResponse("ok","ok","ok","ok"),
-                    HttpStatus.CREATED
-            );
+            return null;
         }
-        return new ResponseEntity<>(validation,HttpStatus.BAD_REQUEST);
+        return validation;
     }
-    public ResponseEntity<RegistrationResponse> createWorker(WorkerRegistrationRequest workerRegistrationRequest, User owner){
+    public RegistrationResponse createWorker(WorkerRegistrationRequest workerRegistrationRequest, ServletRequest servletRequest){
+        User owner = jwtService.getUserByToken(servletRequest);
         RegistrationResponse validation = registerWorkerValidation(workerRegistrationRequest);
-        if(validation == null){
+        if(owner != null && validation == null){
             Worker worker = new Worker();
             worker.setCompany(owner.getCompany());
             workerRepository.save(worker);
@@ -95,12 +101,16 @@ public class AuthService {
             user.setRole(workerRegistrationRequest.getRole());
             user.setPhone(workerRegistrationRequest.getPhone());
             userRepository.save(user);
-            return new ResponseEntity<>(
-                    new RegistrationResponse("ok","ok","ok","ok"),
-                    HttpStatus.CREATED
-            );
+            return null;
         }
-        return new ResponseEntity<>(validation,HttpStatus.BAD_REQUEST);
+        return validation;
     }
-
+    public AuthResponse login(AuthRequest request){
+        User user = userService.findByLoginAndPassword(request.getUsername(), request.getPassword());
+        if(user != null){
+            String token = jwtProvider.generateToken(user.getUsername());
+            return new AuthResponse(user.getId(),user.getRole(),token);
+        }
+        return null;
+    }
 }

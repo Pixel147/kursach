@@ -4,53 +4,49 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ua.com.online.appointment.entity.User;
-import ua.com.online.appointment.entity.Worker;
-import ua.com.online.appointment.repository.UserRepository;
-import ua.com.online.appointment.repository.WorkerRepository;
+import ua.com.online.appointment.DTO.WorkerDTO;
 import ua.com.online.appointment.request.WorkerScheduleRequest;
 import ua.com.online.appointment.response.OwnerInfoResponse;
 import ua.com.online.appointment.service.OwnerService;
 
 import javax.servlet.ServletRequest;
+import java.util.List;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
 public class OwnerController {
     @Autowired
     private OwnerService ownerService;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private WorkerRepository workerRepository;
 
-    @GetMapping("/owner/{id}")
-    public ResponseEntity<OwnerInfoResponse> getOwnerInfo(@PathVariable int id,ServletRequest servletRequest)
+    @GetMapping("/owner/{userId}")
+    public ResponseEntity<OwnerInfoResponse> getOwner(@PathVariable Integer userId,ServletRequest servletRequest)
     {
-        return ownerService.returnOwnerInfo(id,servletRequest);
-    }
-
-    @GetMapping("/owner/{id}/workers")
-    public ResponseEntity getWorkers(@PathVariable int id, ServletRequest servletRequest){
-        return ownerService.returnWorkersCompany(id,servletRequest);
-    }
-
-    @DeleteMapping("/worker{id}")
-    public void deleteWorker(@PathVariable int id){
-        User user = userRepository.findById(id);
-        if(user != null){
-            Worker worker = user.getWorker();
-            userRepository.delete(user);
-            workerRepository.delete(worker);
-            System.out.println("deleted user id = " + id);
+        OwnerInfoResponse response = ownerService.getOwnerInfo(userId,servletRequest);
+        if(response != null){
+            return new ResponseEntity<>(response,HttpStatus.OK);
         }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
-    @PutMapping("/owner/{id}/description")
-    public HttpStatus updateDescription(@PathVariable int id,@RequestBody String description, ServletRequest servletRequest){
-        return ownerService.updateCompanyDescription(id,servletRequest,description);
+
+    @GetMapping("/owner/{userId}/workers")
+    public ResponseEntity<List<WorkerDTO>> getWorkers(@PathVariable Integer userId, ServletRequest servletRequest){
+        List<WorkerDTO> response = ownerService.getWorkers(userId,servletRequest);
+        if(response != null){
+            return new ResponseEntity<>(response,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
-    @PutMapping("/owner/worker/{id}/schedule/")
-    public HttpStatus createWorkerSchedule(@PathVariable int id, ServletRequest servletRequest, @RequestBody WorkerScheduleRequest workerScheduleRequest){
-        return ownerService.saveWorkerSchedule(id,servletRequest,workerScheduleRequest);
+
+    @DeleteMapping("/worker{workerId}")
+    public HttpStatus deleteWorker(@PathVariable int workerId){
+        return ownerService.deleteWorker(workerId);
+    }
+    @PutMapping("/owner/{userId}/description")
+    public HttpStatus updateDescription(@PathVariable Integer userId,@RequestBody String description, ServletRequest servletRequest){
+        return ownerService.updateCompanyDescription(userId,servletRequest,description);
+    }
+    @PutMapping("/owner/worker/{workerId}/schedule")
+    public HttpStatus updateWorkerSchedule(@PathVariable Integer workerId, ServletRequest servletRequest, @RequestBody WorkerScheduleRequest workerScheduleRequest){
+        return ownerService.updateWorkerSchedule(workerId,servletRequest,workerScheduleRequest);
     }
 }

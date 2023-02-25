@@ -7,8 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class WorkerAndServiceResponse {
+public class WorkerResponse {
     private Integer id;
-    private String username;
+    private String fullname;
     private String service;
 }
