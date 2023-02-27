@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.ServletRequest;
+import java.time.LocalTime;
 
 @Service
 public class AuthService {
@@ -92,6 +93,8 @@ public class AuthService {
             Worker worker = new Worker();
             worker.setCompany(owner.getCompany());
             worker.setService(workerRegistrationRequest.getService());
+            worker.setMondayStart(LocalTime.of(workerRegistrationRequest.getMondayStart(),0));
+            worker.setMondayEnd(LocalTime.of(workerRegistrationRequest.getMondayEnd(),0));
             workerRepository.save(worker);
             User user = new User();
             user.setWorker(worker);
