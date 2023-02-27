@@ -125,13 +125,13 @@
 
                 </div>
 
-                <ngx-slider [style.display]="monFlag ? 'block' : 'none'" [(value)]="minValueMon" [(highValue)]="maxValueMon" [options]="options"></ngx-slider>
-                <ngx-slider [style.display]="tueFlag ? 'block' : 'none'" [(value)]="minValueTue" [(highValue)]="maxValueTue" [options]="options"></ngx-slider>
-                <ngx-slider [style.display]="wedFlag ? 'block' : 'none'" [(value)]="minValueWed" [(highValue)]="maxValueWed" [options]="options"></ngx-slider>
-                <ngx-slider [style.display]="thuFlag ? 'block' : 'none'" [(value)]="minValueThu" [(highValue)]="maxValueThu" [options]="options"></ngx-slider>
-                <ngx-slider [style.display]="friFlag ? 'block' : 'none'" [(value)]="minValueFri" [(highValue)]="maxValueFri" [options]="options"></ngx-slider>
-                <ngx-slider [style.display]="satFlag ? 'block' : 'none'" [(value)]="minValueSat" [(highValue)]="maxValueSat" [options]="options"></ngx-slider>
-                <ngx-slider [style.display]="sunFlag ? 'block' : 'none'" [(value)]="minValueSun" [(highValue)]="maxValueSun" [options]="options"></ngx-slider>
+                <ngx-slider [style.display]="monFlag ? 'block' : 'none'" [(value)]="worker.mondayStart" [(highValue)]="worker.mondayEnd" [options]="options"></ngx-slider>
+                <ngx-slider [style.display]="tueFlag ? 'block' : 'none'" [(value)]="worker.tuesdayStart" [(highValue)]="worker.tuesdayEnd" [options]="options"></ngx-slider>
+                <ngx-slider [style.display]="wedFlag ? 'block' : 'none'" [(value)]="worker.wednesdayStart" [(highValue)]="worker.wednesdayEnd" [options]="options"></ngx-slider>
+                <ngx-slider [style.display]="thuFlag ? 'block' : 'none'" [(value)]="worker.thursdayStart" [(highValue)]="worker.thursdayEnd" [options]="options"></ngx-slider>
+                <ngx-slider [style.display]="friFlag ? 'block' : 'none'" [(value)]="worker.fridayStart" [(highValue)]="worker.fridayEnd" [options]="options"></ngx-slider>
+                <ngx-slider [style.display]="satFlag ? 'block' : 'none'" [(value)]="worker.saturdayStart" [(highValue)]="worker.saturdayEnd" [options]="options"></ngx-slider>
+                <ngx-slider [style.display]="sunFlag ? 'block' : 'none'" [(value)]="worker.sundayStart" [(highValue)]="worker.sundayEnd" [options]="options"></ngx-slider>
 
               </div>
             </div>

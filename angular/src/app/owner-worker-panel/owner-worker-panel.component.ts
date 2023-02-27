@@ -18,20 +18,7 @@ export class OwnerWorkerPanelComponent {
   friSwitch: boolean = true;
   satSwitch: boolean = false;
   sunSwitch: boolean = false;
-  minValueMon: any = 0; //day values
-  maxValueMon: any = 23;
-  minValueTue: any = 0;
-  maxValueTue: any = 23;
-  minValueWed: any = 0;
-  maxValueWed: any = 23;
-  minValueThu: any = 0;
-  maxValueThu: any = 23;
-  minValueFri: any = 0;
-  maxValueFri: any = 23;
-  minValueSat: any = 0;
-  maxValueSat: any = 23;
-  minValueSun: any = 0;
-  maxValueSun: any = 23;
+
   monFlag = true; //flag for choose needed slider
   tueFlag = false;
   wedFlag = false;
@@ -67,39 +54,40 @@ export class OwnerWorkerPanelComponent {
   {
     if(!this.monSwitch)
     {
-      this.minValueMon = null;
-      this.maxValueMon = null;
+      this.worker.mondayStart = null;
+      this.worker.mondayEnd = null;
     }
     if(!this.tueSwitch)
     {
-      this.minValueTue = null;
-      this.maxValueTue = null;
+      this.worker.tuesdayStart = null;
+      this.worker.tuesdayEnd = null;
     }
     if(!this.wedSwitch)
     {
-      this.minValueWed = null;
-      this.maxValueWed = null;
+      this.worker.wednesdayStart = null;
+      this.worker.wednesdayEnd = null;
     }
     if(!this.thuSwitch)
     {
-      this.minValueThu = null;
-      this.maxValueThu = null;
+      this.worker.thursdayStart = null;
+      this.worker.thursdayEnd = null;
     }
     if(!this.friSwitch)
     {
-      this.minValueFri = null;
-      this.maxValueFri = null;
+      this.worker.fridayStart = null;
+      this.worker.fridayEnd = null;
     }
     if(!this.satSwitch)
     {
-      this.minValueSat = null;
-      this.maxValueSat = null;
+      this.worker.saturdayStart = null;
+      this.worker.saturdayEnd = null;
     }
     if(!this.sunSwitch)
     {
-      this.minValueSun = null;
-      this.maxValueSun = null;
+      this.worker.sundayStart = null;
+      this.worker.sundayEnd = null;
     }
+
     return true;
   }
 

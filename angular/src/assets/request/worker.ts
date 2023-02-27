@@ -6,20 +6,20 @@ export class Worker{
   password:string;
   role:string;
   service:string;
-  monStart: number;
-  monEnd:number;
-  tueStart: number;
-  tueEnd:number;
-  wedStart: number;
-  wedEnd:number;
-  thuStart: number;
-  thuEnd:number;
-  friStart: number;
-  friEnd:number;
-  satStart: number;
-  satEnd:number;
-  sunStart: number;
-  sunEnd:number;
+  mondayStart: any = 0;
+  mondayEnd: any = 23;
+  tuesdayStart: any = 0;
+  tuesdayEnd: any = 23;
+  wednesdayStart: any = 0;
+  wednesdayEnd: any = 23;
+  thursdayStart: any = 0;
+  thursdayEnd: any = 23;
+  fridayStart: any = 0;
+  fridayEnd: any = 23;
+  saturdayStart: any = 0;
+  saturdayEnd: any = 23;
+  sundayStart: any = 0;
+  sundayEnd: any = 23;
 
 
   constructor(name: string, email: string, phone: string, fullname: string, password: string, service: string, monStart: number, monEnd: number, tueStart: number,
@@ -33,19 +33,19 @@ export class Worker{
     this.password = password;
     this.service = service;
     this.role = "ROLE_WORKER";
-    this.monStart = monStart;
-    this.monEnd = monEnd;
-    this.tueStart = tueStart;
-    this.tueEnd = tueEnd;
-    this.wedStart = wedStart;
-    this.wedEnd = wedEnd;
-    this.thuStart = thuStart;
-    this.thuEnd = thuEnd;
-    this.friStart = friStart;
-    this.friEnd = friEnd;
-    this.satStart = satStart;
-    this.satEnd = satEnd;
-    this.sunStart = sunStart
-    this.sunEnd = sunEnd;
+    this.mondayStart = monStart;
+    this.mondayEnd = monEnd;
+    this.tuesdayStart = tueStart;
+    this.tuesdayEnd = tueEnd;
+    this.wednesdayStart = wedStart;
+    this.wednesdayEnd = wedEnd;
+    this.thursdayStart = thuStart;
+    this.thursdayEnd = thuEnd;
+    this.fridayStart = friStart;
+    this.fridayEnd = friEnd;
+    this.saturdayStart = satStart;
+    this.saturdayEnd = satEnd;
+    this.sundayStart = sunStart
+    this.sundayEnd = sunEnd;
   }
 }
