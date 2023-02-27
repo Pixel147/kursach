@@ -98,7 +98,7 @@ public class AuthService {
             user.setEmail(workerRegistrationRequest.getEmail());
             user.setPassword(passwordEncoder.encode(workerRegistrationRequest.getPassword()));
             user.setFullname(workerRegistrationRequest.getFullname());
-            user.setRole(workerRegistrationRequest.getRole());
+            user.setRole("ROLE_WORKER");
             user.setPhone(workerRegistrationRequest.getPhone());
             userRepository.save(user);
             return null;

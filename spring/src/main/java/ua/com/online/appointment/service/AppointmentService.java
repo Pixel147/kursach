@@ -1,7 +1,6 @@
 package ua.com.online.appointment.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import ua.com.online.appointment.entity.*;
 import ua.com.online.appointment.repository.AppointmentRepository;
@@ -43,15 +42,16 @@ public class AppointmentService {
     }
     public List<WorkerResponse> getWorkers(Integer companyId){
         Optional<Company> company = companyRepository.findById(companyId);
-        if(company.isPresent()){
-            List<WorkerResponse> response = new ArrayList<>();
-            for(Worker worker : company.get().getWorkers()){
-                User userWorker = userRepository.findByWorker(worker);
-                response.add(new WorkerResponse(worker.getId(),userWorker.getFullname(),worker.getService()));
-            }
-            return response;
+        if(!company.isPresent()){
+            return null;
         }
-        return null;
+        List<WorkerResponse> response = new ArrayList<>();
+        for(Worker worker : company.get().getWorkers()){
+            User userWorker = userRepository.findByWorker(worker);
+            response.add(new WorkerResponse(worker.getId(),userWorker.getFullname(),worker.getService()));
+        }
+        return response;
+
     }
     public WorkerWorkDaysResponse getWorkDays(Integer workerId){
         Optional<Worker>worker = workerRepository.findById(workerId);
@@ -97,7 +97,7 @@ public class AppointmentService {
         }
         return null;
     }
-    public HttpStatus createAppointment(ServletRequest servletRequest, AppointmentRequest request){
+    public Boolean createAppointment(ServletRequest servletRequest, AppointmentRequest request){
         User user = jwtService.getUserByToken(servletRequest);
         Optional<Worker> worker = workerRepository.findById(request.getWorkerId());
         if(user != null && worker.isPresent()){
@@ -111,9 +111,9 @@ public class AppointmentService {
             appointment.setClient(user);
             appointment.setStatus("booked");
             appointmentRepository.save(appointment);
-            return HttpStatus.CREATED;
+            return true;
         }
-        return HttpStatus.BAD_REQUEST;
+        return false;
     }
     public static List<FreeTimeResponse> getFreeTimes(LocalTime start, LocalTime end) {
         List<FreeTimeResponse> freeTimes = new ArrayList<>();

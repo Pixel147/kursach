@@ -36,9 +36,8 @@ public class OwnerController {
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
-
     @DeleteMapping("/worker{workerId}")
-    public HttpStatus deleteWorker(@PathVariable int workerId){
+    public HttpStatus deleteWorker(@PathVariable Integer workerId){
         return ownerService.deleteWorker(workerId);
     }
     @PutMapping("/owner/{userId}/description")

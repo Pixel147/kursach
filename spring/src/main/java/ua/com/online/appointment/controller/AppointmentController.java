@@ -54,6 +54,10 @@ public class AppointmentController {
     }
     @PostMapping("/register/appointment")
     private HttpStatus createAppointment(ServletRequest servletRequest, @RequestBody AppointmentRequest request){
-        return appointmentService.createAppointment(servletRequest,request);
+        Boolean check = appointmentService.createAppointment(servletRequest,request);
+        if(!check){
+            return HttpStatus.BAD_REQUEST;
+        }
+        return HttpStatus.CREATED;
     }
 }
