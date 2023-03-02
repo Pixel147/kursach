@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {CalendarOptions} from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -18,11 +18,9 @@ import {AppointmentRegisterRequest} from "../../assets/request/AppointmentRegist
 export class CompanyAppointmentComponent {
   // @ts-ignore
   @ViewChild('calendar') calendarComponent: FullCalendarComponent ;
-  // @ts-ignore
-  @ViewChild('selectedTime') selectedTime: ElementRef;
+
   constructor(private route: ActivatedRoute, private http: HttpClient) {
   }
-
   ngOnInit() {
     this.route.params.subscribe((params) => {
       const id = params['id'];
@@ -38,7 +36,14 @@ export class CompanyAppointmentComponent {
 
   id:any;
   selectedWorkerId:any;
-  workerAndService:any;
+  workers:any;
+  // @ts-ignore
+  selectedWorker:Appointment = {
+    fullname:'',
+    service:'',
+    date:'',
+    time:''
+  };
   workDays:any;
   workerFreeTime:any;
   registerAppData:AppointmentRegisterRequest = new AppointmentRegisterRequest('',0,'');
@@ -60,34 +65,45 @@ export class CompanyAppointmentComponent {
   };
   handleDateClick(arg: any) {
     this.registerAppData.setDate(arg.dateStr);
+    this.selectedWorker.date = arg.dateStr;
     this.http.get(`http://localhost:8080/worker/${this.selectedWorkerId}/day/${arg.dateStr}`).subscribe(
       (data:any) =>{
         this.workerFreeTime = data;
       }
     );
   }
-  openWindowRegister(){
-    this.registerAppData.setWorkerId(this.selectedWorkerId);
-    this.registerAppData.setTime(this.selectedTime.nativeElement.textContent);
+  selectTime(event:any){
+    this.registerAppData.setTime(event.target.innerHTML);
+    this.selectedWorker.time = event.target.innerHTML;
   }
   getWorkerAndServices(){
     this.http.get(`http://localhost:8080/company/${this.id}/workers`).subscribe(
       (data:any) =>{
-        this.workerAndService = data;
+        this.workers = data;
       }
     )
   }
   getWorkDaysWorker(event: any){
     const workerId = event.target.id;
     this.selectedWorkerId = event.target.id;
+    this.setSelectedWorkerById(event.target.id);
+    this.registerAppData.setWorkerId(event.target.id);
     this.http.get(`http://localhost:8080/worker/${workerId}/workdays`).subscribe(
       (data:any)=>{
         this.workDays = data;
-        this.setNotWorkingDays(this.workDays);
+        this.setNotWorkingDays();
       }
     );
   }
-  setNotWorkingDays(workDays:any){
+  setSelectedWorkerById(id:number){
+    for(let i = 0; i < this.workers.length; i++){
+      if(this.workers[i].id == id){
+        this.selectedWorker.fullname = this.workers[i].fullname;
+        this.selectedWorker.service = this.workers[i].service;
+      }
+    }
+  }
+  setNotWorkingDays(){
     this.notWorkingDays = [];
     if(this.workDays.monday == "false"){
       this.notWorkingDays.push(1);

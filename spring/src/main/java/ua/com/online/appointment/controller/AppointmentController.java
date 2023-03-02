@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ua.com.online.appointment.repository.AppointmentRepository;
+import ua.com.online.appointment.repository.WorkerRepository;
 import ua.com.online.appointment.request.AppointmentRequest;
 import ua.com.online.appointment.response.CompanyResponse;
 import ua.com.online.appointment.response.FreeTimeResponse;
@@ -20,6 +22,7 @@ import java.util.List;
 public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
+
     @GetMapping("/company/{companyId}")
     private ResponseEntity<CompanyResponse> getCompany(@PathVariable Integer companyId){
         CompanyResponse companyResponse = appointmentService.getCompanyInfo(companyId);
