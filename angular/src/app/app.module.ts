@@ -16,6 +16,8 @@ import { OwnerInfoPanelComponent } from './owner-info-panel/owner-info-panel.com
 import {OwnerWorkerPanelComponent} from "./owner-worker-panel/owner-worker-panel.component";
 import {FormsModule} from "@angular/forms";
 import { OwnerMenuComponent } from './owner-menu/owner-menu.component';
+import {CompanyAppointmentComponent} from "./company-appointment/company-appointment.component";
+import {FullCalendarModule} from "@fullcalendar/angular";
 
 @NgModule({
   declarations: [
@@ -28,15 +30,17 @@ import { OwnerMenuComponent } from './owner-menu/owner-menu.component';
     EmployeeProfileComponent,
     OwnerInfoPanelComponent,
     OwnerWorkerPanelComponent,
-    OwnerMenuComponent
+    OwnerMenuComponent,
+    CompanyAppointmentComponent
   ],
     imports: [
-        BrowserModule,
-        NgbModule,
-        RouterOutlet,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule
+      BrowserModule,
+      NgbModule,
+      RouterOutlet,
+      AppRoutingModule,
+      HttpClientModule,
+      FormsModule,
+      FullCalendarModule
     ],
   providers: [],
   bootstrap: [AppComponent]

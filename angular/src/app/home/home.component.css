@@ -1,4 +1,4 @@
-.main::before
+ .main::before
 {
   content: url("src/assets/images/home-page/main-banner-left.png");
   position: absolute;
