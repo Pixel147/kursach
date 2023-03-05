@@ -102,6 +102,7 @@ public class AppointmentService {
         Optional<Worker> worker = workerRepository.findById(request.getWorkerId());
         if(user != null && worker.isPresent()){
             LocalDateTime timeStart = LocalDateTime.of(request.getDate(),request.getTime());
+            System.out.println(LocalDateTime.of(request.getDate(),request.getTime()));
             LocalDateTime timEnd = LocalDateTime.of(request.getDate(),request.getTime().plusHours(1));
             Appointment appointment = new Appointment();
             appointment.setWorker(worker.get());
