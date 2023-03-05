@@ -18,6 +18,7 @@ import {FormsModule} from "@angular/forms";
 import { OwnerMenuComponent } from './owner-menu/owner-menu.component';
 import {CompanyAppointmentComponent} from "./company-appointment/company-appointment.component";
 import {FullCalendarModule} from "@fullcalendar/angular";
+import {NgxSliderModule} from "@angular-slider/ngx-slider";
 
 @NgModule({
   declarations: [
@@ -34,13 +35,14 @@ import {FullCalendarModule} from "@fullcalendar/angular";
     CompanyAppointmentComponent
   ],
     imports: [
-      BrowserModule,
-      NgbModule,
-      RouterOutlet,
-      AppRoutingModule,
-      HttpClientModule,
-      FormsModule,
-      FullCalendarModule
+        BrowserModule,
+        NgbModule,
+        RouterOutlet,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        FullCalendarModule,
+        NgxSliderModule
     ],
   providers: [],
   bootstrap: [AppComponent]

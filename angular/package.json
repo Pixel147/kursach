@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.0.5",
+    "@angular-slider/ngx-slider": "^2.0.4",
     "@angular/cli": "~15.0.5",
     "@angular/compiler-cli": "^15.0.0",
     "@angular/localize": "^15.0.0",

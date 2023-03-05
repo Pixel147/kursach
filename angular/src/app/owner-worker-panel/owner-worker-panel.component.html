@@ -2,65 +2,139 @@
 
 <div class="container-fluid min-vh-100">
   <div class="row p-5">
-    <div class="col-12 ms-1">
-      <h3>Workers</h3>
-    </div>
-    <div class="col-xxl-5 col-lg-12">
+    <div class="col-xxl-12 col-lg-12">
       <div class="card mb-3 pt-4 ps-3 pe-3 pb-3" style="border-radius: .5rem;">
-        <div class="row">
-          <div class="col-12">
-            <h3>Add worker</h3>
-          </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
-            <div class="group">
-              <input [(ngModel)]="worker.username" required="" type="text" class="input">
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Username</label>
+        <div class="row pt-5">
+          <div class="col-xxl-6 col-sm-12 col-lg-12 pb-5">
+            <div class="row">
+              <div class="col-12">
+                <h3 class="text-center pb-5">Add worker</h3>
+              </div>
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4 d-flex justify-content-center">
+                <div class="group">
+                  <input [(ngModel)]="worker.username" type="text" class="input">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Username</label>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4 d-flex justify-content-center">
+                <div class="group">
+                  <input [(ngModel)]="worker.fullname" type="text" class="input">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Full name</label>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4 d-flex justify-content-center">
+                <div class="group">
+                  <input [(ngModel)]="worker.email" type="text" class="input">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Email</label>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4 d-flex justify-content-center">
+                <div class="group">
+                  <input [(ngModel)]="worker.phone" type="text" class="input">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Phone</label>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4 d-flex justify-content-center">
+                <div class="group">
+                  <input [(ngModel)]="worker.password" type="password" class="input">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Password</label>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4 d-flex justify-content-center">
+                <div class="group">
+                  <input [(ngModel)]="repeatPassword" type="password" class="input">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Repeat password</label>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4 d-flex justify-content-center">
+                <div class="group">
+                  <input [(ngModel)]="worker.service" type="text" class="input">
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                  <label>Service</label>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4 d-flex justify-content-center">
+                <button (click)="createWorker()" id="btn-outline-dark-add" class="btn btn-outline-dark">Add</button>
+              </div>
             </div>
           </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
-            <div class="group">
-              <input [(ngModel)]="worker.fullname" required="" type="text" class="input">
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Full name</label>
+          <div class="col-xxl-6 col-sm-12 col-lg-12 pb-5">
+            <div class="row">
+              <div class="col-xxl-12">
+                <div class="col-12 pb-5">
+                  <h3 class="pb-5 text-center">Work Time</h3>
+                </div>
+
+                <div class="col-xxl-12 d-flex flex-wrap justify-content-between pb-5 pe-2">
+
+                  <div class="d-flex align-items-center flex-column col-xxl-1 col-lg-1 col-sm-4 col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="monSwitch" (click)="monSwitchCheck()" checked>
+                    </div>
+                    <button (click)="MonFlag()" class="btn btn-outline-dark-days">Mon</button>
+                  </div>
+                  <div class="d-flex align-items-center flex-column col-xxl-1 col-lg-1 col-sm-4 col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="tueSwitch" (click)="tueSwitchCheck()" checked>
+                    </div>
+                    <button (click)="TueFlag()" class="btn btn-outline-dark-days">Tue</button>
+                  </div>
+                  <div class="d-flex align-items-center flex-column col-xxl-1 col-lg-1 col-sm-4 col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="wedSwitch" (click)="wedSwitchCheck()" checked>
+                    </div>
+                    <button (click)="WedFlag()" class="btn btn-outline-dark-days">Wed</button>
+                  </div>
+                  <div class="d-flex align-items-center flex-column col-xxl-1 col-lg-1 col-sm-4 col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="thuSwitch" (click)="thuSwitchCheck()" checked>
+                    </div>
+                    <button (click)="ThuFlag()" class="btn btn-outline-dark-days">Thu</button>
+                  </div>
+                  <div class="d-flex align-items-center flex-column col-xxl-1 col-lg-1 col-sm-4 col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="friSwitch" (click)="friSwitchCheck()" checked>
+                    </div>
+                    <button (click)="FriFlag()" class="btn btn-outline-dark-days">Friday</button>
+                  </div>
+                  <div class="d-flex align-items-center flex-column col-xxl-1 col-lg-1 col-sm-4 col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="satSwitch"  (click)="satSwitchCheck()">
+                    </div>
+                    <button (click)="SatFlag()" class="btn btn-outline-dark-days">Sat</button>
+                  </div>
+                  <div class="d-flex align-items-center flex-column col-xxl-1 col-lg-1 col-sm-4 col-md-4">
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="sunSwitch" (click)="sunSwitchCheck()">
+                    </div>
+                    <button (click)="SunFlag()" class="btn btn-outline-dark-days">Sun</button>
+                  </div>
+
+                </div>
+
+                <ngx-slider [style.display]="monFlag ? 'block' : 'none'" [(value)]="worker.mondayStart" [(highValue)]="worker.mondayEnd" [options]="options"></ngx-slider>
+                <ngx-slider [style.display]="tueFlag ? 'block' : 'none'" [(value)]="worker.tuesdayStart" [(highValue)]="worker.tuesdayEnd" [options]="options"></ngx-slider>
+                <ngx-slider [style.display]="wedFlag ? 'block' : 'none'" [(value)]="worker.wednesdayStart" [(highValue)]="worker.wednesdayEnd" [options]="options"></ngx-slider>
+                <ngx-slider [style.display]="thuFlag ? 'block' : 'none'" [(value)]="worker.thursdayStart" [(highValue)]="worker.thursdayEnd" [options]="options"></ngx-slider>
+                <ngx-slider [style.display]="friFlag ? 'block' : 'none'" [(value)]="worker.fridayStart" [(highValue)]="worker.fridayEnd" [options]="options"></ngx-slider>
+                <ngx-slider [style.display]="satFlag ? 'block' : 'none'" [(value)]="worker.saturdayStart" [(highValue)]="worker.saturdayEnd" [options]="options"></ngx-slider>
+                <ngx-slider [style.display]="sunFlag ? 'block' : 'none'" [(value)]="worker.sundayStart" [(highValue)]="worker.sundayEnd" [options]="options"></ngx-slider>
+
+              </div>
             </div>
-          </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
-            <div class="group">
-              <input [(ngModel)]="worker.email" required="" type="text" class="input">
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Email</label>
-            </div>
-          </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
-            <div class="group">
-              <input [(ngModel)]="worker.phone" required="" type="text" class="input">
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Phone</label>
-            </div>
-          </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
-            <div class="group">
-              <input [(ngModel)]="worker.password" required="" type="password" class="input">
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Password</label>
-            </div>
-          </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
-            <div class="group">
-              <input [(ngModel)]="repeatPassword" required="" type="password" class="input">
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Repeat password</label>
-            </div>
-          </div>
-          <div class="col-xxl-6 col-lg-6 col-sm-6 mt-4">
-            <button (click)="createWorker()" class="btn btn-outline-dark">Add</button>
           </div>
         </div>
       </div>
@@ -75,20 +149,25 @@
             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
                  alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
             <h5>{{worker.username}}</h5>
-            <p>Service name</p>
+            <p>{{worker.service}}</p>
           </div>
           <div class="col-xxl-8 col-xl-6 col-md-8 col-sm-12">
             <div class="card-body p-4">
-              <h6 class="mt-3">Information</h6>
+              <div class="d-flex justify-content-between align-items-start">
+                <h6 class="mt-3">Information</h6>
+              </div>
+
               <hr class="mt-0 mb-4">
               <div class="row pt-1">
                 <div class="col-6 col-sm-6">
                   <h6>Email</h6>
                   <p class="text-muted">{{worker.email}}</p>
+
                 </div>
                 <div class="col-6 col-sm-6">
                   <h6>Phone</h6>
                   <p class="text-muted">{{worker.phone}}</p>
+
                 </div>
                 <div class="col-6 col-sm-6">
                   <h6>Fullname</h6>

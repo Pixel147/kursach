@@ -11,4 +11,6 @@ public class WorkerDTO {
     private String email;
     private String phone;
     private String fullname;
+
+    private String service;
 }

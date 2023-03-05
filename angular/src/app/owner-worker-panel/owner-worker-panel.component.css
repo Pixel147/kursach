@@ -120,3 +120,29 @@ label {
     background: transparent;
   }
 }
+
+#btn-outline-dark-add
+{
+  width: 130px;
+}
+
+.btn-outline-dark-days
+{
+  width: 90px!important;
+  border: 1px black solid;
+  font-size: 14px;
+}
+
+.btn-outline-dark-days:hover
+{
+  background-color: black;
+  color: white;
+}
+
+.rotate{
+  height: 700px;
+}
+
+@media (max-width: 800px) {
+
+}

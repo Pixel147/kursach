@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.ServletRequest;
+import java.time.LocalTime;
 
 @Service
 public class AuthService {
@@ -79,6 +80,7 @@ public class AuthService {
             user.setPassword(passwordEncoder.encode(ownerRegistrationRequest.getPassword()));
             user.setFullname(ownerRegistrationRequest.getFullname());
             user.setPhone(ownerRegistrationRequest.getPhone());
+
             userRepository.save(user);
             return null;
         }
@@ -90,6 +92,29 @@ public class AuthService {
         if(owner != null && validation == null){
             Worker worker = new Worker();
             worker.setCompany(owner.getCompany());
+            worker.setService(workerRegistrationRequest.getService());
+
+            worker.setMondayStart(LocalTime.of(workerRegistrationRequest.getMondayStart(),0));
+            worker.setMondayEnd(LocalTime.of(workerRegistrationRequest.getMondayEnd(),0));
+
+            worker.setTuesdayStart(LocalTime.of(workerRegistrationRequest.getTuesdayStart(),0));
+            worker.setTuesdayEnd(LocalTime.of(workerRegistrationRequest.getTuesdayEnd(),0));
+
+            worker.setWednesdayStart(LocalTime.of(workerRegistrationRequest.getWednesdayStart(),0));
+            worker.setWednesdayEnd(LocalTime.of(workerRegistrationRequest.getWednesdayEnd(),0));
+
+            worker.setThursdayStart(LocalTime.of(workerRegistrationRequest.getThursdayStart(),0));
+            worker.setThursdayEnd(LocalTime.of(workerRegistrationRequest.getThursdayEnd(),0));
+
+            worker.setFridayStart(LocalTime.of(workerRegistrationRequest.getFridayStart(),0));
+            worker.setFridayEnd(LocalTime.of(workerRegistrationRequest.getFridayEnd(),0));
+
+            worker.setSaturdayStart(LocalTime.of(workerRegistrationRequest.getSaturdayStart(),0));
+            worker.setSaturdayEnd(LocalTime.of(workerRegistrationRequest.getSaturdayEnd(),0));
+
+            worker.setSundayStart(LocalTime.of(workerRegistrationRequest.getSundayStart(),0));
+            worker.setSundayEnd(LocalTime.of(workerRegistrationRequest.getSundayEnd(),0));
+
             workerRepository.save(worker);
             User user = new User();
             user.setWorker(worker);
