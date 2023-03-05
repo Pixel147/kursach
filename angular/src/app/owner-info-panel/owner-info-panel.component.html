@@ -61,46 +61,23 @@
         </div>
       </div>
     </div>
-    <div class="col-xxl-3 col-lg-6 col-sm-6 pt-4">
-      <div class="card">
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/>
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Button</a>
+
+    <div class="d-flex justify-content-center align-items-center">
+
+      <div class="d-flex justify-content-center align-items-center calendar-cover">
+        <div class="card col-xxl-11 col-9 col-lg-11 col-sm-9 p-5 m-5 pt-2 calendar">
+          <div class="card-body pt-4 d-flex align-items-center flex-column">
+            <h2>Meetings</h2>
+            <hr style="color: black; height: 2px; width: 145px; margin-top: 5px">
+            <div  *ngFor="let worker of workers, let appointment of Appointment" style="width: 100%;">
+              <p>{{worker.username}}, {{appointment.data}}, {{appointment.time}}, {{worker.service}}</p>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
-    <div class="col-xxl-3 col-lg-6 col-sm-6 pt-4">
-      <div class="card">
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/>
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Button</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-xxl-3 col-lg-6 col-sm-6 pt-4">
-      <div class="card">
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/>
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Button</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-xxl-3 col-lg-6 col-sm-6 pt-4">
-      <div class="card">
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/>
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Button</a>
-        </div>
-      </div>
-    </div>
+
   </div>
 </div>
 

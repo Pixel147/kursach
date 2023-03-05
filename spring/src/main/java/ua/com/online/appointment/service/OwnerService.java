@@ -4,13 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import ua.com.online.appointment.DTO.WorkerDTO;
+import ua.com.online.appointment.entity.Appointment;
 import ua.com.online.appointment.entity.Company;
 import ua.com.online.appointment.entity.User;
 import ua.com.online.appointment.entity.Worker;
+import ua.com.online.appointment.repository.AppointmentRepository;
 import ua.com.online.appointment.repository.CompanyRepository;
 import ua.com.online.appointment.repository.UserRepository;
 import ua.com.online.appointment.repository.WorkerRepository;
 import ua.com.online.appointment.request.WorkerScheduleRequest;
+import ua.com.online.appointment.response.AppointmentOwnerResponse;
 import ua.com.online.appointment.response.OwnerInfoResponse;
 
 import javax.servlet.ServletRequest;
@@ -29,6 +32,8 @@ public class OwnerService {
     private CompanyRepository companyRepository;
     @Autowired
     private WorkerRepository workerRepository;
+    @Autowired
+    private AppointmentRepository appointmentRepository;
 
     public OwnerInfoResponse getOwnerInfo(Integer userId, ServletRequest servletRequest){
         User user = jwtService.getUserByToken(servletRequest);
@@ -99,5 +104,30 @@ public class OwnerService {
             return HttpStatus.OK;
         }
         return HttpStatus.BAD_REQUEST;
+    }
+
+    public List<AppointmentOwnerResponse> getAppointments(ServletRequest servletRequest)
+    {
+        User user = jwtService.getUserByToken(servletRequest);
+        if(user == null)
+        {
+            return null;
+        }
+        List<AppointmentOwnerResponse> appointmentOwnerResponse = new ArrayList<>();
+        List<Appointment> appointments = appointmentRepository.getAppointmentsByClientAndStatus(user, "booked");
+        if(appointments != null)
+        {
+            for (Appointment app: appointments) {
+
+                appointmentOwnerResponse.add(new AppointmentOwnerResponse(
+                        app.getWorker().getCompany().getName(),
+                        userRepository.findByWorker(app.getWorker()).getFullname(),
+                        app.getService(),
+                        userRepository.findByWorker(app.getWorker()).getPhone(),
+                        app.getTimeStart()
+                ));
+            }
+        }
+        return appointmentOwnerResponse;
     }
 }

@@ -20,3 +20,23 @@
 {
   z-index: 1;
 }
+
+.calendar-cover
+{
+  padding-right: 7px;
+  width: 97%;
+}
+
+.calendar
+{
+  height: 290px;
+}
+
+
+@media (max-width: 990px) {
+  .calendar-cover
+  {
+    padding-right: 7px;
+    width: 100%;
+  }
+}
