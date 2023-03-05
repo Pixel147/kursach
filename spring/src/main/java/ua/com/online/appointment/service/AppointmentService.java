@@ -55,66 +55,82 @@ public class AppointmentService {
     }
     public WorkerWorkDaysResponse getWorkDays(Integer workerId){
         Optional<Worker>worker = workerRepository.findById(workerId);
-        if(worker.isPresent()){
-            WorkerWorkDaysResponse workDays = new WorkerWorkDaysResponse();
-            workDays.setMonday(worker.get().getMondayStart() != null);
-            workDays.setTuesday(worker.get().getTuesdayStart() != null);
-            workDays.setWednesday(worker.get().getWednesdayStart() != null);
-            workDays.setThursday(worker.get().getThursdayStart() != null);
-            workDays.setFriday(worker.get().getFridayStart() != null);
-            workDays.setSaturday(worker.get().getSaturdayStart() != null);
-            workDays.setSunday(worker.get().getSundayStart()!=null);
-            return workDays;
+        if(!worker.isPresent()){
+            return null;
         }
-        return null;
+        WorkerWorkDaysResponse workDays = new WorkerWorkDaysResponse();
+        workDays.setMonday(worker.get().getMondayStart() != null);
+        workDays.setTuesday(worker.get().getTuesdayStart() != null);
+        workDays.setWednesday(worker.get().getWednesdayStart() != null);
+        workDays.setThursday(worker.get().getThursdayStart() != null);
+        workDays.setFriday(worker.get().getFridayStart() != null);
+        workDays.setSaturday(worker.get().getSaturdayStart() != null);
+        workDays.setSunday(worker.get().getSundayStart()!=null);
+        return workDays;
     }
     public List<FreeTimeResponse> getFreeTimeByDay(Integer workerId, Date day){
         Optional<Worker>worker = workerRepository.findById(workerId);
-        if(worker.isPresent()){
-            LocalDate date = day.toLocalDate();
-            DayOfWeek myDayOfWeek = date.getDayOfWeek();
-            if(myDayOfWeek == DayOfWeek.MONDAY){
-                return getFreeTimes(worker.get().getMondayStart(), worker.get().getMondayEnd());
-            }
-            if(myDayOfWeek == DayOfWeek.TUESDAY){
-                return getFreeTimes(worker.get().getTuesdayStart(),worker.get().getTuesdayEnd());
-            }
-            if(myDayOfWeek == DayOfWeek.WEDNESDAY){
-                return getFreeTimes(worker.get().getWednesdayStart(), worker.get().getWednesdayEnd());
-            }
-            if(myDayOfWeek == DayOfWeek.THURSDAY){
-                return getFreeTimes(worker.get().getThursdayStart(),worker.get().getThursdayEnd());
-            }
-            if(myDayOfWeek == DayOfWeek.FRIDAY){
-                return getFreeTimes(worker.get().getFridayStart(),worker.get().getFridayEnd());
-            }
-            if(myDayOfWeek == DayOfWeek.SATURDAY){
-                return getFreeTimes(worker.get().getSaturdayStart(),worker.get().getSaturdayEnd());
-            }
-            if(myDayOfWeek == DayOfWeek.SUNDAY){
-                return getFreeTimes(worker.get().getSundayStart(),worker.get().getSundayEnd());
-            }
+        if(!worker.isPresent()){
+            return null;
         }
-        return null;
+        LocalDate date = day.toLocalDate();
+        DayOfWeek myDayOfWeek = date.getDayOfWeek();
+        List<FreeTimeResponse> response = new ArrayList<>();
+        if(myDayOfWeek == DayOfWeek.MONDAY){
+            response = getFreeTimes(worker.get().getMondayStart(), worker.get().getMondayEnd());
+        }
+        if(myDayOfWeek == DayOfWeek.TUESDAY){
+            response = getFreeTimes(worker.get().getTuesdayStart(),worker.get().getTuesdayEnd());
+        }
+        if(myDayOfWeek == DayOfWeek.WEDNESDAY){
+            response = getFreeTimes(worker.get().getWednesdayStart(), worker.get().getWednesdayEnd());
+        }
+        if(myDayOfWeek == DayOfWeek.THURSDAY){
+            response = getFreeTimes(worker.get().getThursdayStart(),worker.get().getThursdayEnd());
+        }
+        if(myDayOfWeek == DayOfWeek.FRIDAY){
+            response = getFreeTimes(worker.get().getFridayStart(),worker.get().getFridayEnd());
+        }
+        if(myDayOfWeek == DayOfWeek.SATURDAY){
+            response = getFreeTimes(worker.get().getSaturdayStart(),worker.get().getSaturdayEnd());
+        }
+        if(myDayOfWeek == DayOfWeek.SUNDAY){
+            response = getFreeTimes(worker.get().getSundayStart(),worker.get().getSundayEnd());
+        }
+        response = deleteExcitingTime(response, date, worker.get());
+        return response;
     }
     public Boolean createAppointment(ServletRequest servletRequest, AppointmentRequest request){
         User user = jwtService.getUserByToken(servletRequest);
         Optional<Worker> worker = workerRepository.findById(request.getWorkerId());
-        if(user != null && worker.isPresent()){
-            LocalDateTime timeStart = LocalDateTime.of(request.getDate(),request.getTime());
-            System.out.println(LocalDateTime.of(request.getDate(),request.getTime()));
-            LocalDateTime timEnd = LocalDateTime.of(request.getDate(),request.getTime().plusHours(1));
-            Appointment appointment = new Appointment();
-            appointment.setWorker(worker.get());
-            appointment.setService(worker.get().getService());
-            appointment.setTimeStart(timeStart);
-            appointment.setTimeEnd(timEnd);
-            appointment.setClient(user);
-            appointment.setStatus("booked");
-            appointmentRepository.save(appointment);
-            return true;
+        if(!worker.isPresent() && user == null){
+            return false;
         }
-        return false;
+        LocalDateTime timeStart = LocalDateTime.of(request.getDate(),request.getTime());
+        LocalDateTime timEnd = LocalDateTime.of(request.getDate(),request.getTime().plusHours(1));
+        Appointment appointment = new Appointment();
+        appointment.setWorker(worker.get());
+        appointment.setService(worker.get().getService());
+        appointment.setTimeStart(timeStart);
+        appointment.setTimeEnd(timEnd);
+        appointment.setClient(user);
+        appointment.setStatus("booked");
+        appointmentRepository.save(appointment);
+        return true;
+    }
+    public List<FreeTimeResponse> deleteExcitingTime(List<FreeTimeResponse>response, LocalDate date, Worker worker){
+        List<Appointment> excitingAppointments = appointmentRepository.getAppointmentsByWorkerAndTimeStartBetween(
+                worker,
+                LocalDateTime.of(date, LocalTime.MIN),
+                LocalDateTime.of(date,LocalTime.MAX));
+        for(int i = 0; i < response.size(); i++){
+            for(Appointment exAp : excitingAppointments){
+                if(response.get(i).getTime() == exAp.getTimeStart().toLocalTime()){
+                    response.remove(i);
+                }
+            }
+        }
+        return response;
     }
     public static List<FreeTimeResponse> getFreeTimes(LocalTime start, LocalTime end) {
         List<FreeTimeResponse> freeTimes = new ArrayList<>();

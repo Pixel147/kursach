@@ -1,7 +1,7 @@
 export class AppointmentRegisterRequest{
-  private time:string = '';
-  private workerId:number = 0;
-  private date:string = ''
+  public time:string = '';
+  public workerId:number = 0;
+  public date:string = ''
   constructor(time:any,workerId:any,date:any) {
     this.time = time;
     this.workerId = workerId;
