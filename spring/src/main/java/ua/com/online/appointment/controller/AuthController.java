@@ -1,6 +1,7 @@
 package ua.com.online.appointment.controller;
 
 import ua.com.online.appointment.request.AuthRequest;
+import ua.com.online.appointment.request.ClientRegistrationRequest;
 import ua.com.online.appointment.request.OwnerRegistrationRequest;
 import ua.com.online.appointment.request.WorkerRegistrationRequest;
 import ua.com.online.appointment.response.AuthResponse;
@@ -31,6 +32,14 @@ public class AuthController {
     @PostMapping("/register/worker")
     public ResponseEntity<RegistrationResponse> registerWorker(@RequestBody @Valid WorkerRegistrationRequest workerRegistrationRequest, ServletRequest servletRequest) {
         RegistrationResponse response = authService.createWorker(workerRegistrationRequest,servletRequest);
+        if(response == null){
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+    }
+    @PostMapping("/register/client")
+    public ResponseEntity<RegistrationResponse> registerClient(@RequestBody ClientRegistrationRequest request){
+        RegistrationResponse response = authService.createClient(request);
         if(response == null){
             return new ResponseEntity<>(HttpStatus.CREATED);
         }

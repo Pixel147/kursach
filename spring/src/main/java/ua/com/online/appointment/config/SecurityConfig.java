@@ -18,7 +18,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JwtFilter jwtFilter;
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -28,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/admin/*").hasRole("ADMIN")
-                .antMatchers("/client/*").hasRole("USER")
+                .antMatchers("/client/*/").hasRole("CLIENT")
                 .antMatchers("/employee/*").hasRole("USER")
                 .antMatchers("/register", "/login").permitAll()
                 .and()
