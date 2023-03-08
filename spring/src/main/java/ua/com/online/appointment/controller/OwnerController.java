@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.com.online.appointment.DTO.WorkerDTO;
 import ua.com.online.appointment.request.WorkerScheduleRequest;
+import ua.com.online.appointment.response.AppointmentOwnerResponse;
 import ua.com.online.appointment.response.OwnerInfoResponse;
 import ua.com.online.appointment.service.OwnerService;
 
@@ -49,5 +50,13 @@ public class OwnerController {
         return ownerService.updateWorkerSchedule(workerId,servletRequest,workerScheduleRequest);
     }
 
-//  @GetMapping("/")
+    @GetMapping("/owner/appointments")
+    public ResponseEntity <List<AppointmentOwnerResponse>> getAppointments(ServletRequest servletRequest)
+    {
+        List<AppointmentOwnerResponse> response = ownerService.getAppointments(servletRequest);
+        if(response != null){
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
 }
