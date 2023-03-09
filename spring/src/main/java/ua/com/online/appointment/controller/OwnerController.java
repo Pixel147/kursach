@@ -8,9 +8,11 @@ import ua.com.online.appointment.DTO.WorkerDTO;
 import ua.com.online.appointment.request.WorkerScheduleRequest;
 import ua.com.online.appointment.response.AppointmentOwnerResponse;
 import ua.com.online.appointment.response.OwnerInfoResponse;
+import ua.com.online.appointment.response.OwnerScheduleResponse;
 import ua.com.online.appointment.service.OwnerService;
 
 import javax.servlet.ServletRequest;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -58,5 +60,11 @@ public class OwnerController {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("owner/appointments/{day}")
+    public ResponseEntity <List<OwnerScheduleResponse>> getAppointmentsByDay(ServletRequest servletRequest, @PathVariable Date date){
+        List<OwnerScheduleResponse> response = ownerService.getAppointmentsByDay(servletRequest);
+
     }
 }

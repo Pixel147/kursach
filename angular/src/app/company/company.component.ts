@@ -11,11 +11,11 @@ import {FullCalendarComponent} from "@fullcalendar/angular";
 import {AppointmentRegisterRequest} from "../../assets/request/AppointmentRegisterRequest";
 
 @Component({
-  selector: 'app-company-appointment',
-  templateUrl: './company-appointment.component.html',
-  styleUrls: ['./company-appointment.component.css']
+  selector: 'app-company',
+  templateUrl: './company.component.html',
+  styleUrls: ['./company.component.css']
 })
-export class CompanyAppointmentComponent {
+export class CompanyComponent {
   // @ts-ignore
   @ViewChild('calendar') calendarComponent: FullCalendarComponent ;
 
@@ -61,7 +61,7 @@ export class CompanyAppointmentComponent {
     firstDay: 1,
     hiddenDays: this.notWorkingDays,
     height: 500,
-    dateClick: this.handleDateClick.bind(this)
+    dateClick: this.handleDateClick.bind(this)//todo in owner schedule
   };
   handleDateClick(arg: any) {
     this.registerAppData.setDate(arg.dateStr);

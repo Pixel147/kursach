@@ -15,12 +15,11 @@ import ua.com.online.appointment.repository.WorkerRepository;
 import ua.com.online.appointment.request.WorkerScheduleRequest;
 import ua.com.online.appointment.response.AppointmentOwnerResponse;
 import ua.com.online.appointment.response.OwnerInfoResponse;
+import ua.com.online.appointment.response.OwnerScheduleResponse;
 
 import javax.servlet.ServletRequest;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.util.*;
 
 @Service
 public class OwnerService {
@@ -129,5 +128,36 @@ public class OwnerService {
             }
         }
         return appointmentOwnerResponse;
+    }
+
+    public List<OwnerScheduleResponse> getAppointmentsByDay(ServletRequest servletRequest, LocalDate day)
+    {
+        User user = jwtService.getUserByToken(servletRequest);
+        if(user == null)
+        {
+            return null;
+        }
+
+        List<OwnerScheduleResponse> ownerScheduleResponse = new ArrayList<>();
+        List<Worker> workers = user.getCompany().getWorkers();
+        if(workers == null)
+        {
+            return null;
+        }
+
+        for (int i = 0; i < workers.size(); i++)
+        {
+            List<Appointment> appointments = appointmentRepository.getAppointmentsByTimeStartAndWorkerAndStatus(workers.get(i), day ,"booked");
+            for (Appointment app: appointments) {
+                ownerScheduleResponse.add(new OwnerScheduleResponse(
+                        app.getWorker().getCompany().getName(),
+                        userRepository.findByWorker(app.getWorker()).getFullname(),
+                        app.getService(),
+                        userRepository.findByWorker(app.getWorker()).getPhone(),
+                        app.getTimeStart(), app.getClient().getFullname(), app.getClient().getPhone()
+                ));
+            }
+        }
+        return ownerScheduleResponse;
     }
 }

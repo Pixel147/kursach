@@ -16,9 +16,10 @@ import { OwnerInfoPanelComponent } from './owner-info-panel/owner-info-panel.com
 import {OwnerWorkerPanelComponent} from "./owner-worker-panel/owner-worker-panel.component";
 import {FormsModule} from "@angular/forms";
 import { OwnerMenuComponent } from './owner-menu/owner-menu.component';
-import {CompanyAppointmentComponent} from "./company-appointment/company-appointment.component";
+import {CompanyComponent} from "./company/company.component";
 import {FullCalendarModule} from "@fullcalendar/angular";
 import {NgxSliderModule} from "@angular-slider/ngx-slider";
+import { OwnerScheduleComponent } from './owner-schedule/owner-schedule.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {NgxSliderModule} from "@angular-slider/ngx-slider";
     OwnerInfoPanelComponent,
     OwnerWorkerPanelComponent,
     OwnerMenuComponent,
-    CompanyAppointmentComponent,
+    CompanyComponent,
+    OwnerScheduleComponent,
   ],
     imports: [
         BrowserModule,

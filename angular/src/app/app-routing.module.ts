@@ -7,8 +7,9 @@ import {ClientProfileComponent} from "./client-profile/client-profile.component"
 import {EmployeeProfileComponent} from "./employee-profile/employee-profile.component";
 import {OwnerInfoPanelComponent} from "./owner-info-panel/owner-info-panel.component";
 import {OwnerWorkerPanelComponent} from "./owner-worker-panel/owner-worker-panel.component";
-import {CompanyAppointmentComponent} from "./company-appointment/company-appointment.component";
+import {CompanyComponent} from "./company/company.component";
 import {AuthGuard} from "./auth/auth.guard";
+import {OwnerScheduleComponent} from "./owner-schedule/owner-schedule.component";
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'employee', component:EmployeeProfileComponent, canActivate:[AuthGuard]},
   {path: 'ownerInfo', component:OwnerInfoPanelComponent, canActivate:[AuthGuard]},
   {path: 'ownerWorkers', component:OwnerWorkerPanelComponent, canActivate:[AuthGuard]},
-  {path: 'company/:id', component:CompanyAppointmentComponent},
+  {path: 'company/:id', component:CompanyComponent},
+  {path: 'owner-schedule', component:OwnerScheduleComponent},
 ]
 
 @NgModule({

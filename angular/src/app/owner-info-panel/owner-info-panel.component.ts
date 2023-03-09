@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {HttpHeaders} from "@angular/common/http";
 import {ownerInfo} from "../../assets/request/ownerInfo";
 import {Worker} from "../../assets/request/worker";
-import {an, co} from "@fullcalendar/core/internal-common";
+
 
 
 @Component({
@@ -25,6 +25,7 @@ export class OwnerInfoPanelComponent {
     0,23,0,23,0,23,0,
     23,0,23,0,23,0,23);
   workers: Worker[] | any;
+  // @ts-ignore
   appointment: Appointment[] | any;
   clickedOnEdit():void{
     this.textAreaDescriptionText = this.ownerInfo.description;
