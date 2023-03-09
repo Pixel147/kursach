@@ -4,6 +4,7 @@ import ua.com.online.appointment.config.jwt.JwtProvider;
 import ua.com.online.appointment.entity.Company;
 import ua.com.online.appointment.entity.User;
 import ua.com.online.appointment.entity.Worker;
+import ua.com.online.appointment.request.ClientRegistrationRequest;
 import ua.com.online.appointment.response.AuthResponse;
 import ua.com.online.appointment.repository.CompanyRepository;
 import ua.com.online.appointment.repository.UserRepository;
@@ -64,6 +65,20 @@ public class AuthService {
         }
         return null;
     }
+    private RegistrationResponse registerClientValidation(ClientRegistrationRequest request){
+        User validationUsername = userRepository.findByUsername(request.getUsername());
+        User validationEmail = userRepository.findByEmail(request.getEmail());
+        User validationPhone = userRepository.findByPhone(request.getPhone());
+        if(validationEmail != null || validationUsername != null || validationPhone != null){
+            return new RegistrationResponse(
+                    validationUsername != null ? "validation.username.found" : "ok",
+                    validationEmail != null ? "validation.email.found" : "ok",
+                    "ok",
+                    validationPhone != null ? "validation.phone.found" : "ok"
+            );
+        }
+        return null;
+    }
     public RegistrationResponse createCompanyAndOwner(OwnerRegistrationRequest ownerRegistrationRequest){
         RegistrationResponse validation = registerOwnerValidation(ownerRegistrationRequest);
         if(validation == null)
@@ -80,7 +95,6 @@ public class AuthService {
             user.setPassword(passwordEncoder.encode(ownerRegistrationRequest.getPassword()));
             user.setFullname(ownerRegistrationRequest.getFullname());
             user.setPhone(ownerRegistrationRequest.getPhone());
-
             userRepository.save(user);
             return null;
         }
@@ -129,6 +143,21 @@ public class AuthService {
             return null;
         }
         return validation;
+    }
+    public RegistrationResponse createClient(ClientRegistrationRequest request){
+        RegistrationResponse validation = registerClientValidation(request);
+        if(validation != null){
+            return validation;
+        }
+        User user = new User();
+        user.setUsername(request.getUsername());
+        user.setEmail(request.getEmail());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setPhone(request.getPhone());
+        user.setFullname(request.getFullname());
+        user.setRole("ROLE_CLIENT");
+        userRepository.save(user);
+        return null;
     }
     public AuthResponse login(AuthRequest request){
         User user = userService.findByLoginAndPassword(request.getUsername(), request.getPassword());

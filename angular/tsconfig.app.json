@@ -8,8 +8,7 @@
     ]
   },
   "files": [
-    "src/main.ts",
-    "src/assets/request/AppointmentData.ts"
+    "src/main.ts"
   ],
   "include": [
     "src/**/*.d.ts"

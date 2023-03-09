@@ -32,7 +32,7 @@ import {NgxSliderModule} from "@angular-slider/ngx-slider";
     OwnerInfoPanelComponent,
     OwnerWorkerPanelComponent,
     OwnerMenuComponent,
-    CompanyAppointmentComponent
+    CompanyAppointmentComponent,
   ],
     imports: [
         BrowserModule,

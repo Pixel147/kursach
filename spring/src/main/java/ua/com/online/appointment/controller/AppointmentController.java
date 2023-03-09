@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ua.com.online.appointment.repository.AppointmentRepository;
-import ua.com.online.appointment.repository.WorkerRepository;
 import ua.com.online.appointment.request.AppointmentRequest;
 import ua.com.online.appointment.response.CompanyResponse;
 import ua.com.online.appointment.response.FreeTimeResponse;
@@ -18,7 +16,7 @@ import java.sql.Date;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;

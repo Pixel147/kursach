@@ -16,13 +16,12 @@ export class RegisterComponent {
   companyFlag = false;
   fullnameFlag = false;
   locationFlag = false;
+
   nicknameClient = '';
   nicknameOwner = '';
-
   emailClient = '';
   emailOwner = '';
   passClient = '';
-  passEmployee = '';
   passOwner = '';
   repPassClient = '';
   repPassOwner = '';
@@ -297,25 +296,31 @@ export class RegisterComponent {
   createUser()
   {
     const headers = {'My-Custom-Header': 'foobar'};
-    console.log(this.type);
-
     if(this.type == "ROLE_CLIENT")
     {
-      const user = {"username":this.nicknameClient,"email":this.emailClient,"password":this.passClient, "role":this.type,
+      const user = {"username":this.nicknameClient,"email":this.emailClient,"password":this.passClient,
         "fullname": this.fullNameClient, "phone":this.phoneClient};
       return this.http.post('http://localhost:8080/register/client', user, {headers:headers}).subscribe({
         next:(data: any) => {
           this.router.navigate(["/login"]);
         },
         error:(error : any) => {
-          console.log(error);
+          if(error.error.usernameMessage == "validation.username.found"){
+            this.usernameFlag = true;
+          }
+          if(error.error.phoneMessage == "validation.phone.found"){
+            this.phoneFlag = true;
+          }
+          if(error.error.emailMessage == "validation.email.found")
+          {
+            this.emailFlag = true;
+          }
         }
       });
     }
     else if(this.type == "ROLE_OWNER")
     {
-
-      const user = {"username":this.nicknameOwner,"email":this.emailOwner,"password":this.passOwner, "role":this.type,
+      const user = {"username":this.nicknameOwner,"email":this.emailOwner,"password":this.passOwner,
       "fullname": this.fullNameOwner, "company_name":this.companyName, "location":this.location, "phone":this.phoneOwner};
       return this.http.post('http://localhost:8080/register/owner', user, {headers:headers}).subscribe({
         next:(data: any) => {
@@ -339,9 +344,6 @@ export class RegisterComponent {
         }
       });
     }
-
     return null;
-
   }
-
 }
