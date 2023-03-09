@@ -1,4 +1,4 @@
-export class ClientAppointment{
+export class UserAppointment {
   id:number;
   companyName:string;
   workerFullName:string;

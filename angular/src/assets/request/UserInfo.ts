@@ -1,4 +1,4 @@
-export class ClientInfo{
+export class UserInfo {
   username:string;
   phone:string;
   fullname: string;

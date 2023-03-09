@@ -6,7 +6,6 @@ import ua.com.online.appointment.entity.Appointment;
 import ua.com.online.appointment.entity.User;
 import ua.com.online.appointment.repository.AppointmentRepository;
 import ua.com.online.appointment.repository.UserRepository;
-import ua.com.online.appointment.repository.WorkerRepository;
 import ua.com.online.appointment.response.UserAppointmentResponse;
 import ua.com.online.appointment.response.UserInfoResponse;
 
@@ -14,18 +13,17 @@ import javax.servlet.ServletRequest;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class ClientService {
-    @Autowired
-    private AppointmentRepository appointmentRepository;
+public class WorkerService {
     @Autowired
     private JwtService jwtService;
     @Autowired
+    private AppointmentRepository appointmentRepository;
+    @Autowired
     private UserRepository userRepository;
 
-    public UserInfoResponse getUser(ServletRequest servletRequest){
+    public UserInfoResponse getWorkerInfo(ServletRequest servletRequest){
         User user = jwtService.getUserByToken(servletRequest);
         if(user == null){
             return null;
@@ -37,7 +35,6 @@ public class ClientService {
         response.setPhone(user.getPhone());
         return response;
     }
-
     public List<UserAppointmentResponse> getAppointments(ServletRequest servletRequest){
         User user = jwtService.getUserByToken(servletRequest);
         if(user == null){
@@ -59,12 +56,5 @@ public class ClientService {
             }
         }
         return response;
-    }
-    public void deleteAppointment(Integer idAppointment,ServletRequest servletRequest){
-        User user = jwtService.getUserByToken(servletRequest);
-        if(user != null && idAppointment != null){
-            Optional<Appointment> appointment = appointmentRepository.findById(idAppointment);
-            appointmentRepository.delete(appointment.get());
-        }
     }
 }

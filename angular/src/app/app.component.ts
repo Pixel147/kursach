@@ -51,7 +51,7 @@ export class AppComponent {
         {
           this.router.navigate(["/client"]);
         }
-        else if(this.role == "ROLE_EMPLOYEE")
+        else if(this.role == "ROLE_WORKER")
         {
           this.router.navigate(["/employee"]);
         }
@@ -59,10 +59,10 @@ export class AppComponent {
         {
           this.router.navigate(["/ownerInfo"]);
         }
-        else
+/*        else
         {
           this.router.navigate(["/admin"]);
-        }
+        }*/
     }
 
 

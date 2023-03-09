@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ua.com.online.appointment.response.AppointmentClientResponse;
-import ua.com.online.appointment.response.ClientResponse;
+import ua.com.online.appointment.response.UserAppointmentResponse;
+import ua.com.online.appointment.response.UserInfoResponse;
 import ua.com.online.appointment.service.ClientService;
 
 import javax.servlet.ServletRequest;
@@ -18,16 +18,16 @@ public class ClientController {
     private ClientService clientService;
 
     @GetMapping("/client")
-    public ResponseEntity<ClientResponse> getClient(ServletRequest servletRequest){
-        ClientResponse response = clientService.getUser(servletRequest);
+    public ResponseEntity<UserInfoResponse> getClient(ServletRequest servletRequest){
+        UserInfoResponse response = clientService.getUser(servletRequest);
         if(response == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
     @GetMapping("/client/appointment")
-    public ResponseEntity getAppointments(ServletRequest servletRequest){
-        List<AppointmentClientResponse> response = clientService.getAppointments(servletRequest);
+    public ResponseEntity getClientAppointments(ServletRequest servletRequest){
+        List<UserAppointmentResponse> response = clientService.getAppointments(servletRequest);
         if(response == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

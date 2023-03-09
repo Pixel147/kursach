@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Data
-public class AppointmentClientResponse {
+public class UserAppointmentResponse {
     private int id;
     private String companyName;
     private String workerFullName;

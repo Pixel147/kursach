@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
-import {ClientInfo} from "../../assets/request/ClientInfo";
-import {ClientAppointment} from "../../assets/request/ClientAppointment";
+import {UserInfo} from "../../assets/request/UserInfo";
+import {UserAppointment} from "../../assets/request/UserAppointment";
 
 @Component({
   selector: 'app-client-profile',
@@ -10,16 +10,16 @@ import {ClientAppointment} from "../../assets/request/ClientAppointment";
   styleUrls: ['./client-profile.component.css']
 })
 export class ClientProfileComponent {
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  constructor(private http: HttpClient) {
   }
   ngOnInit() {
     this.getClientAppointments();
     this.getClientInfo();
   }
 
-  clientData:ClientInfo = new ClientInfo('','','','') ;
-  clientAppointments:ClientAppointment | any = null;
-  appointmentsFlag: boolean | undefined;
+  clientData:UserInfo = new UserInfo('','','','') ;
+  clientAppointments:UserAppointment | any = null;
+  appointmentsFlag: any;
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${localStorage.getItem("token")}`
