@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UserInfo} from "../../assets/request/UserInfo";
 import {UserAppointment} from "../../assets/request/UserAppointment";
 import {Calendar, CalendarOptions} from '@fullcalendar/core'
 import timeGridPlugin from '@fullcalendar/timegrid'
+import {FullCalendarComponent} from "@fullcalendar/angular";
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-employee-profile',
@@ -11,15 +13,25 @@ import timeGridPlugin from '@fullcalendar/timegrid'
   styleUrls: ['./employee-profile.component.css']
 })
 export class EmployeeProfileComponent {
-  constructor(private http: HttpClient) {}
+  // @ts-ignore
+  @ViewChild('calendar') calendarComponent: FullCalendarComponent;
+  constructor(private http: HttpClient) {
+
+  }
+  workerInfo:UserInfo  | any =  new UserInfo('','','','');
+  workerAppointments:UserAppointment | any = new UserAppointment(
+    0,'','','','','',''
+  );
   ngOnInit() {
     this.getWorkerInfo();
     this.getAppointments();
   }
-  workerInfo:UserInfo =  new UserInfo('','','','');
-  workerAppointments:UserAppointment | any = new UserAppointment(
-    0,'','','','','',''
-  );
+  ngAfterViewInit(){
+    const calendarApi = this.calendarComponent.getApi();
+    const datePipe = new DatePipe('en-US');
+    const unformatedDate = new Date(calendarApi.getDate().toJSON());
+    const formatedDate = datePipe.transform(unformatedDate, 'yyyy-MM-dd');
+  }
   appointmentsFlag: any;
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -31,9 +43,9 @@ export class EmployeeProfileComponent {
     firstDay: 1,
     height: 800,
     headerToolbar: {
-      left: 'prev,next',
       center: 'title',
-      right: 'timeGridWeek,timeGridDay'
+      left:'',
+      right:''
     },
     eventTimeFormat: {
       hour: '2-digit',
@@ -45,7 +57,7 @@ export class EmployeeProfileComponent {
         id:'1',
         title: 'simple event',
         description:'text',
-        start: '2023-03-08T15:00'
+        start: '2023-03-10T15:00'
       }
     ],
     eventClick: function(info) {
@@ -68,5 +80,21 @@ export class EmployeeProfileComponent {
         this.appointmentsFlag = this.workerAppointments != null;
       }
     )
+  }
+  prevWeek(){
+    const calendarApi = this.calendarComponent.getApi();
+    calendarApi.prev();
+    const datePipe = new DatePipe('en-US');
+    const unformatedDate = new Date(calendarApi.getDate().toJSON());
+    const formatedDate = datePipe.transform(unformatedDate, 'yyyy-MM-dd');
+    console.log(formatedDate);
+  }
+  nextWeek(){
+    const calendarApi = this.calendarComponent.getApi();
+    calendarApi.next();
+    const datePipe = new DatePipe('en-US');
+    const unformatedDate = new Date(calendarApi.getDate().toJSON());
+    const formatedDate = datePipe.transform(unformatedDate, 'yyyy-MM-dd');
+    console.log(formatedDate);
   }
 }
