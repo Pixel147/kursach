@@ -12,7 +12,7 @@ import ua.com.online.appointment.response.OwnerScheduleResponse;
 import ua.com.online.appointment.service.OwnerService;
 
 import javax.servlet.ServletRequest;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @RestController
@@ -64,7 +64,7 @@ public class OwnerController {
 
     @GetMapping("owner/appointments/{day}")
     public ResponseEntity <List<OwnerScheduleResponse>> getAppointmentsByDay(ServletRequest servletRequest, @PathVariable Date date){
-        List<OwnerScheduleResponse> response = ownerService.getAppointmentsByDay(servletRequest);
+        List<OwnerScheduleResponse> response = ownerService.getAppointmentsByDay(servletRequest, date.toLocalDate());
 
     }
 }
