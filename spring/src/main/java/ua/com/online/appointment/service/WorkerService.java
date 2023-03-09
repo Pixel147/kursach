@@ -4,12 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.com.online.appointment.entity.Appointment;
 import ua.com.online.appointment.entity.User;
+import ua.com.online.appointment.entity.Worker;
 import ua.com.online.appointment.repository.AppointmentRepository;
 import ua.com.online.appointment.repository.UserRepository;
 import ua.com.online.appointment.response.UserAppointmentResponse;
 import ua.com.online.appointment.response.UserInfoResponse;
+import ua.com.online.appointment.response.WorkerJobAppointments;
 
 import javax.servlet.ServletRequest;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,5 +59,15 @@ public class WorkerService {
             }
         }
         return response;
+    }
+    public List<WorkerJobAppointments> getJobAppointments(ServletRequest servletRequest, LocalDate date){
+        User user = jwtService.getUserByToken(servletRequest);
+        if(user == null){
+            return null;
+        }
+        List<WorkerJobAppointments> response = new ArrayList<>();
+        Worker worker = user.getWorker();
+
+        return null;
     }
 }

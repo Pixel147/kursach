@@ -5,12 +5,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import ua.com.online.appointment.response.UserAppointmentResponse;
 import ua.com.online.appointment.response.UserInfoResponse;
+import ua.com.online.appointment.response.WorkerJobAppointments;
 import ua.com.online.appointment.service.WorkerService;
 
 import javax.servlet.ServletRequest;
+import java.sql.Date;
 import java.util.List;
 
 @RestController
@@ -39,4 +42,10 @@ public class WorkerController {
         }
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
+
+    @GetMapping("/worker/company/appointment/{day}")
+    public ResponseEntity<WorkerJobAppointments> getJobAppointments(ServletRequest servletRequest, @PathVariable Date day){
+        return null;
+    }
+
 }

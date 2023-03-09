@@ -64,7 +64,11 @@
 <div class="container-fluid pt-5 pb-5">
   <h1 class="text-center">Job Appointments</h1>
   <div class="container">
-    <full-calendar [options]="calendarOptions"></full-calendar>
+    <div class="d-flex justify-content-between pb-2">
+      <button (click)="prevWeek()" class="btn btn-outline-primary">prev</button>
+      <button (click)="nextWeek()" class="btn btn-outline-primary">next</button>
+    </div>
+    <full-calendar id="calendar" #calendar [options]="calendarOptions"></full-calendar>
   </div>
 </div>
 
