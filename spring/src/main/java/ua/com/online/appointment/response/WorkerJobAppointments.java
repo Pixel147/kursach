@@ -8,6 +8,8 @@ public class WorkerJobAppointments {
     private String clientName;
     private String clientPhone;
     private String dateStart;
+    private String timeStart;
     private String dateEnd;
+    private String timeEnd;
     private String service;
 }

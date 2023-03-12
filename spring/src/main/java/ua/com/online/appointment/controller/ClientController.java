@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.com.online.appointment.response.UserAppointmentResponse;
-import ua.com.online.appointment.response.UserInfoResponse;
+import ua.com.online.appointment.response.ClientInfoResponse;
 import ua.com.online.appointment.service.ClientService;
 
 import javax.servlet.ServletRequest;
@@ -18,15 +18,15 @@ public class ClientController {
     private ClientService clientService;
 
     @GetMapping("/client")
-    public ResponseEntity<UserInfoResponse> getClient(ServletRequest servletRequest){
-        UserInfoResponse response = clientService.getUser(servletRequest);
+    public ResponseEntity<ClientInfoResponse> getClient(ServletRequest servletRequest){
+        ClientInfoResponse response = clientService.getUser(servletRequest);
         if(response == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
     @GetMapping("/client/appointment")
-    public ResponseEntity getClientAppointments(ServletRequest servletRequest){
+    public ResponseEntity<List<UserAppointmentResponse>> getClientAppointments(ServletRequest servletRequest){
         List<UserAppointmentResponse> response = clientService.getAppointments(servletRequest);
         if(response == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
