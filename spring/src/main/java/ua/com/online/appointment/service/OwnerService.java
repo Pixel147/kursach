@@ -34,6 +34,7 @@ public class OwnerService {
         User user = jwtService.getUserByToken(servletRequest);
         OwnerInfoResponse ownerInfoResponse = new OwnerInfoResponse();
         if(user != null && Objects.equals(user.getId(), userId)){
+            //TODO: как переписать метод чтоб он проверял и сразу возвращал для неудачной проверки?
             ownerInfoResponse.setFullname(user.getFullname());
             ownerInfoResponse.setPhone(user.getPhone());
             ownerInfoResponse.setCompanyName(user.getCompany().getName());
