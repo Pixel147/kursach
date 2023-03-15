@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Worker} from "../../assets/request/worker";
+import {Worker} from "../../assets/response-and-request/worker";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Options } from '@angular-slider/ngx-slider';
 

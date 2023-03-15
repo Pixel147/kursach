@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,6 +17,8 @@ public class Worker {
     @JoinColumn(name = "id_company")
     @JsonBackReference
     private Company company;
+    @OneToMany
+    private List<Appointment> appointments;
     @Column
     private String service;
     @Column

@@ -6,9 +6,8 @@ import ua.com.online.appointment.entity.Appointment;
 import ua.com.online.appointment.entity.User;
 import ua.com.online.appointment.repository.AppointmentRepository;
 import ua.com.online.appointment.repository.UserRepository;
-import ua.com.online.appointment.repository.WorkerRepository;
 import ua.com.online.appointment.response.UserAppointmentResponse;
-import ua.com.online.appointment.response.UserInfoResponse;
+import ua.com.online.appointment.response.ClientInfoResponse;
 
 import javax.servlet.ServletRequest;
 import java.time.format.DateTimeFormatter;
@@ -25,12 +24,12 @@ public class ClientService {
     @Autowired
     private UserRepository userRepository;
 
-    public UserInfoResponse getUser(ServletRequest servletRequest){
+    public ClientInfoResponse getUser(ServletRequest servletRequest){
         User user = jwtService.getUserByToken(servletRequest);
         if(user == null){
             return null;
         }
-        UserInfoResponse response = new UserInfoResponse();
+        ClientInfoResponse response = new ClientInfoResponse();
         response.setUsername(user.getUsername());
         response.setFullname(user.getFullname());
         response.setEmail(user.getEmail());
