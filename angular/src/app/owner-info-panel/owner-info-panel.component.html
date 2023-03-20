@@ -63,25 +63,36 @@
     </div>
 
     <div class="d-flex justify-content-center align-items-center">
-
       <div class="d-flex justify-content-center align-items-center calendar-cover">
-        <div class="card col-xxl-11 col-9 col-lg-11 col-sm-9 p-5 m-5 pt-2 calendar">
-          <div class="card-body pt-4 d-flex align-items-center flex-column">
-            <h2>Meetings</h2>
-            <hr style="color: black; height: 2px; width: 145px; margin-top: 5px">
-            <div  *ngFor="let appointment of appointment" style="width: 100%;">
-              <p>Company: <b>{{appointment.companyName}}</b>, Worker: <b>{{appointment.workerFullname}}</b>,
-                Service: <b>{{appointment.service}}</b>, Worker Phone: <b>{{appointment.workerPhone}}</b>,
-                Date: <b>{{appointment.dateTime}}</b></p>
+
+            <div class="col-xxl-11 col-sm-11 col-lg-11 pt-4 mt-5 h-100 info shadow-lg info d-flex align-items-center flex-column" style="overflow-y:scroll;">
+              <h3 class="text-center">Appointments</h3>
+              <hr style="color: black; height: 1px; width: 100%; margin-top: 15px;">
+              <div class="w-100 d-flex justify-content-between">
+                <p class="app-block text-center">Worker</p>
+                <p class="app-block text-center">Service</p>
+                <p class="app-block text-center">Worker Phone</p>
+                <p class="app-block text-center">Date</p>
+                <p class="app-block text-center">Time</p>
+              </div>
+              <hr style="color: black; height: 1px; width: 100%; margin-top: 0;">
+              <div class="text-center pt-3 pb-2 w-100 d-flex justify-content-between" *ngFor="let appointment of appointment" style="width: 100%;">
+                <b class="app-block">{{appointment.workerFullname}}</b>
+                <b class="app-block">{{appointment.service}}</b>
+                <b class="app-block">{{appointment.workerPhone}}</b>
+                <b class="app-block">{{appointment.date}}</b>
+                <b class="app-block">{{appointment.time}}</b>
             </div>
+
           </div>
         </div>
+
       </div>
 
     </div>
 
   </div>
-</div>
+
 
 
 

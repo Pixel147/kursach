@@ -29,7 +29,9 @@
     <full-calendar #calendar [options]="calendarOptions"></full-calendar>
   </div>
   <div class="container pt-5">
-    <h1>Free Time</h1>
+    <h1 class="text-center" [style.display]="dayPickedCheck ? 'none' : 'block'">Choose The Worker</h1>
+    <h1 class="text-center" [style.display]="dayPickedCheck ? 'block' : 'none'">Choose The Day</h1>
+    <h1 class="text-center" [style.display]="dayPickedCheck ? 'block' : 'none'">Choose The Time</h1>
     <div class="row">
       <div *ngFor="let freeTime of workerFreeTime" class="col-xxl-2 col-md-3 col-sm-3 mt-3 d-flex justify-content-center">
         <button (click)="selectTime($event)"

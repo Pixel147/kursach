@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Data
@@ -25,6 +27,6 @@ public class Appointment {
     private LocalDateTime timeEnd;
     @Column
     private String status;
-    @Column
+
     private String service;
 }

@@ -19,6 +19,9 @@ import ua.com.online.appointment.response.OwnerScheduleResponse;
 
 import javax.servlet.ServletRequest;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
@@ -123,7 +126,7 @@ public class OwnerService {
                         userRepository.findByWorker(app.getWorker()).getFullname(),
                         app.getService(),
                         userRepository.findByWorker(app.getWorker()).getPhone(),
-                        app.getTimeStart()
+                        app.getTimeStart().toLocalDate().toString(), app.getTimeStart().toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"))
                 ));
             }
         }
@@ -147,14 +150,15 @@ public class OwnerService {
 
         for (int i = 0; i < workers.size(); i++)
         {
-            List<Appointment> appointments = appointmentRepository.getAppointmentsByTimeStartAndWorkerAndStatus(workers.get(i), day ,"booked");
+            List<Appointment> appointments = appointmentRepository.getAppointmentsByWorkerAndStatusAndTimeStartBetween(workers.get(i), "booked", LocalDateTime.of(day, LocalTime.MIN), LocalDateTime.of(day,LocalTime.MAX));
             for (Appointment app: appointments) {
                 ownerScheduleResponse.add(new OwnerScheduleResponse(
                         app.getWorker().getCompany().getName(),
                         userRepository.findByWorker(app.getWorker()).getFullname(),
                         app.getService(),
                         userRepository.findByWorker(app.getWorker()).getPhone(),
-                        app.getTimeStart(), app.getClient().getFullname(), app.getClient().getPhone()
+                        app.getTimeStart().toLocalDate().toString(), app.getTimeStart().toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm")), app.getClient().getFullname(), app.getClient().getPhone()
+
                 ));
             }
         }

@@ -124,6 +124,7 @@ public class AuthService {
             worker.setFridayEnd(LocalTime.of(workerRegistrationRequest.getFridayEnd(),0));
 
             worker.setSaturdayStart(LocalTime.of(workerRegistrationRequest.getSaturdayStart(),0));
+            System.out.println(worker.getSaturdayStart());
             worker.setSaturdayEnd(LocalTime.of(workerRegistrationRequest.getSaturdayEnd(),0));
 
             worker.setSundayStart(LocalTime.of(workerRegistrationRequest.getSundayStart(),0));

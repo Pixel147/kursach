@@ -46,6 +46,7 @@ export class CompanyComponent {
   };
   workDays:any;
   workerFreeTime:any;
+  dayPickedCheck: boolean = false;
   registerAppData:AppointmentRegisterRequest = new AppointmentRegisterRequest('',0,'');
 
   public companyData = new CompanyAppointment("");
@@ -92,6 +93,14 @@ export class CompanyComponent {
       (data:any)=>{
         this.workDays = data;
         this.setNotWorkingDays();
+        if(this.dayPickedCheck)
+        {
+          this.dayPickedCheck = false;
+        }
+        else
+        {
+          this.dayPickedCheck = true;
+        }
       }
     );
   }

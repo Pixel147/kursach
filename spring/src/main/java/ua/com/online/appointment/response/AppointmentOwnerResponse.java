@@ -12,5 +12,6 @@ public class AppointmentOwnerResponse {
     private String workerFullname;
     private String service;
     private String workerPhone;
-    private LocalDateTime dateTime;
+    private String date;
+    private String time;
 }

@@ -62,9 +62,13 @@ public class OwnerController {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("owner/appointments/{day}")
+    @GetMapping("owner/appointments/day/{date}")
     public ResponseEntity <List<OwnerScheduleResponse>> getAppointmentsByDay(ServletRequest servletRequest, @PathVariable Date date){
         List<OwnerScheduleResponse> response = ownerService.getAppointmentsByDay(servletRequest, date.toLocalDate());
-
+        if(response != null)
+        {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }

@@ -3,7 +3,9 @@ package ua.com.online.appointment.response;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Data
 @AllArgsConstructor
@@ -12,7 +14,8 @@ public class OwnerScheduleResponse {
     private String workerFullname;
     private String service;
     private String workerPhone;
-    private LocalDateTime dateTime;
+    private String date;
+    private String time;
     private String clientFullname;
     private String clientPhone;
 }
