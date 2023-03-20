@@ -62,7 +62,7 @@ export class CompanyComponent {
     firstDay: 1,
     hiddenDays: this.notWorkingDays,
     height: 500,
-    dateClick: this.handleDateClick.bind(this)//todo in owner schedule
+    dateClick: this.handleDateClick.bind(this)
   };
   handleDateClick(arg: any) {
     this.registerAppData.setDate(arg.dateStr);
