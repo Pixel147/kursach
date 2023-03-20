@@ -54,7 +54,7 @@
             <p class="card-text">Worker phone : {{appointment.workerPhone}}</p>
             <p class="card-text">Date : {{appointment.date}}</p>
             <p class="card-text">Time : {{appointment.time}}</p>
-            <button class="btn btn-outline-danger">Cancel Appointment</button>
+            <button id="{{appointment.id}}" (click)="cancelAppointment($event)" class="btn btn-outline-danger">Cancel Appointment</button>
           </div>
         </div>
       </div>
@@ -64,7 +64,31 @@
 <div class="container-fluid pt-5 pb-5">
   <h1 class="text-center">Job Appointments</h1>
   <div class="container">
-    <full-calendar [options]="calendarOptions"></full-calendar>
+    <div class="d-flex justify-content-between pb-2">
+      <button (click)="prevWeek()" class="btn btn-outline-primary">prev</button>
+      <button (click)="nextWeek()" class="btn btn-outline-primary">next</button>
+    </div>
+    <full-calendar id="calendar" #calendar [options]="calendarOptions"></full-calendar>
+  </div>
+  <div #exampleModal class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Service : {{eventDisplayData.service}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h6>Client full name : {{eventDisplayData.clientName}}</h6>
+          <h6>Client phone : {{eventDisplayData.clientPhone}}</h6>
+          <h6>Date : {{eventDisplayData.dateStart}}</h6>
+          <h6>Time : {{eventDisplayData.timeStart}}-{{eventDisplayData.timeEnd}}</h6>
+          <h6>Price : 200 UAH</h6>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

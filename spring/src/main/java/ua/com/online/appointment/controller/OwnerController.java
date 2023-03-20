@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ua.com.online.appointment.DTO.WorkerDTO;
+import ua.com.online.appointment.response.WorkerDTO;
 import ua.com.online.appointment.request.WorkerScheduleRequest;
 import ua.com.online.appointment.response.AppointmentOwnerResponse;
 import ua.com.online.appointment.response.OwnerInfoResponse;

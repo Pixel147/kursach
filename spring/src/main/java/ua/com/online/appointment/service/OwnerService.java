@@ -3,7 +3,6 @@ package ua.com.online.appointment.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import ua.com.online.appointment.DTO.WorkerDTO;
 import ua.com.online.appointment.entity.Appointment;
 import ua.com.online.appointment.entity.Company;
 import ua.com.online.appointment.entity.User;
@@ -16,6 +15,7 @@ import ua.com.online.appointment.request.WorkerScheduleRequest;
 import ua.com.online.appointment.response.AppointmentOwnerResponse;
 import ua.com.online.appointment.response.OwnerInfoResponse;
 import ua.com.online.appointment.response.OwnerScheduleResponse;
+import ua.com.online.appointment.response.WorkerDTO;
 
 import javax.servlet.ServletRequest;
 import java.time.LocalDate;
@@ -148,10 +148,9 @@ public class OwnerService {
             return null;
         }
 
-        for (int i = 0; i < workers.size(); i++)
-        {
-            List<Appointment> appointments = appointmentRepository.getAppointmentsByWorkerAndStatusAndTimeStartBetween(workers.get(i), "booked", LocalDateTime.of(day, LocalTime.MIN), LocalDateTime.of(day,LocalTime.MAX));
-            for (Appointment app: appointments) {
+        for (Worker worker : workers) {
+            List<Appointment> appointments = appointmentRepository.getAppointmentsByWorkerAndStatusAndTimeStartBetween(worker, "booked", LocalDateTime.of(day, LocalTime.MIN), LocalDateTime.of(day, LocalTime.MAX));
+            for (Appointment app : appointments) {
                 ownerScheduleResponse.add(new OwnerScheduleResponse(
                         app.getWorker().getCompany().getName(),
                         userRepository.findByWorker(app.getWorker()).getFullname(),

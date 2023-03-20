@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
-import {UserInfo} from "../../assets/request/UserInfo";
-import {UserAppointment} from "../../assets/request/UserAppointment";
+import {UserInfo} from "../../assets/response-and-request/UserInfo";
+import {UserAppointment} from "../../assets/response-and-request/UserAppointment";
 
 @Component({
   selector: 'app-client-profile',

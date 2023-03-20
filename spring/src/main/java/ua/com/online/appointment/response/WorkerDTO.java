@@ -1,4 +1,4 @@
-package ua.com.online.appointment.DTO;
+package ua.com.online.appointment.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,6 +11,5 @@ public class WorkerDTO {
     private String email;
     private String phone;
     private String fullname;
-
     private String service;
 }

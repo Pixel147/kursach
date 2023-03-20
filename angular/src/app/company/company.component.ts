@@ -6,9 +6,9 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import {ActivatedRoute} from "@angular/router";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {CompanyAppointment} from "../../assets/request/companyAppointment";
+import {CompanyAppointment} from "../../assets/response-and-request/companyAppointment";
 import {FullCalendarComponent} from "@fullcalendar/angular";
-import {AppointmentRegisterRequest} from "../../assets/request/AppointmentRegisterRequest";
+import {AppointmentRegisterRequest} from "../../assets/response-and-request/AppointmentRegisterRequest";
 
 @Component({
   selector: 'app-company',
