@@ -11,11 +11,11 @@ import {FullCalendarComponent} from "@fullcalendar/angular";
 import {AppointmentRegisterRequest} from "../../assets/response-and-request/AppointmentRegisterRequest";
 
 @Component({
-  selector: 'app-company-appointment',
-  templateUrl: './company-appointment.component.html',
-  styleUrls: ['./company-appointment.component.css']
+  selector: 'app-company',
+  templateUrl: './company.component.html',
+  styleUrls: ['./company.component.css']
 })
-export class CompanyAppointmentComponent {
+export class CompanyComponent {
   // @ts-ignore
   @ViewChild('calendar') calendarComponent: FullCalendarComponent ;
 
@@ -46,6 +46,7 @@ export class CompanyAppointmentComponent {
   };
   workDays:any;
   workerFreeTime:any;
+  dayPickedCheck: boolean = false;
   registerAppData:AppointmentRegisterRequest = new AppointmentRegisterRequest('',0,'');
 
   public companyData = new CompanyAppointment("");
@@ -92,6 +93,14 @@ export class CompanyAppointmentComponent {
       (data:any)=>{
         this.workDays = data;
         this.setNotWorkingDays();
+        if(this.dayPickedCheck)
+        {
+          this.dayPickedCheck = false;
+        }
+        else
+        {
+          this.dayPickedCheck = true;
+        }
       }
     );
   }
