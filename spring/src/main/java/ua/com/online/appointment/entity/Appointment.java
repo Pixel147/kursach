@@ -27,6 +27,6 @@ public class Appointment {
     private LocalDateTime timeEnd;
     @Column
     private String status;
-
+    @Column
     private String service;
 }
