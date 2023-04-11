@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {HttpHeaders} from "@angular/common/http";
-import {ownerInfo} from "../../assets/request/ownerInfo";
-import {Worker} from "../../assets/request/worker";
+import {ownerInfo} from "../../assets/response-and-request/ownerInfo";
+import {Worker} from "../../assets/response-and-request/worker";
 
 
 

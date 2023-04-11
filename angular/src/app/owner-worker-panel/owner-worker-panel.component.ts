@@ -54,38 +54,38 @@ export class OwnerWorkerPanelComponent {
   {
     if(!this.monSwitch)
     {
-      this.worker.mondayStart = null;
-      this.worker.mondayEnd = null;
+      this.worker.mondayStart = -1;
+      this.worker.mondayEnd = -1;
     }
     if(!this.tueSwitch)
     {
-      this.worker.tuesdayStart = null;
-      this.worker.tuesdayEnd = null;
+      this.worker.tuesdayStart = -1;
+      this.worker.tuesdayEnd = -1;
     }
     if(!this.wedSwitch)
     {
-      this.worker.wednesdayStart = null;
-      this.worker.wednesdayEnd = null;
+      this.worker.wednesdayStart = -1;
+      this.worker.wednesdayEnd = -1;
     }
     if(!this.thuSwitch)
     {
-      this.worker.thursdayStart = null;
-      this.worker.thursdayEnd = null;
+      this.worker.thursdayStart = -1;
+      this.worker.thursdayEnd = -1;
     }
     if(!this.friSwitch)
     {
-      this.worker.fridayStart = null;
-      this.worker.fridayEnd = null;
+      this.worker.fridayStart = -1;
+      this.worker.fridayEnd = -1;
     }
     if(!this.satSwitch)
     {
-      this.worker.saturdayStart = null;
-      this.worker.saturdayEnd = null;
+      this.worker.saturdayStart = -1;
+      this.worker.saturdayEnd = -1;
     }
     if(!this.sunSwitch)
     {
-      this.worker.sundayStart = null;
-      this.worker.sundayEnd = null;
+      this.worker.sundayStart = -1;
+      this.worker.sundayEnd = -1;
     }
 
     return true;

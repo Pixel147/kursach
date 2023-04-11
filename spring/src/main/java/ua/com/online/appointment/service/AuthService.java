@@ -107,27 +107,47 @@ public class AuthService {
             Worker worker = new Worker();
             worker.setCompany(owner.getCompany());
             worker.setService(workerRegistrationRequest.getService());
+            if(workerRegistrationRequest.getMondayStart() != -1 && workerRegistrationRequest.getMondayEnd() != -1)
+            {
+                worker.setMondayStart(LocalTime.of(workerRegistrationRequest.getMondayStart(),0));
+                worker.setMondayEnd(LocalTime.of(workerRegistrationRequest.getMondayEnd(),0));
+            }
 
-            worker.setMondayStart(LocalTime.of(workerRegistrationRequest.getMondayStart(),0));
-            worker.setMondayEnd(LocalTime.of(workerRegistrationRequest.getMondayEnd(),0));
+            if(workerRegistrationRequest.getTuesdayStart() != -1 && workerRegistrationRequest.getTuesdayEnd() != -1)
+            {
+                worker.setTuesdayStart(LocalTime.of(workerRegistrationRequest.getTuesdayStart(),0));
+                worker.setTuesdayEnd(LocalTime.of(workerRegistrationRequest.getTuesdayEnd(),0));
+            }
 
-            worker.setTuesdayStart(LocalTime.of(workerRegistrationRequest.getTuesdayStart(),0));
-            worker.setTuesdayEnd(LocalTime.of(workerRegistrationRequest.getTuesdayEnd(),0));
+            if(workerRegistrationRequest.getWednesdayStart() != -1 && workerRegistrationRequest.getWednesdayEnd() != -1)
+            {
+                worker.setWednesdayStart(LocalTime.of(workerRegistrationRequest.getWednesdayStart(),0));
+                worker.setWednesdayEnd(LocalTime.of(workerRegistrationRequest.getWednesdayEnd(),0));
+            }
 
-            worker.setWednesdayStart(LocalTime.of(workerRegistrationRequest.getWednesdayStart(),0));
-            worker.setWednesdayEnd(LocalTime.of(workerRegistrationRequest.getWednesdayEnd(),0));
+            if(workerRegistrationRequest.getThursdayStart() != -1 && workerRegistrationRequest.getThursdayEnd() != -1)
+            {
+                worker.setThursdayStart(LocalTime.of(workerRegistrationRequest.getThursdayStart(),0));
+                worker.setThursdayEnd(LocalTime.of(workerRegistrationRequest.getThursdayEnd(),0));
+            }
 
-            worker.setThursdayStart(LocalTime.of(workerRegistrationRequest.getThursdayStart(),0));
-            worker.setThursdayEnd(LocalTime.of(workerRegistrationRequest.getThursdayEnd(),0));
+            if(workerRegistrationRequest.getFridayStart() != -1 && workerRegistrationRequest.getFridayEnd() != -1)
+            {
+                worker.setFridayStart(LocalTime.of(workerRegistrationRequest.getFridayStart(),0));
+                worker.setFridayEnd(LocalTime.of(workerRegistrationRequest.getFridayEnd(),0));
+            }
 
-            worker.setFridayStart(LocalTime.of(workerRegistrationRequest.getFridayStart(),0));
-            worker.setFridayEnd(LocalTime.of(workerRegistrationRequest.getFridayEnd(),0));
+            if(workerRegistrationRequest.getSaturdayStart() != -1 && workerRegistrationRequest.getSaturdayEnd() != -1)
+            {
+                worker.setSaturdayStart(LocalTime.of(workerRegistrationRequest.getSaturdayStart(),0));
+                worker.setSaturdayEnd(LocalTime.of(workerRegistrationRequest.getSaturdayEnd(),0));
+            }
 
-            worker.setSaturdayStart(LocalTime.of(workerRegistrationRequest.getSaturdayStart(),0));
-            worker.setSaturdayEnd(LocalTime.of(workerRegistrationRequest.getSaturdayEnd(),0));
-
-            worker.setSundayStart(LocalTime.of(workerRegistrationRequest.getSundayStart(),0));
-            worker.setSundayEnd(LocalTime.of(workerRegistrationRequest.getSundayEnd(),0));
+            if(workerRegistrationRequest.getSundayStart() != -1 && workerRegistrationRequest.getSundayEnd() != -1)
+            {
+                worker.setSundayStart(LocalTime.of(workerRegistrationRequest.getSundayStart(),0));
+                worker.setSundayEnd(LocalTime.of(workerRegistrationRequest.getSundayEnd(),0));
+            }
 
             workerRepository.save(worker);
             User user = new User();

@@ -21,5 +21,5 @@ public class Company {
     private String description;
     @OneToMany(mappedBy = "company")
     @JsonManagedReference
-    List<Worker> workers;
+    private List<Worker> workers;
 }
