@@ -99,13 +99,11 @@ public class OwnerService {
     }
     public HttpStatus deleteWorker(Integer workerId){
         Optional<User> user = userRepository.findById(workerId);
-        if(user.isPresent()){
-            Worker worker = user.get().getWorker();
-            userRepository.delete(user.get());
-            workerRepository.delete(worker);
-            return HttpStatus.OK;
-        }
-        return HttpStatus.BAD_REQUEST;
+        Worker worker = user.get().getWorker();
+        User user1 = user.get();
+        userRepository.delete(user1);
+        workerRepository.delete(worker);
+        return HttpStatus.OK;
     }
 
     public List<AppointmentOwnerResponse> getAppointments(ServletRequest servletRequest)
