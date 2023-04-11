@@ -1,0 +1,48 @@
+<app-owner-menu></app-owner-menu>
+
+
+<div class="container-fluid min-vh-100">
+  <div class="row p-5">
+    <div class="col-xxl-12 col-lg-12">
+      <div class="card mb-3 pt-4 ps-3 pe-3 pb-3" style="border-radius: .5rem;">
+        <div class="row pt-5">
+          <div class="col-xxl-12 col-sm-12 col-lg-12 pb-5">
+            <div class="row d-flex justify-content-center">
+
+              <h3 class="text-center pb-5">Company Schedule</h3>
+
+              <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+
+              <div class="col-xxl-11 col-sm-11 col-lg-11 pt-4 mt-5 h-100 info shadow-lg d-flex align-items-center flex-column" style="overflow-y:scroll;">
+                <h3 class="text-center">Appointments</h3>
+                <hr style="color: black; height: 1px; width: 100%; margin-top: 15px;">
+                <div class="w-100 d-flex justify-content-between">
+                  <p class="app-block text-center">Worker</p>
+                  <p class="app-block text-center">Service</p>
+                  <p class="app-block text-center">Worker Phone</p>
+                  <p class="app-block text-center">Client</p>
+                  <p class="app-block text-center">Client Phone</p>
+                  <p class="app-block text-center">Date</p>
+                  <p class="app-block text-center">Time</p>
+                </div>
+                <hr style="color: black; height: 1px; width: 100%; margin-top: 0;">
+                <div class="text-center pt-3 pb-2  w-100 d-flex justify-content-between"  *ngFor="let appointment of appointment" style="width: 100%;">
+                    <b class="app-block">{{appointment.workerFullname}}</b>
+                    <b class="app-block">{{appointment.service}}</b>
+                    <b class="app-block">{{appointment.workerPhone}}</b>
+                    <b class="app-block">{{appointment.clientFullname}}</b>
+                    <b class="app-block">{{appointment.clientPhone}}</b>
+                    <b class="app-block">{{appointment.date}}</b>
+                    <b class="app-block">{{appointment.time}}</b>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

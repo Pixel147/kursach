@@ -1,0 +1,26 @@
+.gradient {
+  background: linear-gradient(149deg, #56C8D6 0%, #2A98AD 42%, #DA865B 72%, #EFA68B 100%);
+  animation: gradient 4s infinite linear;
+  background-size: 400%;
+  z-index: 0;
+}
+@keyframes gradient {
+  0% {
+    background-position: 80% 0;
+  }
+  50% {
+    background-position: 20% 100%;
+  }
+  100% {
+    background-position: 80% 0;
+  }
+}
+
+.footer
+{
+  z-index: 1;
+}
+.appointments{
+  padding-top: 2%;
+  padding-bottom: 17%;
+}

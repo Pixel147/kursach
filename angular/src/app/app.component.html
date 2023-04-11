@@ -1,0 +1,42 @@
+<div class="container-fluid menu">
+  <div class="container">
+    <nav class="navbar navbar-dark navbar-expand-lg">
+      <a routerLink="/" class="navbar-brand"><i class="fa-regular fa-calendar-days" style="font-size: 50px"></i></a>
+      <a routerLink="/" class="navbar-brand" style="font-size: 30px;">Kursova</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuItems" aria-controls="menuItems" aria-expanded="false" aria-label="Toggle Navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuItems">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center justify-content-center">
+          <li class="nav-item">
+            <a routerLink="/" class="nav-link a-menu-link">Pricing</a>
+          </li>
+        </ul>
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn px-3 me-2 btn-menu-login" (click)="CheckUser()"
+                  [style.display] = "tokenFlag ? 'block' : 'none'">
+            <i class="fa-solid fa-user" style="scale: 1.6; padding-top: 3px"></i>
+          </button>
+        <button type="button" class="btn px-3 me-2 btn-menu-login"
+                routerLink="/login"
+                [style.display]="tokenFlag ? 'none' : 'block'">
+            Log In
+          </button>
+          <button type="button" class="btn btn-light me-3 btn-outline-light shadow m-0 btn-menu-register"
+                  routerLink="/register"
+                  [style.display]="tokenFlag ? 'none' : 'block'">
+            Register
+          </button>
+          <button type="button" class="btn btn-light me-3 btn-outline-light shadow m-0 btn-menu-register"
+                  (click)="out()"
+                  routerLink="/login"
+                  [style.display]="tokenFlag ? 'block' : 'none'">
+            logout
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

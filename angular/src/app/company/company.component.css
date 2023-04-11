@@ -1,0 +1,18 @@
+.bg-div
+{
+  background: url("src/assets/images/company/main-image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.9;
+  color: #2A98AD;
+  padding-top: 20%;
+  padding-bottom: 23%;
+}
+.company-name-text{
+  font-size: 70px;
+}
+.services{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: whitesmoke;
+}

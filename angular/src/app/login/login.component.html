@@ -1,0 +1,38 @@
+<div class="gradient">
+  <div class="sign-in text-center d-flex justify-content-center align-items-center">
+
+    <div class="login-background shadow-lg">
+      <h1 class="header-text">Welcome back!</h1>
+      <h2 class="main-text">You can sign in to access with your</h2>
+      <h2 class="main-text">exiting account</h2>
+    </div>
+    <div class="form-cover shadow-lg d-flex flex-column">
+      <form class="login-form">
+        <h2 class="text-center pt-3 pb-3 sign">Sign In</h2>
+
+        <div class="mb-3">
+          <input (input)="onInputUsername($event)" placeholder="Username" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+
+        <div class="mb-3">
+          <input (input)="onInputPassword($event)" placeholder="Password" type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+
+        <div class="d-flex justify-content-around w-100% reg">
+          <div>
+            <input class="form-check-input me-2" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
+            <label for="checkboxNoLabel">Remember Me</label>
+          </div>
+
+          <p class="text-bottom"><a class="text-decoration-none" href="http://localhost:4200/register">Forgot The Password?</a></p>
+        </div>
+        <p class="register-text">If you dont have account <a class="Sign-Up text-decoration-underline" href="http://localhost:4200/register">Sign Up</a></p>
+      </form>
+      <button (click)="login()" class="btn btn-primary submit" style="margin-bottom: 50px; margin-top: -90px">Login </button>
+    </div>
+
+
+  </div>
+  <app-footer class="fixed-bottom"></app-footer>
+</div>
+
