@@ -321,7 +321,7 @@ export class RegisterComponent {
     else if(this.type == "ROLE_OWNER")
     {
       const user = {"username":this.nicknameOwner,"email":this.emailOwner,"password":this.passOwner,
-      "fullname": this.fullNameOwner, "company_name":this.companyName, "location":this.location, "phone":this.phoneOwner};
+      "fullname": this.fullNameOwner, "company_name":this.companyName, "location":this.location, "phone":this.phoneOwner, "role":"ROLE_OWNER"};
       return this.http.post('http://localhost:8080/register/owner', user, {headers:headers}).subscribe({
         next:(data: any) => {
           this.router.navigate(["/login"]);
