@@ -6,5 +6,5 @@ The client can choose when it is convenient for him to make an appointment and t
 
 ## Project settings
 * Database - mysql
-* REST API - java
+* REST API - spring
 * Web - angular
